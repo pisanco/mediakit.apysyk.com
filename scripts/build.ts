@@ -4,7 +4,7 @@
 import { availableParallelism } from "node:os";
 import { mkdir, readdir, rm, stat } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
-import { COVER_CARDS, LOGO_FILES, LOGO_WIDTHS, heroArt, icon, logoExport, ogImage, renderedAssets } from "./kit/catalog.ts";
+import { LOGO_FILES, LOGO_WIDTHS, icon, logoExport, ogImage, renderedAssets } from "./kit/catalog.ts";
 import { FONTS, fontFaces } from "./kit/fonts.ts";
 import { imageSize } from "./kit/image-size.ts";
 import { formatBytes, type Manifest, type ManifestFile, type ManifestGroup } from "./kit/manifest.ts";
@@ -97,13 +97,6 @@ try {
   );
   files.push(...rendered);
 
-  // Three of the site's cover cards, already public on apysyk.com: their headlines are the live pages'.
-  for (const page of COVER_CARDS) {
-    const data = checked(page, await read(`brand/source/og/${page}.jpg`), 1200, 630);
-    const path = `files/banners/imagery/apysyk-cover-${page}-1200x630.jpg`;
-    files.push({ group: "banners", category: "imagery", name: `Cover card: ${page[0].toUpperCase()}${page.slice(1)}`, width: 1200, height: 630, format: "jpg", bytes: await write(path, data), path });
-  }
-
   // The fonts the page itself renders with, each with its license. They are served for the page only,
   // not offered as downloads: visitors get them from the official sources.
   for (const font of FONTS) {
@@ -117,10 +110,6 @@ try {
   await write("favicon.svg", await read("brand/logo/mark.svg"));
   await write("favicon-32.png", checked("favicon", await renderer.render("favicon", icon(32, "transparent", 0.94), { format: "png" }), 32, 32));
   await write("apple-touch-icon.png", checked("touch", await renderer.render("touch", icon(180, "#000", 0.6), { format: "png" }), 180, 180));
-  const hero = heroArt();
-  await write(".work/hero.png", await renderer.render("hero", hero, { format: "png" }));
-  await write("hero.webp", await renderer.thumbnail(".work/hero.png", hero.width, hero.height, 0.86));
-  await rm(join(DIST, ".work"), { recursive: true });
 
   // Previews: real renders downscaled in the browser.
   await Promise.all(

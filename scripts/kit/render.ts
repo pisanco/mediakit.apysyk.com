@@ -85,14 +85,14 @@ export class Renderer {
 
   /** Renders a document; throws if any text overflows, leaves the canvas or is under 11 px. */
   async render(name: string, doc: Doc, out: Output): Promise<Buffer> {
-    const { html, field } = documentFor(doc);
+    const { html } = documentFor(doc);
     const id = `${this.next++}.html`;
     this.docs.set(id, html);
     try {
       return await this.withPage(async (page) => {
         await page.setViewportSize({ width: doc.width, height: doc.height });
         await page.goto(`${ORIGIN}/doc/${id}`, { waitUntil: "load" });
-        const errors = await page.evaluate(preparePage, field);
+        const errors = await page.evaluate(preparePage);
         if (errors.length) throw new Error(`${name}: ${errors.join("; ")}`);
         return page.screenshot({
           type: out.format === "jpg" ? "jpeg" : "png",
@@ -110,7 +110,7 @@ export class Renderer {
 
   /**
    * Downscales a file already written under dist/ to a WebP of the given size.
-   * Halving steps before the last draw keep fine lattice lines from aliasing.
+   * Halving steps before the last draw preserve fine edges.
    */
   async thumbnail(distPath: string, width: number, height: number, quality = 0.82): Promise<Buffer> {
     return this.withPage(async (page) => {

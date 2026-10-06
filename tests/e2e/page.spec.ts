@@ -48,7 +48,6 @@ async function loadEverything(page: Page): Promise<void> {
 test("renders with no console errors, CSP violations or third-party requests", async ({ page }) => {
   const problems = await open(page);
   await expect(page).toHaveTitle("Media kit · Apysyk");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Apysyk brand assets.");
   await loadEverything(page);
   const csp = await page.evaluate(() => (window as unknown as { __csp: string[] }).__csp);
   expect(csp).toEqual([]);

@@ -20,8 +20,7 @@ bun run deploy       # after the checks pass and the changes are committed
 
 - `brand/logo/`: the logo SVG sources (`bun run logo` regenerates them from `brand/source/logo-cube.png` and Hubot Sans).
 - `brand/fonts/`: the fonts the page renders with, each with its SIL Open Font License: the unmodified upstream Hubot Sans (variable TTF) and Mona Sans, and a JetBrains Mono subset used only to render the page. None is offered as a download.
-- `brand/source/og/`: three cover cards of apysyk.com (home, platform, solutions).
-- `scripts/kit/`: the asset catalog and layouts, the lattice scene, the renderer, the page.
+- `scripts/kit/`: the asset catalog and layouts, the editorial split system, the renderer, the page.
 - `site/`: the page's stylesheet and its one script (the copy buttons).
 
 Questions: sales@apysyk.com.

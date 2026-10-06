@@ -170,12 +170,16 @@ code {
   color: var(--apy-2);
 }
 
-/* 0.98, not the site cover's 0.88: the "y" of "Apysyk" would touch the "d" of "brand" below it. */
 .display--cover {
-  font-size: clamp(2.9rem, 8.4vw, 9rem);
+  font-size: clamp(4rem, 10.2vw, 10.25rem);
   font-stretch: 110%;
-  line-height: 0.98;
-  letter-spacing: -0.048em;
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+}
+
+.display--cover span,
+.display--cover em {
+  display: block;
 }
 
 .display--xl {
@@ -236,7 +240,6 @@ code {
   height: 6px;
   border-radius: 50%;
   background: var(--apy-glow);
-  box-shadow: 0 0 12px var(--apy);
 }
 
 .label {
@@ -514,38 +517,58 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 
 .hero {
   position: relative;
+  min-height: clamp(640px, calc(100svh - var(--header-h)), 920px);
   overflow: clip;
   border-bottom: 1px solid var(--line);
+  background: #000;
 }
 
-.hero__art {
+.hero__panel {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 28%;
+  overflow: hidden;
+  border-left: 1px solid rgba(4, 16, 3, 0.28);
+  background: var(--apy);
+}
+
+.hero__panel img {
   position: absolute;
   top: 50%;
-  right: max(-180px, calc((100vw - 1600px) / 2 - 200px));
-  width: min(1100px, 80vw);
+  left: 50%;
+  width: 145%;
+  max-width: none;
   height: auto;
-  transform: translateY(-50%);
-  pointer-events: none;
+  transform: translate(-50%, -50%);
   user-select: none;
 }
 
 .hero__inner {
   position: relative;
   display: grid;
-  gap: 28px;
-  justify-items: start;
-  padding-block: clamp(96px, 14vw, 220px) clamp(64px, 8vw, 128px);
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: clamp(20px, 2vw, 30px);
+  min-height: inherit;
+  padding-block: clamp(72px, 8vw, 124px) clamp(40px, 4vw, 64px);
+  padding-right: calc(28vw + var(--gutter));
 }
 
 .hero .display--cover {
-  max-width: 8.5em;
+  max-width: 6.3em;
+}
+
+.hero .lead {
+  max-width: 31em;
 }
 
 .hero__stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 40px;
-  margin-top: clamp(16px, 3vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  align-self: end;
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid var(--line-2);
 }
 
 .hero__stats div {
@@ -570,19 +593,41 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   line-height: 1;
 }
 
-/* Phones: the whole lattice sits above the headline. In the art its centre is at 56% of the width, half the height. */
 @media (max-width: 767px) {
-  .hero__art {
-    top: -14vw;
-    right: auto;
-    left: -34vw;
-    width: 150vw;
-    max-width: none;
-    transform: none;
+  .hero {
+    min-height: 0;
+  }
+
+  .hero__panel {
+    inset: 0 0 auto;
+    width: 100%;
+    height: clamp(160px, 52vw, 240px);
+    border-left: 0;
+    border-bottom: 1px solid rgba(4, 16, 3, 0.28);
+  }
+
+  .hero__panel img {
+    right: 8%;
+    left: auto;
+    width: 58vw;
+    transform: translateY(-50%);
   }
 
   .hero__inner {
-    padding-top: 78vw;
+    min-height: calc(100svh - var(--header-h));
+    padding-top: calc(clamp(160px, 52vw, 240px) + 44px);
+    padding-right: var(--gutter);
+    padding-bottom: 48px;
+  }
+
+  .display--cover {
+    font-size: clamp(3.6rem, 19vw, 6rem);
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+    margin-top: 24px;
   }
 }
 

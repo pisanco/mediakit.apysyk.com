@@ -71,6 +71,7 @@ export function renderPage(manifest: Manifest): string {
   const kitFiles = files.filter((f) => ["logos", "banners", "wallpapers"].includes(f.group));
   const count = (pred: (f: ManifestFile) => boolean) => kitFiles.filter(pred).length;
   const mark = byPath("files/logos/svg/apysyk-mark.svg");
+  const markBlack = byPath("files/logos/svg/apysyk-mark-black.svg");
 
   // ---------- About ----------
   const boilerplates = [
@@ -279,7 +280,7 @@ ${sectionHead("banners", "Banners", "Banners", "Covers and posts for every netwo
 </div>`;
   };
   const wallpapers = `<section class="section" id="wallpapers" aria-labelledby="wallpapers-title">
-${sectionHead("wallpapers", "Wallpapers", "Wallpapers", "Quiet backgrounds in two variants: black with the lattice and its glow, or deep green lit with the brand green from the lattice's glow.")}
+${sectionHead("wallpapers", "Wallpapers", "Wallpapers", "Quiet backgrounds built from a flat Apysyk brand panel and an oversized crop of the mark.")}
 ${wallGroup("desktop", "Desktop", "Common laptop and monitor resolutions, up to 5K and ultrawide.")}
 ${wallGroup("phone", "Phone", "The top stays clear for the clock, the bottom for the dock.")}
 ${wallGroup("tablet", "Tablet", "Portrait, for tablets such as the 10.9 and 12.9 inch iPad.")}
@@ -353,10 +354,12 @@ ${sectionHead("downloads", "Downloads", "Downloads", "Everything in one archive,
 </header>
 <main id="main">
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <img class="hero__art" src="hero.webp" width="1600" height="1100" alt="" fetchpriority="high">
+  <div class="hero__panel" aria-hidden="true">
+    <img src="${markBlack.path}" width="619" height="631" alt="" fetchpriority="high">
+  </div>
   <div class="shell hero__inner">
-    <p class="eyebrow eyebrow--dot">Media kit</p>
-    <h1 class="display display--cover" id="hero-title">Apysyk <em>brand assets.</em></h1>
+    <p class="eyebrow eyebrow--dot">Apysyk / media kit</p>
+    <h1 class="display display--cover" id="hero-title"><span>Brand</span> <em>assets.</em></h1>
     <p class="lead">Everything here may be used to write about or refer to Apysyk.</p>
     <dl class="hero__stats">
       <div><dt>Logo files</dt><dd>${count((f) => f.group === "logos")}</dd></div>
