@@ -1,0 +1,22 @@
+{
+  "name": "mediakit.apysyk.com",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun scripts/build.ts",
+    "serve": "bun scripts/serve.ts",
+    "typecheck": "tsc -p .",
+    "test:unit": "bun test tests/unit",
+    "test:e2e": "playwright test",
+    "logo": "bun scripts/logo/generate.ts",
+    "deploy": "bun scripts/deploy.ts"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@types/bun": "1.3.14",
+    "fflate": "0.8.3",
+    "fontkit": "2.0.4",
+    "typescript": "7.0.2"
+  }
+}
