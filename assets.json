@@ -1,0 +1,1477 @@
+{
+  "site": "https://mediakit.apysyk.com/",
+  "files": [
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Lockup on dark",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 5268,
+      "path": "files/logos/svg/apysyk-lockup-on-dark.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup on dark",
+      "width": 512,
+      "height": 90,
+      "format": "png",
+      "bytes": 11451,
+      "path": "files/logos/png/apysyk-lockup-on-dark-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup on dark",
+      "width": 1024,
+      "height": 180,
+      "format": "png",
+      "bytes": 22962,
+      "path": "files/logos/png/apysyk-lockup-on-dark-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup on dark",
+      "width": 2048,
+      "height": 360,
+      "format": "png",
+      "bytes": 47295,
+      "path": "files/logos/png/apysyk-lockup-on-dark-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Lockup on light",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 5268,
+      "path": "files/logos/svg/apysyk-lockup-on-light.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup on light",
+      "width": 512,
+      "height": 90,
+      "format": "png",
+      "bytes": 9042,
+      "path": "files/logos/png/apysyk-lockup-on-light-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup on light",
+      "width": 1024,
+      "height": 180,
+      "format": "png",
+      "bytes": 17957,
+      "path": "files/logos/png/apysyk-lockup-on-light-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup on light",
+      "width": 2048,
+      "height": 360,
+      "format": "png",
+      "bytes": 36248,
+      "path": "files/logos/png/apysyk-lockup-on-light-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Mark",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 1912,
+      "path": "files/logos/svg/apysyk-mark.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark",
+      "width": 512,
+      "height": 522,
+      "format": "png",
+      "bytes": 13096,
+      "path": "files/logos/png/apysyk-mark-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark",
+      "width": 1024,
+      "height": 1045,
+      "format": "png",
+      "bytes": 30209,
+      "path": "files/logos/png/apysyk-mark-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark",
+      "width": 2048,
+      "height": 2089,
+      "format": "png",
+      "bytes": 69592,
+      "path": "files/logos/png/apysyk-mark-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Wordmark, light",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 2720,
+      "path": "files/logos/svg/apysyk-wordmark-light.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Wordmark, light",
+      "width": 512,
+      "height": 132,
+      "format": "png",
+      "bytes": 12213,
+      "path": "files/logos/png/apysyk-wordmark-light-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Wordmark, light",
+      "width": 1024,
+      "height": 263,
+      "format": "png",
+      "bytes": 25358,
+      "path": "files/logos/png/apysyk-wordmark-light-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Wordmark, light",
+      "width": 2048,
+      "height": 527,
+      "format": "png",
+      "bytes": 53903,
+      "path": "files/logos/png/apysyk-wordmark-light-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Wordmark, dark",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 2720,
+      "path": "files/logos/svg/apysyk-wordmark-dark.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Wordmark, dark",
+      "width": 512,
+      "height": 132,
+      "format": "png",
+      "bytes": 8736,
+      "path": "files/logos/png/apysyk-wordmark-dark-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Wordmark, dark",
+      "width": 1024,
+      "height": 263,
+      "format": "png",
+      "bytes": 17897,
+      "path": "files/logos/png/apysyk-wordmark-dark-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Wordmark, dark",
+      "width": 2048,
+      "height": 527,
+      "format": "png",
+      "bytes": 37379,
+      "path": "files/logos/png/apysyk-wordmark-dark-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Lockup, white",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 3782,
+      "path": "files/logos/svg/apysyk-lockup-white.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup, white",
+      "width": 512,
+      "height": 90,
+      "format": "png",
+      "bytes": 8131,
+      "path": "files/logos/png/apysyk-lockup-white-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup, white",
+      "width": 1024,
+      "height": 180,
+      "format": "png",
+      "bytes": 17045,
+      "path": "files/logos/png/apysyk-lockup-white-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup, white",
+      "width": 2048,
+      "height": 360,
+      "format": "png",
+      "bytes": 34391,
+      "path": "files/logos/png/apysyk-lockup-white-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Lockup, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 3782,
+      "path": "files/logos/svg/apysyk-lockup-black.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup, black",
+      "width": 512,
+      "height": 90,
+      "format": "png",
+      "bytes": 7531,
+      "path": "files/logos/png/apysyk-lockup-black-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup, black",
+      "width": 1024,
+      "height": 180,
+      "format": "png",
+      "bytes": 15627,
+      "path": "files/logos/png/apysyk-lockup-black-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Lockup, black",
+      "width": 2048,
+      "height": 360,
+      "format": "png",
+      "bytes": 31522,
+      "path": "files/logos/png/apysyk-lockup-black-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Mark, white",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 416,
+      "path": "files/logos/svg/apysyk-mark-white.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark, white",
+      "width": 512,
+      "height": 522,
+      "format": "png",
+      "bytes": 9833,
+      "path": "files/logos/png/apysyk-mark-white-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark, white",
+      "width": 1024,
+      "height": 1045,
+      "format": "png",
+      "bytes": 22228,
+      "path": "files/logos/png/apysyk-mark-white-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark, white",
+      "width": 2048,
+      "height": 2089,
+      "format": "png",
+      "bytes": 51041,
+      "path": "files/logos/png/apysyk-mark-white-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "svg",
+      "name": "Mark, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 416,
+      "path": "files/logos/svg/apysyk-mark-black.svg"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark, black",
+      "width": 512,
+      "height": 522,
+      "format": "png",
+      "bytes": 9272,
+      "path": "files/logos/png/apysyk-mark-black-512.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark, black",
+      "width": 1024,
+      "height": 1045,
+      "format": "png",
+      "bytes": 21289,
+      "path": "files/logos/png/apysyk-mark-black-1024.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Mark, black",
+      "width": 2048,
+      "height": 2089,
+      "format": "png",
+      "bytes": 48797,
+      "path": "files/logos/png/apysyk-mark-black-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "avatars",
+      "name": "Avatar on black",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "bytes": 19276,
+      "path": "files/logos/avatars/apysyk-avatar-black-1024.png",
+      "thumb": {
+        "path": "thumbs/logos/avatars/apysyk-avatar-black-1024.webp",
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "group": "logos",
+      "category": "avatars",
+      "name": "Avatar on white",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "bytes": 18781,
+      "path": "files/logos/avatars/apysyk-avatar-white-1024.png",
+      "thumb": {
+        "path": "thumbs/logos/avatars/apysyk-avatar-white-1024.webp",
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "LinkedIn company cover",
+      "width": 1128,
+      "height": 191,
+      "format": "png",
+      "bytes": 20808,
+      "path": "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-linkedin-company-cover-1128x191.webp",
+        "width": 720,
+        "height": 122
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "LinkedIn profile banner",
+      "width": 1584,
+      "height": 396,
+      "format": "png",
+      "bytes": 38872,
+      "path": "files/banners/social/apysyk-linkedin-profile-banner-1584x396.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-linkedin-profile-banner-1584x396.webp",
+        "width": 720,
+        "height": 180
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "X header",
+      "width": 1500,
+      "height": 500,
+      "format": "png",
+      "bytes": 41700,
+      "path": "files/banners/social/apysyk-x-header-1500x500.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-x-header-1500x500.webp",
+        "width": 720,
+        "height": 240
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "Facebook cover",
+      "width": 1640,
+      "height": 624,
+      "format": "png",
+      "bytes": 43785,
+      "path": "files/banners/social/apysyk-facebook-cover-1640x624.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-facebook-cover-1640x624.webp",
+        "width": 720,
+        "height": 274
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "YouTube banner",
+      "width": 2560,
+      "height": 1440,
+      "format": "png",
+      "bytes": 69975,
+      "path": "files/banners/social/apysyk-youtube-banner-2560x1440.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-youtube-banner-2560x1440.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "GitHub social preview",
+      "width": 1280,
+      "height": 640,
+      "format": "png",
+      "bytes": 48034,
+      "path": "files/banners/social/apysyk-github-social-preview-1280x640.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-github-social-preview-1280x640.webp",
+        "width": 720,
+        "height": 360
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "Link share card",
+      "width": 1200,
+      "height": 630,
+      "format": "png",
+      "bytes": 42942,
+      "path": "files/banners/social/apysyk-share-card-1200x630.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-share-card-1200x630.webp",
+        "width": 720,
+        "height": 378
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "Instagram square",
+      "width": 1080,
+      "height": 1080,
+      "format": "png",
+      "bytes": 50022,
+      "path": "files/banners/social/apysyk-instagram-square-1080x1080.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-instagram-square-1080x1080.webp",
+        "width": 720,
+        "height": 720
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "Instagram portrait",
+      "width": 1080,
+      "height": 1350,
+      "format": "png",
+      "bytes": 51973,
+      "path": "files/banners/social/apysyk-instagram-portrait-1080x1350.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-instagram-portrait-1080x1350.webp",
+        "width": 576,
+        "height": 720
+      }
+    },
+    {
+      "group": "banners",
+      "category": "social",
+      "name": "Instagram story",
+      "width": 1080,
+      "height": 1920,
+      "format": "png",
+      "bytes": 72445,
+      "path": "files/banners/social/apysyk-instagram-story-1080x1920.png",
+      "thumb": {
+        "path": "thumbs/banners/social/apysyk-instagram-story-1080x1920.webp",
+        "width": 405,
+        "height": 720
+      }
+    },
+    {
+      "group": "banners",
+      "category": "email",
+      "name": "Email signature",
+      "width": 600,
+      "height": 150,
+      "format": "png",
+      "bytes": 16351,
+      "path": "files/banners/email/apysyk-email-signature-600x150.png",
+      "thumb": {
+        "path": "thumbs/banners/email/apysyk-email-signature-600x150.webp",
+        "width": 600,
+        "height": 150
+      }
+    },
+    {
+      "group": "banners",
+      "category": "email",
+      "name": "Email signature, 2x",
+      "width": 1200,
+      "height": 300,
+      "format": "png",
+      "bytes": 31317,
+      "path": "files/banners/email/apysyk-email-signature-1200x300.png",
+      "thumb": {
+        "path": "thumbs/banners/email/apysyk-email-signature-1200x300.webp",
+        "width": 600,
+        "height": 150
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Medium rectangle",
+      "width": 300,
+      "height": 250,
+      "format": "png",
+      "bytes": 13892,
+      "path": "files/banners/display/apysyk-ad-300x250.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-300x250.webp",
+        "width": 300,
+        "height": 250
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Large rectangle",
+      "width": 336,
+      "height": 280,
+      "format": "png",
+      "bytes": 15256,
+      "path": "files/banners/display/apysyk-ad-336x280.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-336x280.webp",
+        "width": 336,
+        "height": 280
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Leaderboard",
+      "width": 728,
+      "height": 90,
+      "format": "png",
+      "bytes": 16158,
+      "path": "files/banners/display/apysyk-ad-728x90.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-728x90.webp",
+        "width": 728,
+        "height": 90
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Large leaderboard",
+      "width": 970,
+      "height": 90,
+      "format": "png",
+      "bytes": 17127,
+      "path": "files/banners/display/apysyk-ad-970x90.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-970x90.webp",
+        "width": 970,
+        "height": 90
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Billboard",
+      "width": 970,
+      "height": 250,
+      "format": "png",
+      "bytes": 26699,
+      "path": "files/banners/display/apysyk-ad-970x250.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-970x250.webp",
+        "width": 970,
+        "height": 250
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Wide skyscraper",
+      "width": 160,
+      "height": 600,
+      "format": "png",
+      "bytes": 14310,
+      "path": "files/banners/display/apysyk-ad-160x600.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-160x600.webp",
+        "width": 160,
+        "height": 600
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Half page",
+      "width": 300,
+      "height": 600,
+      "format": "png",
+      "bytes": 21596,
+      "path": "files/banners/display/apysyk-ad-300x600.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-300x600.webp",
+        "width": 300,
+        "height": 600
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Mobile banner",
+      "width": 320,
+      "height": 50,
+      "format": "png",
+      "bytes": 6897,
+      "path": "files/banners/display/apysyk-ad-320x50.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-320x50.webp",
+        "width": 320,
+        "height": 50
+      }
+    },
+    {
+      "group": "banners",
+      "category": "display",
+      "name": "Large mobile banner",
+      "width": 320,
+      "height": 100,
+      "format": "png",
+      "bytes": 10053,
+      "path": "files/banners/display/apysyk-ad-320x100.png",
+      "thumb": {
+        "path": "thumbs/banners/display/apysyk-ad-320x100.webp",
+        "width": 320,
+        "height": 100
+      }
+    },
+    {
+      "group": "banners",
+      "category": "imagery",
+      "name": "Cover card: Home",
+      "width": 1200,
+      "height": 630,
+      "format": "jpg",
+      "bytes": 57566,
+      "path": "files/banners/imagery/apysyk-cover-home-1200x630.jpg",
+      "thumb": {
+        "path": "thumbs/banners/imagery/apysyk-cover-home-1200x630.webp",
+        "width": 720,
+        "height": 378
+      }
+    },
+    {
+      "group": "banners",
+      "category": "imagery",
+      "name": "Cover card: Platform",
+      "width": 1200,
+      "height": 630,
+      "format": "jpg",
+      "bytes": 56570,
+      "path": "files/banners/imagery/apysyk-cover-platform-1200x630.jpg",
+      "thumb": {
+        "path": "thumbs/banners/imagery/apysyk-cover-platform-1200x630.webp",
+        "width": 720,
+        "height": 378
+      }
+    },
+    {
+      "group": "banners",
+      "category": "imagery",
+      "name": "Cover card: Solutions",
+      "width": 1200,
+      "height": 630,
+      "format": "jpg",
+      "bytes": 52023,
+      "path": "files/banners/imagery/apysyk-cover-solutions-1200x630.jpg",
+      "thumb": {
+        "path": "thumbs/banners/imagery/apysyk-cover-solutions-1200x630.webp",
+        "width": 720,
+        "height": 378
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 1920,
+      "height": 1080,
+      "format": "jpg",
+      "bytes": 36494,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-1920x1080.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-1920x1080.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 2560,
+      "height": 1440,
+      "format": "jpg",
+      "bytes": 54446,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-2560x1440.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-2560x1440.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 3840,
+      "height": 2160,
+      "format": "jpg",
+      "bytes": 97843,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-3840x2160.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-3840x2160.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 5120,
+      "height": 2880,
+      "format": "jpg",
+      "bytes": 153455,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-5120x2880.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-5120x2880.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 3440,
+      "height": 1440,
+      "format": "jpg",
+      "bytes": 70121,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-3440x1440.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-3440x1440.webp",
+        "width": 720,
+        "height": 301
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 2560,
+      "height": 1600,
+      "format": "jpg",
+      "bytes": 57919,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-2560x1600.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-2560x1600.webp",
+        "width": 720,
+        "height": 450
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 3024,
+      "height": 1964,
+      "format": "jpg",
+      "bytes": 75662,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-3024x1964.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-3024x1964.webp",
+        "width": 720,
+        "height": 468
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, dark",
+      "variant": "dark",
+      "width": 3456,
+      "height": 2234,
+      "format": "jpg",
+      "bytes": 91813,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-dark-3456x2234.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-dark-3456x2234.webp",
+        "width": 720,
+        "height": 465
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, dark",
+      "variant": "dark",
+      "width": 1179,
+      "height": 2556,
+      "format": "jpg",
+      "bytes": 52624,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-dark-1179x2556.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-dark-1179x2556.webp",
+        "width": 300,
+        "height": 650
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, dark",
+      "variant": "dark",
+      "width": 1290,
+      "height": 2796,
+      "format": "jpg",
+      "bytes": 57379,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-dark-1290x2796.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-dark-1290x2796.webp",
+        "width": 300,
+        "height": 650
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, dark",
+      "variant": "dark",
+      "width": 1080,
+      "height": 2400,
+      "format": "jpg",
+      "bytes": 45466,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-dark-1080x2400.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-dark-1080x2400.webp",
+        "width": 300,
+        "height": 667
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, dark",
+      "variant": "dark",
+      "width": 1440,
+      "height": 3200,
+      "format": "jpg",
+      "bytes": 67466,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-dark-1440x3200.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-dark-1440x3200.webp",
+        "width": 300,
+        "height": 667
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "tablet",
+      "name": "Tablet wallpaper, dark",
+      "variant": "dark",
+      "width": 2048,
+      "height": 2732,
+      "format": "jpg",
+      "bytes": 71133,
+      "path": "files/wallpapers/tablet/apysyk-wallpaper-dark-2048x2732.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-dark-2048x2732.webp",
+        "width": 400,
+        "height": 534
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "tablet",
+      "name": "Tablet wallpaper, dark",
+      "variant": "dark",
+      "width": 1640,
+      "height": 2360,
+      "format": "jpg",
+      "bytes": 54370,
+      "path": "files/wallpapers/tablet/apysyk-wallpaper-dark-1640x2360.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-dark-1640x2360.webp",
+        "width": 400,
+        "height": 576
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "video",
+      "name": "Video call background, dark",
+      "variant": "dark",
+      "width": 1920,
+      "height": 1080,
+      "format": "jpg",
+      "bytes": 37344,
+      "path": "files/wallpapers/video/apysyk-video-call-dark-1920x1080.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/video/apysyk-video-call-dark-1920x1080.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 1920,
+      "height": 1080,
+      "format": "jpg",
+      "bytes": 36889,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-1920x1080.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-1920x1080.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 2560,
+      "height": 1440,
+      "format": "jpg",
+      "bytes": 54361,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-2560x1440.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-2560x1440.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 3840,
+      "height": 2160,
+      "format": "jpg",
+      "bytes": 97913,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-3840x2160.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-3840x2160.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 5120,
+      "height": 2880,
+      "format": "jpg",
+      "bytes": 154611,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-5120x2880.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-5120x2880.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 3440,
+      "height": 1440,
+      "format": "jpg",
+      "bytes": 70722,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-3440x1440.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-3440x1440.webp",
+        "width": 720,
+        "height": 301
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 2560,
+      "height": 1600,
+      "format": "jpg",
+      "bytes": 57823,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-2560x1600.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-2560x1600.webp",
+        "width": 720,
+        "height": 450
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 3024,
+      "height": 1964,
+      "format": "jpg",
+      "bytes": 76155,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-3024x1964.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-3024x1964.webp",
+        "width": 720,
+        "height": 468
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "desktop",
+      "name": "Desktop wallpaper, green",
+      "variant": "green",
+      "width": 3456,
+      "height": 2234,
+      "format": "jpg",
+      "bytes": 92452,
+      "path": "files/wallpapers/desktop/apysyk-wallpaper-green-3456x2234.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-green-3456x2234.webp",
+        "width": 720,
+        "height": 465
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, green",
+      "variant": "green",
+      "width": 1179,
+      "height": 2556,
+      "format": "jpg",
+      "bytes": 51367,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-green-1179x2556.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-green-1179x2556.webp",
+        "width": 300,
+        "height": 650
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, green",
+      "variant": "green",
+      "width": 1290,
+      "height": 2796,
+      "format": "jpg",
+      "bytes": 57590,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-green-1290x2796.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-green-1290x2796.webp",
+        "width": 300,
+        "height": 650
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, green",
+      "variant": "green",
+      "width": 1080,
+      "height": 2400,
+      "format": "jpg",
+      "bytes": 44453,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-green-1080x2400.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-green-1080x2400.webp",
+        "width": 300,
+        "height": 667
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "phone",
+      "name": "Phone wallpaper, green",
+      "variant": "green",
+      "width": 1440,
+      "height": 3200,
+      "format": "jpg",
+      "bytes": 65909,
+      "path": "files/wallpapers/phone/apysyk-wallpaper-green-1440x3200.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/phone/apysyk-wallpaper-green-1440x3200.webp",
+        "width": 300,
+        "height": 667
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "tablet",
+      "name": "Tablet wallpaper, green",
+      "variant": "green",
+      "width": 2048,
+      "height": 2732,
+      "format": "jpg",
+      "bytes": 70612,
+      "path": "files/wallpapers/tablet/apysyk-wallpaper-green-2048x2732.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-green-2048x2732.webp",
+        "width": 400,
+        "height": 534
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "tablet",
+      "name": "Tablet wallpaper, green",
+      "variant": "green",
+      "width": 1640,
+      "height": 2360,
+      "format": "jpg",
+      "bytes": 53770,
+      "path": "files/wallpapers/tablet/apysyk-wallpaper-green-1640x2360.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-green-1640x2360.webp",
+        "width": 400,
+        "height": 576
+      }
+    },
+    {
+      "group": "wallpapers",
+      "category": "video",
+      "name": "Video call background, green",
+      "variant": "green",
+      "width": 1920,
+      "height": 1080,
+      "format": "jpg",
+      "bytes": 37440,
+      "path": "files/wallpapers/video/apysyk-video-call-green-1920x1080.jpg",
+      "thumb": {
+        "path": "thumbs/wallpapers/video/apysyk-video-call-green-1920x1080.webp",
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "group": "site",
+      "category": "share",
+      "name": "Media kit share image",
+      "width": 1200,
+      "height": 630,
+      "format": "png",
+      "bytes": 35537,
+      "path": "og.png"
+    },
+    {
+      "group": "downloads",
+      "category": "zip",
+      "name": "Everything",
+      "width": null,
+      "height": null,
+      "format": "zip",
+      "bytes": 3639585,
+      "path": "downloads/apysyk-media-kit.zip",
+      "contents": [
+        "files/logos/svg/apysyk-lockup-on-dark.svg",
+        "files/logos/png/apysyk-lockup-on-dark-512.png",
+        "files/logos/png/apysyk-lockup-on-dark-1024.png",
+        "files/logos/png/apysyk-lockup-on-dark-2048.png",
+        "files/logos/svg/apysyk-lockup-on-light.svg",
+        "files/logos/png/apysyk-lockup-on-light-512.png",
+        "files/logos/png/apysyk-lockup-on-light-1024.png",
+        "files/logos/png/apysyk-lockup-on-light-2048.png",
+        "files/logos/svg/apysyk-mark.svg",
+        "files/logos/png/apysyk-mark-512.png",
+        "files/logos/png/apysyk-mark-1024.png",
+        "files/logos/png/apysyk-mark-2048.png",
+        "files/logos/svg/apysyk-wordmark-light.svg",
+        "files/logos/png/apysyk-wordmark-light-512.png",
+        "files/logos/png/apysyk-wordmark-light-1024.png",
+        "files/logos/png/apysyk-wordmark-light-2048.png",
+        "files/logos/svg/apysyk-wordmark-dark.svg",
+        "files/logos/png/apysyk-wordmark-dark-512.png",
+        "files/logos/png/apysyk-wordmark-dark-1024.png",
+        "files/logos/png/apysyk-wordmark-dark-2048.png",
+        "files/logos/svg/apysyk-lockup-white.svg",
+        "files/logos/png/apysyk-lockup-white-512.png",
+        "files/logos/png/apysyk-lockup-white-1024.png",
+        "files/logos/png/apysyk-lockup-white-2048.png",
+        "files/logos/svg/apysyk-lockup-black.svg",
+        "files/logos/png/apysyk-lockup-black-512.png",
+        "files/logos/png/apysyk-lockup-black-1024.png",
+        "files/logos/png/apysyk-lockup-black-2048.png",
+        "files/logos/svg/apysyk-mark-white.svg",
+        "files/logos/png/apysyk-mark-white-512.png",
+        "files/logos/png/apysyk-mark-white-1024.png",
+        "files/logos/png/apysyk-mark-white-2048.png",
+        "files/logos/svg/apysyk-mark-black.svg",
+        "files/logos/png/apysyk-mark-black-512.png",
+        "files/logos/png/apysyk-mark-black-1024.png",
+        "files/logos/png/apysyk-mark-black-2048.png",
+        "files/logos/avatars/apysyk-avatar-black-1024.png",
+        "files/logos/avatars/apysyk-avatar-white-1024.png",
+        "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
+        "files/banners/social/apysyk-linkedin-profile-banner-1584x396.png",
+        "files/banners/social/apysyk-x-header-1500x500.png",
+        "files/banners/social/apysyk-facebook-cover-1640x624.png",
+        "files/banners/social/apysyk-youtube-banner-2560x1440.png",
+        "files/banners/social/apysyk-github-social-preview-1280x640.png",
+        "files/banners/social/apysyk-share-card-1200x630.png",
+        "files/banners/social/apysyk-instagram-square-1080x1080.png",
+        "files/banners/social/apysyk-instagram-portrait-1080x1350.png",
+        "files/banners/social/apysyk-instagram-story-1080x1920.png",
+        "files/banners/email/apysyk-email-signature-600x150.png",
+        "files/banners/email/apysyk-email-signature-1200x300.png",
+        "files/banners/display/apysyk-ad-300x250.png",
+        "files/banners/display/apysyk-ad-336x280.png",
+        "files/banners/display/apysyk-ad-728x90.png",
+        "files/banners/display/apysyk-ad-970x90.png",
+        "files/banners/display/apysyk-ad-970x250.png",
+        "files/banners/display/apysyk-ad-160x600.png",
+        "files/banners/display/apysyk-ad-300x600.png",
+        "files/banners/display/apysyk-ad-320x50.png",
+        "files/banners/display/apysyk-ad-320x100.png",
+        "files/banners/imagery/apysyk-cover-home-1200x630.jpg",
+        "files/banners/imagery/apysyk-cover-platform-1200x630.jpg",
+        "files/banners/imagery/apysyk-cover-solutions-1200x630.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-1920x1080.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-2560x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3840x2160.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-5120x2880.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3440x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-2560x1600.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3024x1964.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3456x2234.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1179x2556.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1290x2796.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1080x2400.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1440x3200.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-dark-2048x2732.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-dark-1640x2360.jpg",
+        "files/wallpapers/video/apysyk-video-call-dark-1920x1080.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-1920x1080.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-2560x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3840x2160.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-5120x2880.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3440x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-2560x1600.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3024x1964.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3456x2234.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1179x2556.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1290x2796.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1080x2400.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1440x3200.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-green-2048x2732.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-green-1640x2360.jpg",
+        "files/wallpapers/video/apysyk-video-call-green-1920x1080.jpg"
+      ]
+    },
+    {
+      "group": "downloads",
+      "category": "zip",
+      "name": "Logos",
+      "width": null,
+      "height": null,
+      "format": "zip",
+      "bytes": 745964,
+      "path": "downloads/apysyk-logos.zip",
+      "contents": [
+        "files/logos/svg/apysyk-lockup-on-dark.svg",
+        "files/logos/png/apysyk-lockup-on-dark-512.png",
+        "files/logos/png/apysyk-lockup-on-dark-1024.png",
+        "files/logos/png/apysyk-lockup-on-dark-2048.png",
+        "files/logos/svg/apysyk-lockup-on-light.svg",
+        "files/logos/png/apysyk-lockup-on-light-512.png",
+        "files/logos/png/apysyk-lockup-on-light-1024.png",
+        "files/logos/png/apysyk-lockup-on-light-2048.png",
+        "files/logos/svg/apysyk-mark.svg",
+        "files/logos/png/apysyk-mark-512.png",
+        "files/logos/png/apysyk-mark-1024.png",
+        "files/logos/png/apysyk-mark-2048.png",
+        "files/logos/svg/apysyk-wordmark-light.svg",
+        "files/logos/png/apysyk-wordmark-light-512.png",
+        "files/logos/png/apysyk-wordmark-light-1024.png",
+        "files/logos/png/apysyk-wordmark-light-2048.png",
+        "files/logos/svg/apysyk-wordmark-dark.svg",
+        "files/logos/png/apysyk-wordmark-dark-512.png",
+        "files/logos/png/apysyk-wordmark-dark-1024.png",
+        "files/logos/png/apysyk-wordmark-dark-2048.png",
+        "files/logos/svg/apysyk-lockup-white.svg",
+        "files/logos/png/apysyk-lockup-white-512.png",
+        "files/logos/png/apysyk-lockup-white-1024.png",
+        "files/logos/png/apysyk-lockup-white-2048.png",
+        "files/logos/svg/apysyk-lockup-black.svg",
+        "files/logos/png/apysyk-lockup-black-512.png",
+        "files/logos/png/apysyk-lockup-black-1024.png",
+        "files/logos/png/apysyk-lockup-black-2048.png",
+        "files/logos/svg/apysyk-mark-white.svg",
+        "files/logos/png/apysyk-mark-white-512.png",
+        "files/logos/png/apysyk-mark-white-1024.png",
+        "files/logos/png/apysyk-mark-white-2048.png",
+        "files/logos/svg/apysyk-mark-black.svg",
+        "files/logos/png/apysyk-mark-black-512.png",
+        "files/logos/png/apysyk-mark-black-1024.png",
+        "files/logos/png/apysyk-mark-black-2048.png",
+        "files/logos/avatars/apysyk-avatar-black-1024.png",
+        "files/logos/avatars/apysyk-avatar-white-1024.png"
+      ]
+    },
+    {
+      "group": "downloads",
+      "category": "zip",
+      "name": "Banners",
+      "width": null,
+      "height": null,
+      "format": "zip",
+      "bytes": 841115,
+      "path": "downloads/apysyk-banners.zip",
+      "contents": [
+        "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
+        "files/banners/social/apysyk-linkedin-profile-banner-1584x396.png",
+        "files/banners/social/apysyk-x-header-1500x500.png",
+        "files/banners/social/apysyk-facebook-cover-1640x624.png",
+        "files/banners/social/apysyk-youtube-banner-2560x1440.png",
+        "files/banners/social/apysyk-github-social-preview-1280x640.png",
+        "files/banners/social/apysyk-share-card-1200x630.png",
+        "files/banners/social/apysyk-instagram-square-1080x1080.png",
+        "files/banners/social/apysyk-instagram-portrait-1080x1350.png",
+        "files/banners/social/apysyk-instagram-story-1080x1920.png",
+        "files/banners/email/apysyk-email-signature-600x150.png",
+        "files/banners/email/apysyk-email-signature-1200x300.png",
+        "files/banners/display/apysyk-ad-300x250.png",
+        "files/banners/display/apysyk-ad-336x280.png",
+        "files/banners/display/apysyk-ad-728x90.png",
+        "files/banners/display/apysyk-ad-970x90.png",
+        "files/banners/display/apysyk-ad-970x250.png",
+        "files/banners/display/apysyk-ad-160x600.png",
+        "files/banners/display/apysyk-ad-300x600.png",
+        "files/banners/display/apysyk-ad-320x50.png",
+        "files/banners/display/apysyk-ad-320x100.png",
+        "files/banners/imagery/apysyk-cover-home-1200x630.jpg",
+        "files/banners/imagery/apysyk-cover-platform-1200x630.jpg",
+        "files/banners/imagery/apysyk-cover-solutions-1200x630.jpg"
+      ]
+    },
+    {
+      "group": "downloads",
+      "category": "zip",
+      "name": "Wallpapers",
+      "width": null,
+      "height": null,
+      "format": "zip",
+      "bytes": 2052210,
+      "path": "downloads/apysyk-wallpapers.zip",
+      "contents": [
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-1920x1080.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-2560x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3840x2160.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-5120x2880.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3440x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-2560x1600.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3024x1964.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-dark-3456x2234.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1179x2556.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1290x2796.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1080x2400.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-dark-1440x3200.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-dark-2048x2732.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-dark-1640x2360.jpg",
+        "files/wallpapers/video/apysyk-video-call-dark-1920x1080.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-1920x1080.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-2560x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3840x2160.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-5120x2880.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3440x1440.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-2560x1600.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3024x1964.jpg",
+        "files/wallpapers/desktop/apysyk-wallpaper-green-3456x2234.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1179x2556.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1290x2796.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1080x2400.jpg",
+        "files/wallpapers/phone/apysyk-wallpaper-green-1440x3200.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-green-2048x2732.jpg",
+        "files/wallpapers/tablet/apysyk-wallpaper-green-1640x2360.jpg",
+        "files/wallpapers/video/apysyk-video-call-green-1920x1080.jpg"
+      ]
+    }
+  ]
+}
