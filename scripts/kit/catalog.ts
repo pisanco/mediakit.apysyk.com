@@ -2,8 +2,8 @@
 // numbers are in output pixels and derived from the size, so one composition
 // family serves several sizes; the renderer then fits each headline to its box.
 
-import { COPY } from "./brand.ts";
-import type { PanelSide, Variant } from "./editorial.ts";
+import { COLORS, COPY } from "./brand.ts";
+import { TONES, type PanelSide, type Variant } from "./editorial.ts";
 import type { Box, Doc, Item, Line, LogoFile, Stack } from "./template.ts";
 
 export type Group = "logos" | "banners" | "wallpapers";
@@ -23,31 +23,29 @@ export interface RenderedAsset {
   doc: Doc;
 }
 
-export const LOGO_FILES: { file: LogoFile; name: string; background: "dark" | "light" | "green" }[] = [
+/** The background each logo file is made for: Paper or White, a dark field, or Forest for the one-colour white files. */
+export const LOGO_FILES: { file: LogoFile; name: string; background: "dark" | "light" | "forest" }[] = [
   { file: "lockup-on-dark.svg", name: "Lockup on dark", background: "dark" },
   { file: "lockup-on-light.svg", name: "Lockup on light", background: "light" },
-  { file: "mark.svg", name: "Mark", background: "dark" },
+  { file: "mark.svg", name: "Mark", background: "light" },
   { file: "wordmark-light.svg", name: "Wordmark, light", background: "dark" },
   { file: "wordmark-dark.svg", name: "Wordmark, dark", background: "light" },
-  { file: "lockup-white.svg", name: "Lockup, white", background: "green" },
+  { file: "lockup-white.svg", name: "Lockup, white", background: "forest" },
   { file: "lockup-black.svg", name: "Lockup, black", background: "light" },
-  { file: "mark-white.svg", name: "Mark, white", background: "green" },
+  { file: "mark-white.svg", name: "Mark, white", background: "forest" },
   { file: "mark-black.svg", name: "Mark, black", background: "light" },
 ];
 
 export const LOGO_WIDTHS = [512, 1024, 2048] as const;
 
+/** The apysyk.com home hero; its two short lines also serve tall formats, where the width sets the size. */
 const HEAD2: Line[] = [
   [COPY.headline[0], false],
   [COPY.headline[1], true],
 ];
-// The same sentence broken for tall formats.
-const HEAD4: Line[] = [
-  ["The OS for", false],
-  ["modern", false],
-  ["cybersecurity", true],
-  ["work.", true],
-];
+
+/** The lockup drawn for each variant's field. */
+const LOCKUP: Record<Variant, LogoFile> = { light: "lockup-on-light.svg", forest: "lockup-white.svg" };
 
 const round = Math.round;
 const box = (x: number, y: number, w: number, h: number): Box => ({ x: round(x), y: round(y), w: round(w), h: round(h) });
@@ -56,7 +54,8 @@ const logo = (file: LogoFile, h: number): Item => ({ kind: "logo", file, h: roun
 const gap = (h: number): Item => ({ kind: "gap", h: round(h) });
 const pill = (h: number): Item => ({ kind: "pill", text: "apysyk.com", h: round(h) });
 const label = (text: string, size: number): Item => ({ kind: "label", text, size: round(size) });
-const eyebrow = (size: number): Item => ({ kind: "eyebrow", text: COPY.category, size: round(size) });
+/** The product name above a headline, in sentence case like the apysyk.com hero. */
+const eyebrow = (size: number): Item => ({ kind: "eyebrow", text: "Apysyk OS", size: round(size) });
 
 interface EditorialOptions {
   variant?: Variant;
@@ -66,11 +65,12 @@ interface EditorialOptions {
 }
 
 function editorial(w: number, h: number, stacks: Stack[], options: EditorialOptions = {}): Doc {
-  const variant = options.variant ?? "dark";
+  const variant = options.variant ?? "light";
   return {
     width: w,
     height: h,
-    background: variant === "green" ? "#58a02d" : "#000",
+    background: TONES[variant].background,
+    tone: variant,
     art: {
       width: w,
       height: h,
@@ -84,28 +84,52 @@ function editorial(w: number, h: number, stacks: Stack[], options: EditorialOpti
 }
 
 /**
- * Primary share-card composition: identity and message on the black field,
- * with the flat brand panel acting as a deliberate edge, never decoration.
+ * Primary share-card composition: identity and message on Paper, with the
+ * flat brand panel acting as a deliberate edge, never decoration.
  */
-function card(w: number, h: number, lines: Line[] = HEAD2, url = "apysyk.com", leading?: number): Doc {
-  const lh = h * 0.048;
+function card(w: number, h: number): Doc {
+  const lh = h * 0.06;
   return editorial(w, h, [
-    { box: box(w * 0.05, h * 0.065, w * 0.34, lh), valign: "center", items: [logo("lockup-on-dark.svg", lh)] },
-    { box: box(w * 0.44, h * 0.065, w * 0.22, lh), align: "end", valign: "center", items: [label(url, h * 0.026)] },
-    { box: box(w * 0.05, h * 0.5, w * 0.61, h * 0.42), valign: "end", items: [headline(lines, h * 0.15, leading)] },
+    { box: box(w * 0.055, h * 0.075, w * 0.34, lh), valign: "center", items: [logo("lockup-on-light.svg", lh)] },
+    { box: box(w * 0.44, h * 0.075, w * 0.22, lh), align: "end", valign: "center", items: [label("apysyk.com", h * 0.03)] },
+    { box: box(w * 0.055, h * 0.42, w * 0.6, h * 0.48), valign: "end", items: [eyebrow(h * 0.036), gap(h * 0.035), headline(HEAD2, h * 0.17)] },
   ]);
 }
 
 /** Profile covers reserve the bottom-left avatar area and keep copy off the brand panel. */
 function cover(w: number, h: number, withLogo: boolean): Doc {
   const stacks: Stack[] = [];
-  if (withLogo) stacks.push({ box: box(w * 0.04, h * 0.12, w * 0.26, h * 0.072), valign: "center", items: [logo("lockup-on-dark.svg", h * 0.072)] });
+  if (withLogo) stacks.push({ box: box(w * 0.04, h * 0.12, w * 0.26, h * 0.072), valign: "center", items: [logo("lockup-on-light.svg", h * 0.072)] });
   stacks.push({
     box: box(w * 0.34, h * 0.12, w * 0.34, h * 0.76),
     valign: "center",
-    items: [eyebrow(Math.max(11, h * 0.034)), gap(h * 0.055), headline(HEAD2, h * 0.19)],
+    items: [eyebrow(Math.max(11, h * 0.04)), gap(h * 0.045), headline(HEAD2, h * 0.21)],
   });
   return editorial(w, h, stacks);
+}
+
+/**
+ * A page's share card as apysyk.com draws it: the opening of the page on
+ * Paper, lockup top-left, the page's label, a two-line headline with the
+ * green second line. No brand panel, like the site's own share images.
+ */
+function pageCard(pageLabel: string, lines: Line[], centered: boolean, max: number): Doc {
+  const [w, h] = [1200, 630];
+  return {
+    width: w,
+    height: h,
+    background: COLORS.paper,
+    tone: "light",
+    stacks: [
+      { box: box(66, 40, 320, 46), valign: "center", items: [logo("lockup-on-light.svg", 46)] },
+      {
+        box: box(66, 120, w - 132, h - 190),
+        align: centered ? "center" : "start",
+        valign: "center",
+        items: [{ kind: "eyebrow", text: pageLabel, size: centered ? 22 : 18, green: !centered }, gap(centered ? 18 : 22), headline(lines, max)],
+      },
+    ],
+  };
 }
 
 function social(): RenderedAsset[] {
@@ -128,7 +152,7 @@ function social(): RenderedAsset[] {
       {
         box: box(safe + 40, h * 0.15, 690, h * 0.7),
         valign: "center",
-        items: [logo("lockup-on-dark.svg", 34), gap(48), headline(HEAD2, 90)],
+        items: [logo("lockup-on-light.svg", 34), gap(56), eyebrow(24), gap(20), headline(HEAD2, 120)],
       },
     ]);
   })();
@@ -139,28 +163,28 @@ function social(): RenderedAsset[] {
     const [sw, sh] = [1546, 423];
     const [sx, sy] = [(w - sw) / 2, (h - sh) / 2];
     return editorial(w, h, [
-      { box: box(sx + 8, sy + 24, 1000, sh - 48), valign: "center", items: [logo("lockup-on-dark.svg", 44), gap(48), headline(HEAD2, 118)] },
+      { box: box(sx + 8, sy + 24, 1000, sh - 48), valign: "center", items: [logo("lockup-on-light.svg", 44), gap(44), eyebrow(28), gap(16), headline(HEAD2, 128)] },
     ]);
   })();
 
   const square = (w: number, h: number): Doc => {
     const pad = w * 0.078;
-    const lh = w * 0.037;
+    const lh = w * 0.046;
     const story = h / w > 1.5;
     // Stories reserve the top 13% and bottom 18% for Instagram controls.
     const top = story ? h * 0.135 : pad;
-    const textY = story ? h * 0.46 : h * 0.52;
-    const textH = story ? h * 0.24 : h * 0.37;
+    const textY = story ? h * 0.3 : h * 0.44;
+    const textH = story ? h * 0.36 : h * 0.46;
     return editorial(
       w,
       h,
       [
-        { box: box(pad, top, w * 0.38, lh), valign: "center", items: [logo("lockup-on-dark.svg", lh)] },
-        { box: box(w * 0.45, top, w * 0.18, lh), align: "end", valign: "center", items: [label("apysyk.com", w * 0.019)] },
+        { box: box(pad, top, w * 0.38, lh), valign: "center", items: [logo("lockup-on-light.svg", lh)] },
+        { box: box(w * 0.45, top, w * 0.18, lh), align: "end", valign: "center", items: [label("apysyk.com", w * 0.022)] },
         {
           box: box(pad, textY, story ? w - 2 * pad : w * 0.56, textH),
-          valign: story ? "start" : "end",
-          items: [eyebrow(w * 0.018), gap(w * 0.04), headline(story ? HEAD4 : HEAD2, w * (story ? 0.11 : 0.105))],
+          valign: story ? "center" : "end",
+          items: [eyebrow(w * 0.028), gap(w * 0.03), headline(HEAD2, w * (story ? 0.17 : 0.12))],
         },
       ],
       { side: story ? "bottom" : "right", ratio: story ? 0.28 : 0.3 },
@@ -177,7 +201,7 @@ function social(): RenderedAsset[] {
         {
           box: box(28 * s, 20 * s, 380 * s, 110 * s),
           valign: "center",
-          items: [logo("lockup-on-dark.svg", 20 * s), gap(14 * s), headline(HEAD2, 24 * s), gap(10 * s), label("apysyk.com", 11 * s)],
+          items: [logo("lockup-on-light.svg", 20 * s), gap(14 * s), headline(HEAD2, 26 * s), gap(10 * s), label("apysyk.com", 11 * s)],
         },
       ],
       { ratio: 0.24 },
@@ -217,8 +241,8 @@ function display(): RenderedAsset[] {
       w,
       h,
       [
-        { box: box(18 * s, 18 * s, 150 * s, 18 * s), valign: "center", items: [logo("lockup-on-dark.svg", 18 * s)] },
-        { box: box(18 * s, 90 * s, 174 * s, 142 * s), valign: "end", items: [headline(HEAD2, 30 * s), gap(14 * s), pill(30 * s)] },
+        { box: box(18 * s, 18 * s, 150 * s, 18 * s), valign: "center", items: [logo("lockup-on-light.svg", 18 * s)] },
+        { box: box(18 * s, 80 * s, 174 * s, 152 * s), valign: "end", items: [headline(HEAD2, 40 * s), gap(16 * s), pill(30 * s)] },
       ],
       { ratio: 0.3 },
     );
@@ -231,9 +255,9 @@ function display(): RenderedAsset[] {
       w,
       h,
       [
-        { box: box(h * 0.22, 0, hx - h * 0.3, h), valign: "center", items: [logo("lockup-on-dark.svg", o.logo)] },
-        { box: box(hx, h * 0.08, hw, h * 0.84), valign: "center", items: [headline(HEAD2, h * 0.32)] },
-        { box: box(w * 0.68, 0, w * 0.12, h), align: "end", valign: "center", items: [label("apysyk.com", 11)] },
+        { box: box(h * 0.22, 0, hx - h * 0.3, h), valign: "center", items: [logo("lockup-on-light.svg", o.logo)] },
+        { box: box(hx, h * 0.1, hw, h * 0.8), valign: "center", items: [headline(HEAD2, h * 0.32)] },
+        { box: box(w * 0.68, 0, w * 0.12, h), align: "end", valign: "center", items: [label("apysyk.com", 12)] },
       ],
       { ratio: 0.16 },
     );
@@ -245,9 +269,9 @@ function display(): RenderedAsset[] {
         w,
         h,
         [
-          { box: box(16, 18, w - 32, 16), valign: "center", items: [logo("lockup-on-dark.svg", 16)] },
-          { box: box(16, 70, w - 32, 240), items: [headline(HEAD4, 30)] },
-          { box: box(16, h * 0.64, w - 32, 24), items: [label("apysyk.com", 11)] },
+          { box: box(16, 18, w - 32, 16), valign: "center", items: [logo("lockup-on-light.svg", 16)] },
+          { box: box(16, 70, w - 32, 240), valign: "center", items: [eyebrow(13), gap(10), headline(HEAD2, 40)] },
+          { box: box(16, h * 0.64, w - 32, 24), items: [label("apysyk.com", 12)] },
         ],
         { side: "bottom", ratio: 0.28 },
       );
@@ -256,9 +280,9 @@ function display(): RenderedAsset[] {
       w,
       h,
       [
-        { box: box(24, 24, w - 48, 22), valign: "center", items: [logo("lockup-on-dark.svg", 22)] },
-        { box: box(24, 110, w - 48, 245), items: [headline(HEAD4, 56)] },
-        { box: box(24, h * 0.65, w - 48, 24), items: [label("apysyk.com", 12)] },
+        { box: box(24, 24, w - 48, 22), valign: "center", items: [logo("lockup-on-light.svg", 22)] },
+        { box: box(24, 100, w - 48, 255), valign: "center", items: [eyebrow(17), gap(14), headline(HEAD2, 72)] },
+        { box: box(24, h * 0.62, w - 48, 34), items: [pill(34)] },
       ],
       { side: "bottom", ratio: 0.28 },
     );
@@ -281,7 +305,7 @@ function display(): RenderedAsset[] {
       w,
       h,
       [
-        { box: box(16, 14, 160, 16), valign: "center", items: [logo("lockup-on-dark.svg", 16)] },
+        { box: box(16, 14, 160, 16), valign: "center", items: [logo("lockup-on-light.svg", 16)] },
         { box: box(16, 42, 138, 44), valign: "end", items: [headline(HEAD2, 24)] },
         { box: box(164, 42, 78, 44), valign: "end", items: [label("apysyk.com", 11)] },
       ],
@@ -301,7 +325,7 @@ function display(): RenderedAsset[] {
       editorial(
         970,
         250,
-        [{ box: box(40, 30, 580, 190), valign: "center", items: [logo("lockup-on-dark.svg", 26), gap(24), headline(HEAD2, 56), gap(20), pill(36)] }],
+        [{ box: box(40, 30, 580, 190), valign: "center", items: [logo("lockup-on-light.svg", 26), gap(26), headline(HEAD2, 60), gap(20), pill(36)] }],
         { ratio: 0.25 },
       ),
     ),
@@ -337,7 +361,6 @@ function wallpaper(category: "desktop" | "phone" | "tablet" | "video", variant: 
   const vertical = category === "phone" || category === "tablet";
   const side: PanelSide = vertical ? "bottom" : "right";
   const ratio = category === "phone" ? 0.28 : category === "tablet" ? 0.26 : category === "video" ? 0.24 : 0.26;
-  const file: LogoFile = variant === "green" ? "lockup-black.svg" : "lockup-on-dark.svg";
   let place: { box: Box; h: number };
 
   if (category === "desktop") {
@@ -366,7 +389,7 @@ function wallpaper(category: "desktop" | "phone" | "tablet" | "video", variant: 
     doc: editorial(
       w,
       h,
-      [{ box: place.box, valign: "center", items: [logo(file, place.h)] }],
+      [{ box: place.box, valign: "center", items: [logo(LOCKUP[variant], place.h)] }],
       { variant, side, ratio },
     ),
   };
@@ -374,7 +397,7 @@ function wallpaper(category: "desktop" | "phone" | "tablet" | "video", variant: 
 
 function wallpapers(): RenderedAsset[] {
   const out: RenderedAsset[] = [];
-  for (const variant of ["dark", "green"] as const) {
+  for (const variant of ["light", "forest"] as const) {
     for (const [w, h] of DESKTOP) out.push(wallpaper("desktop", variant, w, h));
     for (const [w, h] of PHONE) out.push(wallpaper("phone", variant, w, h));
     for (const [w, h] of TABLET) out.push(wallpaper("tablet", variant, w, h));
@@ -383,27 +406,38 @@ function wallpapers(): RenderedAsset[] {
   return out;
 }
 
+/** The apysyk.com share images: each page's label and hero, as the site shows them. */
 function imagery(): RenderedAsset[] {
-  const cards: { slug: string; name: string; lines: Line[] }[] = [
-    { slug: "home", name: "Home", lines: HEAD2 },
+  const cards: { slug: string; name: string; doc: Doc }[] = [
+    { slug: "home", name: "Home", doc: pageCard("Apysyk OS", HEAD2, true, 150) },
     {
       slug: "platform",
       name: "Platform",
-      lines: [
-        ["The operating model for", false],
-        ["cybersecurity execution.", true],
-      ],
+      doc: pageCard(
+        "Platform",
+        [
+          ["The operating model for", false],
+          ["cybersecurity execution.", true],
+        ],
+        false,
+        104,
+      ),
     },
     {
       slug: "solutions",
       name: "Solutions",
-      lines: [
-        ["One operating layer for every", false],
-        ["security workflow.", true],
-      ],
+      doc: pageCard(
+        "Solutions",
+        [
+          ["One operating layer for every", false],
+          ["security workflow.", true],
+        ],
+        false,
+        104,
+      ),
     },
   ];
-  return cards.map(({ slug, name, lines }) => ({
+  return cards.map(({ slug, name, doc }) => ({
     group: "banners",
     category: "imagery",
     name: `Cover card: ${name}`,
@@ -411,12 +445,12 @@ function imagery(): RenderedAsset[] {
     width: 1200,
     height: 630,
     format: "jpg",
-    doc: card(1200, 630, lines),
+    doc,
   }));
 }
 
 function avatars(): RenderedAsset[] {
-  return (["black", "white"] as const).map((bg) => ({
+  return (["white", "forest"] as const).map((bg) => ({
     group: "logos",
     category: "avatars",
     name: `Avatar on ${bg}`,
@@ -427,7 +461,7 @@ function avatars(): RenderedAsset[] {
     doc: {
       width: 1024,
       height: 1024,
-      background: bg === "black" ? "#000" : "#fff",
+      background: COLORS[bg],
       // 56% of the side keeps the hexagon inside a circular crop with room around it.
       stacks: [{ box: box(0, 0, 1024, 1024), align: "center", valign: "center", items: [logo("mark.svg", 1024 * 0.56)] }],
     },
@@ -438,11 +472,10 @@ export function renderedAssets(): RenderedAsset[] {
   return [...avatars(), ...social(), ...display(), ...imagery(), ...wallpapers()];
 }
 
-/** The page's own share image. The "y" of "Apysyk" sits over the "d" and "k" of "media kit": open the lines. */
+/** The page's own share image, drawn like the apysyk.com cover cards with the page's hero. */
 export function ogImage(): Doc {
-  return card(1200, 630, [["Apysyk", false], ["media kit", true]], "mediakit.apysyk.com", 1);
+  return pageCard("Apysyk media kit", [["Brand", false], ["assets.", true]], true, 170);
 }
-
 
 /** A logo file alone on a transparent or solid square, for favicons. */
 export function icon(size: number, background: string, scale: number): Doc {

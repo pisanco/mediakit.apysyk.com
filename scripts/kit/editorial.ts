@@ -2,8 +2,28 @@
 // of the real Apysyk mark. No ornamental cyber imagery. The same construction
 // adapts to wide and tall formats without inventing a second visual language.
 
-export type Variant = "dark" | "green";
+import { COLORS } from "./brand.ts";
+
+export type Variant = "light" | "forest";
 export type PanelSide = "right" | "bottom" | "none";
+
+/** The colours of one variant: the field the copy sits on, the brand panel and the mark cropped inside it. */
+export interface Tone {
+  background: string;
+  panel: string;
+  mark: string;
+}
+
+/**
+ * Light is the default, like apysyk.com: Paper with the one deep Forest band,
+ * the mark cropped in it in Action Green, tone on tone, so the copy keeps the
+ * only accent. Forest turns the field deep and the panel one step lighter
+ * (Green Strong), with the same Action Green mark: quiet enough for wallpapers.
+ */
+export const TONES: Record<Variant, Tone> = {
+  light: { background: COLORS.paper, panel: COLORS.forest, mark: COLORS.green },
+  forest: { background: COLORS.forest, panel: COLORS.greenStrong, mark: COLORS.green },
+};
 
 export interface EditorialSpec {
   width: number;
@@ -26,16 +46,14 @@ const MARK_PATH =
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
 export function buildEditorial(spec: EditorialSpec): EditorialArtwork {
-  const { width: w, height: h, variant } = spec;
+  const { width: w, height: h } = spec;
   const side = spec.side ?? (h > w * 1.2 ? "bottom" : "right");
   if (side === "none") {
     return { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"/>` };
   }
 
+  const tone = TONES[spec.variant];
   const ratio = spec.ratio ?? 0.28;
-  const dark = variant === "dark";
-  const panelFill = dark ? "#58a02d" : "#000000";
-  const markFill = dark ? "#041003" : "#f4f5f1";
   const panel =
     side === "right"
       ? { x: w * (1 - ratio), y: 0, width: w * ratio, height: h }
@@ -48,18 +66,13 @@ export function buildEditorial(spec: EditorialSpec): EditorialArtwork {
   const markX = panel.x + (panel.width - markWidth) / 2;
   const markY = panel.y + (panel.height - markSize) / 2;
   const scale = markSize / 630.99;
-  const divider =
-    side === "right"
-      ? `<line x1="${r2(panel.x)}" y1="0" x2="${r2(panel.x)}" y2="${h}" stroke="#f4f5f1" stroke-opacity="0.12"/>`
-      : `<line x1="0" y1="${r2(panel.y)}" x2="${w}" y2="${r2(panel.y)}" stroke="#f4f5f1" stroke-opacity="0.12"/>`;
 
   return {
     svg:
       `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" shape-rendering="geometricPrecision">` +
       `<defs><clipPath id="panel-clip"><rect x="${r2(panel.x)}" y="${r2(panel.y)}" width="${r2(panel.width)}" height="${r2(panel.height)}"/></clipPath></defs>` +
-      `<rect x="${r2(panel.x)}" y="${r2(panel.y)}" width="${r2(panel.width)}" height="${r2(panel.height)}" fill="${panelFill}"/>` +
-      divider +
-      `<g clip-path="url(#panel-clip)"><g transform="translate(${r2(markX)} ${r2(markY)}) scale(${r2(scale)})"><path fill="${markFill}" d="${MARK_PATH}"/></g></g>` +
+      `<rect x="${r2(panel.x)}" y="${r2(panel.y)}" width="${r2(panel.width)}" height="${r2(panel.height)}" fill="${tone.panel}"/>` +
+      `<g clip-path="url(#panel-clip)"><g transform="translate(${r2(markX)} ${r2(markY)}) scale(${r2(scale)})"><path fill="${tone.mark}" d="${MARK_PATH}"/></g></g>` +
       `</svg>`,
   };
 }

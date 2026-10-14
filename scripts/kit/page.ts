@@ -2,7 +2,7 @@
 // size on it is the real file's. Static HTML: no inline scripts or styles
 // (the CSP forbids them); the copy buttons use app.js.
 
-import { CONTACT, COPY, FOOTER, LONG_BOILERPLATE, PALETTE, SITE_URL, hexToRgb } from "./brand.ts";
+import { COLORS, CONTACT, COPY, FOOTER, LONG_BOILERPLATE, PALETTE, SITE_URL, hexToRgb } from "./brand.ts";
 import { LOGO_FILES } from "./catalog.ts";
 import { FONTS, fontByFamily, type BrandFont } from "./fonts.ts";
 import { LOCKUP_GEOMETRY } from "./logo-geometry.ts";
@@ -50,11 +50,10 @@ function copyButton(target: string, name: string, value?: string): string {
   return `<button class="copy" type="button" data-copy-target="${target}" data-copy-name="${esc(name)}"${literal}><span class="copy__label">Copy</span><span class="visually-hidden"> ${esc(name)}</span></button>`;
 }
 
-function sectionHead(id: string, eyebrow: string, title: string, lead: string): string {
+function sectionHead(id: string, title: string, lead: string): string {
   return `<header class="section__head">
-  <p class="eyebrow">${esc(eyebrow)}</p>
-  <h2 class="display display--l" id="${id}-title">${title}</h2>
-  <p class="lead">${lead}</p>
+  <h2 class="headline" id="${id}-title">${title}</h2>
+  <p class="intro">${lead}</p>
 </header>`;
 }
 
@@ -71,7 +70,11 @@ export function renderPage(manifest: Manifest): string {
   const kitFiles = files.filter((f) => ["logos", "banners", "wallpapers"].includes(f.group));
   const count = (pred: (f: ManifestFile) => boolean) => kitFiles.filter(pred).length;
   const mark = byPath("files/logos/svg/apysyk-mark.svg");
-  const markBlack = byPath("files/logos/svg/apysyk-mark-black.svg");
+  const markPng = where((f) => /^files\/logos\/png\/apysyk-mark-\d+\.png$/.test(f.path))[0];
+  // The page is light: the lockup and its size come from the version drawn for light backgrounds.
+  const lockup = byPath("files/logos/svg/apysyk-lockup-on-light.svg");
+  const lockupPng = where((f) => f.path.startsWith("files/logos/png/apysyk-lockup-on-light-"))[0];
+  const lockupHeight = (width: number) => Math.round((width * lockupPng.height!) / lockupPng.width!);
 
   // ---------- About ----------
   const boilerplates = [
@@ -81,17 +84,17 @@ export function renderPage(manifest: Manifest): string {
   ]
     .map(
       ([id, title, text]) => `<article class="card copy-card">
-  <div class="card__top"><h3 class="label">${title}</h3>${copyButton(`copy-${id}`, title)}</div>
+  <div class="card__top"><h3 class="card__label">${title}</h3>${copyButton(`copy-${id}`, title)}</div>
   <p class="copy-card__text" id="copy-${id}">${esc(text)}</p>
 </article>`,
     )
     .join("\n");
   const about = `<section class="section" id="about" aria-labelledby="about-title">
-${sectionHead("about", "About", "About Apysyk", "Approved descriptions. Quote them as they are.")}
+${sectionHead("about", "About Apysyk", "Approved descriptions. Quote them as they are.")}
 <div class="about">
   <div class="about__copy">${boilerplates}</div>
   <aside class="card facts" aria-labelledby="facts-title">
-    <h3 class="label" id="facts-title">Quick facts</h3>
+    <h3 class="card__label" id="facts-title">Quick facts</h3>
     <dl>
       <div><dt>Company</dt><dd>Apysyk</dd></div>
       <div><dt>Product</dt><dd>Apysyk OS</dd></div>
@@ -104,6 +107,7 @@ ${sectionHead("about", "About", "About Apysyk", "Approved descriptions. Quote th
 </section>`;
 
   // ---------- Logo ----------
+  // Each preview sits on the background the file is drawn for: light on Paper, dark and one-color white on Forest.
   const logoCards = LOGO_FILES.map(({ file, name, background }) => {
     const base = `apysyk-${file.replace(/\.svg$/, "")}`;
     const svg = byPath(`files/logos/svg/${base}.svg`);
@@ -126,18 +130,16 @@ ${sectionHead("about", "About", "About Apysyk", "Approved descriptions. Quote th
 </article>`,
     )
     .join("\n");
-  const lockup = byPath("files/logos/svg/apysyk-lockup-on-dark.svg");
-  const lockupPng = where((f) => f.path.startsWith("files/logos/png/apysyk-lockup-on-dark-"))[0];
   // Clear space x: the height of the cube's inner square, around the lockup's own viewBox.
   const { clearSpace: x, width: lw, height: lh } = LOCKUP_GEOMETRY;
   const n = (v: number) => Math.round(v * 100) / 100;
   const clearSpace = `<svg class="clearspace__svg" viewBox="${n(-x)} ${n(-x)} ${n(lw + 2 * x)} ${n(lh + 2 * x)}" role="img" aria-labelledby="clearspace-title">
   <title id="clearspace-title">Clear space: the height of the inner cube on every side of the lockup</title>
-  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="#58a02d" fill-opacity="0.12"/>
-  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="none" stroke="#6dbb3a" stroke-width="8" stroke-dasharray="36 28"/>
-  <rect x="0" y="0" width="${lw}" height="${lh}" fill="#000"/>
+  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="${COLORS.green}" fill-opacity="0.08"/>
+  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="none" stroke="${COLORS.green}" stroke-width="8" stroke-dasharray="36 28"/>
+  <rect x="0" y="0" width="${lw}" height="${lh}" fill="${COLORS.white}"/>
   <image href="${lockup.path}" x="0" y="0" width="${lw}" height="${lh}"/>
-  <g fill="#8ee05a" font-family="JetBrains Mono, monospace" font-size="120" text-anchor="middle">
+  <g fill="${COLORS.green2}" font-family="JetBrains Mono, monospace" font-size="120" text-anchor="middle">
     <text x="${n(-x / 2)}" y="${n(lh / 2 + 42)}">x</text><text x="${n(lw + x / 2)}" y="${n(lh / 2 + 42)}">x</text>
     <text x="${n(lw / 2)}" y="${n(-x / 2 + 42)}">x</text><text x="${n(lw / 2)}" y="${n(lh + x / 2 + 42)}">x</text>
   </g>
@@ -155,7 +157,7 @@ ${sectionHead("about", "About", "About Apysyk", "Approved descriptions. Quote th
     )
     .join("");
   const logo = `<section class="section" id="logo" aria-labelledby="logo-title">
-${sectionHead("logo", "Logo", "Logo", "A flat isometric cube and the lowercase wordmark. Use the files as supplied: full color on black or white, one color where color is not possible.")}
+${sectionHead("logo", "Logo", "A flat isometric cube and the lowercase wordmark. Use the files as supplied: full color on light or dark backgrounds, one color where color is not possible.")}
 <div class="grid grid--logos">${logoCards}</div>
 <h3 class="subhead">Avatars</h3>
 <div class="grid grid--avatars">${avatars}</div>
@@ -170,7 +172,7 @@ ${sectionHead("logo", "Logo", "Logo", "A flat isometric cube and the lowercase w
     <p class="body">Never smaller than 24 px tall for the mark, or 96 px wide for the lockup.</p>
     <div class="minsize">
       <figure><img class="minsize__mark" src="${mark.path}" width="24" height="24" alt="The mark at 24 px" loading="lazy"><figcaption class="size">Mark · 24 px</figcaption></figure>
-      <figure><img class="minsize__lockup" src="${lockup.path}" width="96" height="${Math.round((96 * lockupPng.height!) / lockupPng.width!)}" alt="The lockup at 96 px wide" loading="lazy"><figcaption class="size">Lockup · 96 px</figcaption></figure>
+      <figure><img class="minsize__lockup" src="${lockup.path}" width="96" height="${lockupHeight(96)}" alt="The lockup at 96 px wide" loading="lazy"><figcaption class="size">Lockup · 96 px</figcaption></figure>
     </div>
   </article>
 </div>
@@ -195,7 +197,7 @@ ${sectionHead("logo", "Logo", "Logo", "A flat isometric cube and the lowercase w
 </article>`;
   }).join("\n");
   const color = `<section class="section" id="color" aria-labelledby="color-title">
-${sectionHead("color", "Color", "Color", "Black first, green for signal. Copy the values exactly.")}
+${sectionHead("color", "Color", "Light first: Paper and White surfaces, Ink for text, green for emphasis and one deep Forest band. Copy the values exactly.")}
 <div class="grid grid--swatches">${swatches}</div>
 </section>`;
 
@@ -210,24 +212,25 @@ ${sectionHead("color", "Color", "Color", "Black first, green for signal. Copy th
   const jet = fontByFamily("JetBrains Mono");
   const sourceLink = (f: BrandFont) => `<a href="${f.source}">${f.source.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "")}</a>`;
   const typography = `<section class="section" id="typography" aria-labelledby="typography-title">
-${sectionHead("typography", "Typography", "Typography", "Three open-source families from GitHub and JetBrains, all free under the SIL Open Font License. Get them from their official sources.")}
+${sectionHead("typography", "Typography", "Three open-source families from GitHub and JetBrains, all free under the SIL Open Font License. Get them from their official sources.")}
 <div class="type">
-  <article class="card specimen specimen--hubot">
-    <div class="specimen__meta"><h3 class="card__title">Hubot Sans</h3><p class="size">${axesLabel(hubot, "Display")}</p></div>
-    <p class="specimen__sample specimen__sample--display">The OS for modern <em>cybersecurity work.</em></p>
-    <p class="body">Headlines: weight 700, slightly wide, tight tracking and leading. The wordmark is Hubot Sans 700 at its default width.</p>
-    <p class="specimen__links">${sourceLink(hubot)} · <a href="${licenseLink(hubot)}">License</a></p>
-  </article>
   <article class="card specimen specimen--mona">
-    <div class="specimen__meta"><h3 class="card__title">Mona Sans</h3><p class="size">${axesLabel(mona, "Text")}</p></div>
+    <div class="specimen__meta"><h3 class="card__title">Mona Sans</h3><p class="size">${axesLabel(mona, "Display and text")}</p></div>
+    <p class="specimen__sample specimen__sample--display">${esc(COPY.headline[0])} <em>${esc(COPY.headline[1])}</em></p>
     <p class="specimen__sample specimen__sample--text">${esc(COPY.oneLiner)}</p>
-    <p class="body">Body copy, buttons and interface text.</p>
+    <p class="body">Headlines at weight 600 with tight tracking, in sentence case. Body copy, buttons and interface text.</p>
     <p class="specimen__links">${sourceLink(mona)} · <a href="${licenseLink(mona)}">License</a></p>
   </article>
+  <article class="card specimen specimen--hubot">
+    <div class="specimen__meta"><h3 class="card__title">Hubot Sans</h3><p class="size">${axesLabel(hubot, "Wordmark")}</p></div>
+    <p class="specimen__sample specimen__sample--glyphs" aria-hidden="true">Aa</p>
+    <p class="body">The wordmark is Hubot Sans 700 at its default width. Use the logo files; never retype the wordmark.</p>
+    <p class="specimen__links">${sourceLink(hubot)} · <a href="${licenseLink(hubot)}">License</a></p>
+  </article>
   <article class="card specimen specimen--mono">
-    <div class="specimen__meta"><h3 class="card__title">JetBrains Mono</h3><p class="size">${axesLabel(jet, "Labels")}</p></div>
-    <p class="specimen__sample specimen__sample--mono">${esc(COPY.category)}</p>
-    <p class="body">Small uppercase labels with wide tracking.</p>
+    <div class="specimen__meta"><h3 class="card__title">JetBrains Mono</h3><p class="size">${axesLabel(jet, "Technical values")}</p></div>
+    <p class="specimen__sample specimen__sample--mono">${COLORS.green} · 1500 × 500 px</p>
+    <p class="body">Technical values only: color codes, sizes and file sizes.</p>
     <p class="specimen__links">${sourceLink(jet)} · <a href="${licenseLink(jet)}">License</a></p>
   </article>
 </div>
@@ -248,7 +251,7 @@ ${sectionHead("typography", "Typography", "Typography", "Three open-source famil
   <div class="asset-card__body"><h4 class="card__title">${esc(f.name)}</h4><p class="size">${dims(f)} px</p>${download(f, f.format.toUpperCase(), `${f.name}, ${dims(f)} px`)}</div>
 </article>`;
   const banners = `<section class="section" id="banners" aria-labelledby="banners-title">
-${sectionHead("banners", "Banners", "Banners", "Covers and posts for every network, standard display ads and an email signature, each at its exact size.")}
+${sectionHead("banners", "Banners", "Covers and posts for every network, standard display ads and an email signature, each at its exact size.")}
 <h3 class="subhead">Social</h3>
 <div class="grid grid--social">${where((f) => f.category === "social").map(assetCard).join("\n")}</div>
 <h3 class="subhead">Display ads</h3>
@@ -261,15 +264,16 @@ ${sectionHead("banners", "Banners", "Banners", "Covers and posts for every netwo
 
   // ---------- Wallpapers ----------
   const wallGroup = (category: string, title: string, note: string) => {
-    const variants = ["dark", "green"].map((variant) => {
-      const list = where((f) => f.category === category && f.variant === variant);
+    const group = where((f) => f.category === category);
+    // One card per variant, in the order the catalog renders them.
+    const variants = [...new Set(group.map((f) => f.variant!))].map((variant) => {
+      const list = group.filter((f) => f.variant === variant);
       // Preview: the most common size of the group.
       const preview = list.find((f) => f.width === 2560 && f.height === 1440) ?? list[0];
-      const label = `${variant[0].toUpperCase()}${variant.slice(1)}`;
       return `<article class="card wall-card">
   <div class="preview preview--frame">${thumb(preview, `${title}, ${variant} variant preview`)}</div>
   <div class="wall-card__body">
-    <h4 class="card__title">${label}</h4>
+    <h4 class="card__title">${variant[0].toUpperCase()}${variant.slice(1)}</h4>
     <ul class="sizes">${list.map((f) => `<li>${download(f, dims(f), `${title}, ${variant}, ${dims(f)} px`)}</li>`).join("")}</ul>
   </div>
 </article>`;
@@ -280,7 +284,7 @@ ${sectionHead("banners", "Banners", "Banners", "Covers and posts for every netwo
 </div>`;
   };
   const wallpapers = `<section class="section" id="wallpapers" aria-labelledby="wallpapers-title">
-${sectionHead("wallpapers", "Wallpapers", "Wallpapers", "Quiet backgrounds built from a flat Apysyk brand panel and an oversized crop of the mark.")}
+${sectionHead("wallpapers", "Wallpapers", "Quiet backgrounds built from a flat Apysyk brand panel and an oversized crop of the mark.")}
 ${wallGroup("desktop", "Desktop", "Common laptop and monitor resolutions, up to 5K and ultrawide.")}
 ${wallGroup("phone", "Phone", "The top stays clear for the clock, the bottom for the dock.")}
 ${wallGroup("tablet", "Tablet", "Portrait, for tablets such as the 10.9 and 12.9 inch iPad.")}
@@ -292,25 +296,29 @@ ${wallGroup("video", "Video calls", "The center stays calm where you sit; the lo
     "apysyk-media-kit": "Every file on this page.",
     "apysyk-logos": "SVG sources, PNGs at 512, 1024 and 2048 px, and avatars.",
     "apysyk-banners": "Social, display ads, email signature and cover cards.",
-    "apysyk-wallpapers": "Desktop, phone, tablet and video calls, dark and green.",
+    "apysyk-wallpapers": "Desktop, phone, tablet and video calls, light and forest.",
   };
   const downloads = `<section class="section" id="downloads" aria-labelledby="downloads-title">
-${sectionHead("downloads", "Downloads", "Downloads", "Everything in one archive, or one archive per group.")}
+${sectionHead("downloads", "Downloads", "Everything in one archive, or one archive per group.")}
 <ul class="zips">${where((f) => f.group === "downloads")
     .map((f) => {
       const slug = f.path.slice(f.path.lastIndexOf("/") + 1, -4);
-      return `<li class="zip${slug === "apysyk-media-kit" ? " zip--main" : ""}">
-  <div><h3 class="card__title">${esc(f.name)}</h3><p class="body">${zipBlurb[slug]} <span class="size">${f.contents!.length} files</span></p></div>
-  ${download(f, `${slug}.zip`, f.name, slug === "apysyk-media-kit" ? "button" : "button button--ghost")}
+      const main = slug === "apysyk-media-kit";
+      return `<li class="card zip${main ? " zip--main" : ""}">
+  <div class="zip__text"><h3 class="card__title">${esc(f.name)}</h3><p class="body">${zipBlurb[slug]} <span class="size">${f.contents!.length} files</span></p></div>
+  ${download(f, `${slug}.zip`, f.name, main ? "button" : "button button--ghost")}
 </li>`;
     })
     .join("\n")}</ul>
 </section>`;
 
   // ---------- Contact ----------
+  // The page's one deep band: Forest, with Lime for the accent.
   const contact = `<section class="section section--contact" id="contact" aria-labelledby="contact-title">
-  <p class="eyebrow">Contact</p>
-  <h2 class="display display--xl" id="contact-title">Press and partnerships: <a href="mailto:${CONTACT}">${CONTACT}</a></h2>
+  <div class="band">
+    <p class="kicker">Contact</p>
+    <h2 class="headline" id="contact-title">Press and partnerships: <a href="mailto:${CONTACT}">${CONTACT}</a></h2>
+  </div>
 </section>`;
 
   const nav = SECTIONS.map(([id, label]) => `<li><a href="#${id}">${label}</a></li>`).join("");
@@ -326,7 +334,8 @@ ${sectionHead("downloads", "Downloads", "Downloads", "Everything in one archive,
 <title>Media kit · Apysyk</title>
 <meta name="description" content="${esc(DESCRIPTION)}">
 <link rel="canonical" href="${SITE_URL}">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="${COLORS.paper}">
+<meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Apysyk">
 <meta property="og:url" content="${SITE_URL}">
@@ -347,20 +356,20 @@ ${sectionHead("downloads", "Downloads", "Downloads", "Everything in one archive,
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="shell site-header__inner">
-    <a class="brand" href="#top"><img class="brand__mark" src="${mark.path}" width="17" height="17" alt="">apysyk<span class="brand__kit">Media kit</span></a>
+    <a class="brand" href="#top"><img class="brand__lockup" src="${lockup.path}" width="152" height="${lockupHeight(152)}" alt="Apysyk"><span class="brand__kit">Media kit</span></a>
     <nav class="nav" aria-label="Sections"><ul class="nav__list">${nav}</ul></nav>
-    <a class="button button--header" href="${everything.path}" download><span>Download <span class="button__wide">everything </span>${everythingLabel}</span></a>
+    <a class="button button--header" href="${everything.path}" download><span>Download <span class="button__wide">everything </span><span class="button__size">${everythingLabel}</span></span></a>
   </div>
 </header>
 <main id="main">
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="hero__panel" aria-hidden="true">
-    <img src="${markBlack.path}" width="619" height="631" alt="" fetchpriority="high">
-  </div>
   <div class="shell hero__inner">
-    <p class="eyebrow eyebrow--dot">Apysyk / media kit</p>
-    <h1 class="display display--cover" id="hero-title"><span>Brand</span> <em>assets.</em></h1>
-    <p class="lead">Everything here may be used to write about or refer to Apysyk.</p>
+    <p class="kicker hero__kicker">Apysyk media kit</p>
+    <h1 class="hero__title" id="hero-title"><span>Brand</span> <em>assets.</em></h1>
+    <p class="intro hero__lead">Everything here may be used to write about or refer to Apysyk.</p>
+    <figure class="hero__stage">
+      <img class="hero__mark" src="${mark.path}" width="${markPng.width}" height="${markPng.height}" alt="The Apysyk mark" fetchpriority="high">
+    </figure>
     <dl class="hero__stats">
       <div><dt>Logo files</dt><dd>${count((f) => f.group === "logos")}</dd></div>
       <div><dt>Banner files</dt><dd>${count((f) => f.group === "banners")}</dd></div>

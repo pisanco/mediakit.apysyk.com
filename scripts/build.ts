@@ -11,7 +11,7 @@ import { formatBytes, type Manifest, type ManifestFile, type ManifestGroup } fro
 import { renderPage } from "./kit/page.ts";
 import { Renderer } from "./kit/render.ts";
 import { makeZip } from "./kit/zip.ts";
-import { SITE_URL } from "./kit/brand.ts";
+import { COLORS, SITE_URL } from "./kit/brand.ts";
 
 const ROOT = resolve(import.meta.dir, "..");
 const DIST = join(ROOT, "dist");
@@ -109,7 +109,7 @@ try {
   files.push({ group: "site", category: "share", name: "Media kit share image", width: 1200, height: 630, format: "png", bytes: await write("og.png", og), path: "og.png" });
   await write("favicon.svg", await read("brand/logo/mark.svg"));
   await write("favicon-32.png", checked("favicon", await renderer.render("favicon", icon(32, "transparent", 0.94), { format: "png" }), 32, 32));
-  await write("apple-touch-icon.png", checked("touch", await renderer.render("touch", icon(180, "#000", 0.6), { format: "png" }), 180, 180));
+  await write("apple-touch-icon.png", checked("touch", await renderer.render("touch", icon(180, COLORS.white, 0.6), { format: "png" }), 180, 180));
 
   // Previews: real renders downscaled in the browser.
   await Promise.all(

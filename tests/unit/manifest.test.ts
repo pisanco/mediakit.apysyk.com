@@ -37,6 +37,9 @@ describe("manifest", () => {
   });
 
   test("holds every size the media kit requirements ask for", () => {
+    expect(manifest.files.filter((f) => f.category === "avatars").map((f) => f.path.split("/").pop()).sort()).toEqual(
+      ["apysyk-avatar-forest-1024.png", "apysyk-avatar-white-1024.png"],
+    );
     expect(sizes("avatars")).toEqual(["1024x1024", "1024x1024"]);
     expect(sizes("social")).toEqual(
       sorted(["1128x191", "1584x396", "1500x500", "1640x624", "2560x1440", "1280x640", "1200x630", "1080x1080", "1080x1350", "1080x1920"]),
@@ -46,7 +49,7 @@ describe("manifest", () => {
       sorted(["300x250", "336x280", "728x90", "970x90", "970x250", "160x600", "300x600", "320x50", "320x100"]),
     );
     expect(sizes("imagery")).toEqual(["1200x630", "1200x630", "1200x630"]);
-    for (const variant of ["dark", "green"]) {
+    for (const variant of ["light", "forest"]) {
       expect(sizes("desktop", variant)).toEqual(
         sorted(["1920x1080", "2560x1440", "3840x2160", "5120x2880", "3440x1440", "2560x1600", "3024x1964", "3456x2234"]),
       );
@@ -54,6 +57,8 @@ describe("manifest", () => {
       expect(sizes("tablet", variant)).toEqual(sorted(["2048x2732", "1640x2360"]));
       expect(sizes("video", variant)).toEqual(["1920x1080"]);
     }
+    const variants = new Set(manifest.files.filter((f) => f.group === "wallpapers").map((f) => f.variant));
+    expect([...variants].sort()).toEqual(["forest", "light"]);
     const share = manifest.files.find((f) => f.path === "og.png");
     expect(share && `${share.width}x${share.height}`).toBe("1200x630");
   });

@@ -41,6 +41,11 @@ async function loadEverything(page: Page): Promise<void> {
     await page.evaluate((top) => window.scrollTo({ top, behavior: "instant" }), y);
     await page.waitForTimeout(40);
   }
+  // A preview the scroll passed while the main thread was busy never starts loading, and WebKit's
+  // decode() then waits for it forever: ask for every image now, so the wait has an end.
+  await page.evaluate(() => {
+    for (const img of document.images) img.loading = "eager";
+  });
   await page.waitForLoadState("networkidle");
   await page.evaluate(() => Promise.all([...document.images].map((img) => img.decode().catch(() => undefined))));
 }
@@ -106,12 +111,12 @@ test("axe finds no serious or critical accessibility violations", async ({ page 
   expect(serious).toEqual([]);
 });
 
-test("no horizontal scroll, down to 360 px wide", async ({ page }) => {
+test("no horizontal scroll, down to 320 px wide", async ({ page }) => {
   await open(page);
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(await overflow()).toBeLessThanOrEqual(0);
   if (page.viewportSize()!.width < 600) {
-    await page.setViewportSize({ width: 360, height: 740 });
+    await page.setViewportSize({ width: 320, height: 740 });
     expect(await overflow()).toBeLessThanOrEqual(0);
   }
 });
@@ -138,8 +143,8 @@ test("copy buttons put the right text on the clipboard", async ({ page, context,
     ["#about .copy-card:nth-of-type(1) .copy", COPY.oneLiner, "One-liner copied"],
     ["#about .copy-card:nth-of-type(2) .copy", COPY.short, "Short boilerplate copied"],
     ["#about .copy-card:nth-of-type(3) .copy", LONG_BOILERPLATE, "Long boilerplate copied"],
-    ['.copy[data-copy-value="#58a02d"]', "#58a02d", "Apysyk Green HEX copied"],
-    ['.copy[data-copy-value="rgb(88, 160, 45)"]', "rgb(88, 160, 45)", "Apysyk Green RGB copied"],
+    ['.copy[data-copy-value="#4da61d"]', "#4da61d", "Apysyk Green HEX copied"],
+    ['.copy[data-copy-value="rgb(77, 166, 29)"]', "rgb(77, 166, 29)", "Apysyk Green RGB copied"],
   ];
   for (const [selector, expected, announced] of cases) {
     const button = page.locator(selector);

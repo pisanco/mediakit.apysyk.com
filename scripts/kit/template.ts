@@ -2,8 +2,9 @@
 // described as boxes in output pixels; the browser then fits each headline to
 // its box and the renderer refuses any text that overflows or is too small.
 
+import { COLORS } from "./brand.ts";
 import { fontFaces } from "./fonts.ts";
-import { buildEditorial, type EditorialSpec } from "./editorial";
+import { buildEditorial, type EditorialSpec, type Variant } from "./editorial.ts";
 
 export type LogoFile =
   | "mark.svg"
@@ -25,7 +26,7 @@ export interface Box {
 
 type Align = "start" | "center" | "end";
 
-/** One line of a headline; `green` paints it in the accent green. */
+/** One line of a headline; `green` paints it in the variant's accent: Text Green on light, Lime on Forest. */
 export type Line = [text: string, green: boolean];
 
 export type Item =
@@ -33,7 +34,8 @@ export type Item =
   | { kind: "logo"; file: LogoFile; h: number; w?: number }
   /** `leading` overrides the line height, for lines whose descenders meet the next line's ascenders. */
   | { kind: "headline"; lines: Line[]; max: number; min?: number; leading?: number }
-  | { kind: "eyebrow"; text: string; size: number }
+  /** A short label above a headline; `green` paints it in the accent, as the site does for page labels. */
+  | { kind: "eyebrow"; text: string; size: number; green?: boolean }
   | { kind: "label"; text: string; size: number }
   | { kind: "pill"; text: string; h: number }
   | { kind: "gap"; h: number };
@@ -52,12 +54,19 @@ export interface Doc {
   height: number;
   /** CSS background; "transparent" keeps the alpha channel for logo exports. */
   background: string;
+  /** Which ink the copy uses: light surfaces (the default) or Forest. */
+  tone?: Variant;
   art?: EditorialSpec;
   stacks: Stack[];
 }
 
 const FONTS = fontFaces("/fonts/");
 
+// Mona Sans 600, like the apysyk.com headings. The upstream release served here
+// is spaced about 0.03em tighter than the site's file (measured in Chromium at
+// 100 px), so the site's -0.058em display tracking reads as -0.025em here and
+// its -0.02em labels as 0. The headline tracking also eases at small sizes
+// (-0.015em at 24 px), as display type should.
 const CSS = `
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { overflow: hidden; -webkit-font-smoothing: antialiased; }
@@ -65,15 +74,20 @@ html, body { overflow: hidden; -webkit-font-smoothing: antialiased; }
 .stack { position: absolute; display: flex; flex-direction: column; }
 .stack > * { flex: none; }
 img { display: block; }
-.headline { font-family: "Hubot Sans"; font-weight: 700; font-stretch: 108%; letter-spacing: -0.045em; line-height: 0.9; color: #f4f5f1; white-space: nowrap; }
-/* Room for the descenders of "cybersecurity", so the measured box holds the ink. */
+.headline { font-family: "Mona Sans"; font-weight: 600; letter-spacing: calc(-0.028em + 0.3px); line-height: 0.96; color: ${COLORS.ink}; white-space: nowrap; }
+/* Room for the descenders of "In sync.", so the measured box holds the ink. */
 .headline { padding-bottom: 0.1em; }
 .headline span { display: block; width: max-content; }
-.headline .g { color: #6dbb3a; }
-.eyebrow { display: flex; align-items: center; gap: 0.95em; font-family: "JetBrains Mono"; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244, 245, 241, 0.8); white-space: nowrap; }
-.eyebrow::before { content: ""; width: 0.5em; height: 0.5em; border-radius: 50%; background: #8ee05a; flex: none; }
-.label { font-family: "JetBrains Mono"; font-weight: 500; letter-spacing: 0.06em; color: rgba(244, 245, 241, 0.72); white-space: nowrap; }
-.pill { display: inline-flex; align-items: center; border-radius: 999px; background: #58a02d; color: #041003; font-family: "Mona Sans"; font-weight: 600; white-space: nowrap; }`;
+.stack--center .headline span { margin-inline: auto; }
+.headline .g { color: ${COLORS.green2}; }
+.eyebrow { font-family: "Mona Sans"; font-weight: 600; line-height: 1.2; color: ${COLORS.ink}; white-space: nowrap; }
+.eyebrow.g { font-weight: 500; color: ${COLORS.green2}; }
+.label { font-family: "Mona Sans"; font-weight: 500; line-height: 1.2; color: ${COLORS.inkDim}; white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; border-radius: 999px; background: ${COLORS.green}; color: ${COLORS.white}; font-family: "Mona Sans"; font-weight: 600; white-space: nowrap; }
+.forest .headline, .forest .eyebrow { color: ${COLORS.white}; }
+.forest .headline .g, .forest .eyebrow.g { color: ${COLORS.lime}; }
+.forest .label { color: rgba(255, 255, 255, 0.72); }
+.forest .pill { background: ${COLORS.lime}; color: ${COLORS.forest}; }`;
 
 const JUSTIFY: Record<Align, string> = { start: "flex-start", center: "center", end: "flex-end" };
 
@@ -87,7 +101,7 @@ function itemHtml(item: Item): string {
       return `<div class="headline" data-text data-fit data-max="${item.max}" data-min="${item.min ?? 11}"${leading}>${lines}</div>`;
     }
     case "eyebrow":
-      return `<div class="eyebrow" data-text style="font-size:${item.size}px">${item.text}</div>`;
+      return `<div class="eyebrow${item.green ? " g" : ""}" data-text style="font-size:${item.size}px">${item.text}</div>`;
     case "label":
       return `<div class="label" data-text style="font-size:${item.size}px">${item.text}</div>`;
     case "pill":
@@ -107,11 +121,11 @@ export function documentFor(doc: Doc): Prepared {
     .map((s) => {
       const { x, y, w, h } = s.box;
       const style = `left:${x}px;top:${y}px;width:${w}px;height:${h}px;align-items:${JUSTIFY[s.align ?? "start"]};justify-content:${JUSTIFY[s.valign ?? "start"]}`;
-      return `<div class="stack" style="${style}">${s.items.map(itemHtml).join("")}</div>`;
+      return `<div class="stack${s.align === "center" ? " stack--center" : ""}" style="${style}">${s.items.map(itemHtml).join("")}</div>`;
     })
     .join("");
   const html = `<!doctype html><html><head><meta charset="utf-8"><style>${FONTS}${CSS}
-html, body { width: ${doc.width}px; height: ${doc.height}px; background: ${doc.background}; }</style></head><body>
+html, body { width: ${doc.width}px; height: ${doc.height}px; background: ${doc.background}; }</style></head><body class="${doc.tone ?? "light"}">
   ${art ? `<div id="art">${art.svg}</div>` : ""}
 ${stacks}</body></html>`;
   return { html };
