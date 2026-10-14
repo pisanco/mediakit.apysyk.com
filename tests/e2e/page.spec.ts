@@ -1,5 +1,6 @@
 // The published page, as a visitor gets it from dist/ (run `bun run build` first).
 
+import { createHash } from "node:crypto";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { COPY, LONG_BOILERPLATE } from "../../scripts/kit/brand.ts";
@@ -99,6 +100,22 @@ test("every download answers 200 and every image is the size its label says", as
   const header = page.locator(".site-header a[download]");
   const zip = await request.get(await header.evaluate((a) => (a as HTMLAnchorElement).href));
   await expect(header).toContainText(`(.zip, ${formatBytes((await zip.body()).length)})`);
+});
+
+test("the share image's URL carries its own hash, so share caches refetch it when it changes", async ({ page, request }, info) => {
+  test.skip(info.project.name !== "chromium-desktop", "the file is the same for every browser: checked once");
+  await open(page);
+  const tag = page.locator('meta[property="og:image"]');
+  await expect(tag).toHaveAttribute("content", /^https:\/\/mediakit\.apysyk\.com\/og\.png\?v=[0-9a-f]{10}$/);
+  const url = new URL((await tag.getAttribute("content"))!);
+  const file = await request.get(url.pathname + url.search);
+  expect(file.status()).toBe(200);
+  const body = await file.body();
+  expect(url.searchParams.get("v")).toBe(createHash("sha256").update(body).digest("hex").slice(0, 10));
+  // The real size is the size the tags declare.
+  const real = imageSize(new Uint8Array(body));
+  await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute("content", String(real.width));
+  await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute("content", String(real.height));
 });
 
 test("axe finds no serious or critical accessibility violations", async ({ page }) => {

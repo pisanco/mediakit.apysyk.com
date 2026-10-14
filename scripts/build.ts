@@ -1,6 +1,7 @@
 // bun run build: renders every asset, thumbnail, archive, the manifest and the
 // page into dist/. Runs the same on macOS and ubuntu-latest (Playwright Chromium).
 
+import { createHash } from "node:crypto";
 import { availableParallelism } from "node:os";
 import { mkdir, readdir, rm, stat } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
@@ -52,6 +53,11 @@ const THUMB_BOX: Record<string, [number, number]> = {
 await rm(DIST, { recursive: true, force: true });
 const renderer = await Renderer.start(Math.min(4, availableParallelism()));
 const files: ManifestFile[] = [];
+/**
+ * The share image's hash, carried in its URL (`og.png?v=`): WhatsApp, LinkedIn, X and iMessage cache
+ * previews by URL, so a changed banner gets a new URL and an unchanged one keeps its URL across builds.
+ */
+let shareVersion: string;
 
 try {
   // Logos: the SVG sources as they are, plus transparent PNGs at three widths.
@@ -106,6 +112,7 @@ try {
 
   // The page's own images.
   const og = checked("og.png", await renderer.render("og", ogImage(), { format: "png" }), 1200, 630);
+  shareVersion = createHash("sha256").update(og).digest("hex").slice(0, 10);
   files.push({ group: "site", category: "share", name: "Media kit share image", width: 1200, height: 630, format: "png", bytes: await write("og.png", og), path: "og.png" });
   await write("favicon.svg", await read("brand/logo/mark.svg"));
   await write("favicon-32.png", checked("favicon", await renderer.render("favicon", icon(32, "transparent", 0.94), { format: "png" }), 32, 32));
@@ -154,7 +161,7 @@ const manifest: Manifest = { site: SITE_URL, files };
 await write("assets.json", `${JSON.stringify(manifest, null, 2)}\n`);
 
 // The page.
-await write("index.html", renderPage(manifest));
+await write("index.html", renderPage(manifest, shareVersion));
 await write("styles.css", `${fontFaces("fonts/")}\n\n${new TextDecoder().decode(await read("site/styles.css"))}`);
 const app = await Bun.build({ entrypoints: [join(ROOT, "site/app.ts")], minify: true, target: "browser" });
 if (!app.success) throw new AggregateError(app.logs, "site/app.ts failed to build");

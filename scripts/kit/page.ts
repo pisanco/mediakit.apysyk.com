@@ -57,7 +57,8 @@ function sectionHead(id: string, title: string, lead: string): string {
 </header>`;
 }
 
-export function renderPage(manifest: Manifest): string {
+/** `shareVersion` is the share image's hash, carried in its URL so share caches refetch a changed banner. */
+export function renderPage(manifest: Manifest, shareVersion: string): string {
   const files = manifest.files;
   const byPath = (path: string) => {
     const f = files.find((x) => x.path === path);
@@ -341,7 +342,7 @@ ${sectionHead("downloads", "Downloads", "Everything in one archive, or one archi
 <meta property="og:url" content="${SITE_URL}">
 <meta property="og:title" content="Media kit · Apysyk">
 <meta property="og:description" content="${esc(DESCRIPTION)}">
-<meta property="og:image" content="${SITE_URL}og.png">
+<meta property="og:image" content="${SITE_URL}og.png?v=${shareVersion}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Apysyk media kit">
