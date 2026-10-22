@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226.5 226.5" width="226.5" height="226.5" role="img">
+<title>Risksquad logo mark</title>
+<defs><linearGradient id="field" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#123c2b"/><stop offset="0.5" stop-color="#28743e"/><stop offset="1" stop-color="#4da61d"/></linearGradient></defs>
+<rect width="226.5" height="226.5" fill="url(#field)"/>
+<g transform="translate(65.25 65.25)">
+<path fill="#ffffff" d="M9.19 0L25.1 0L40.1 15L55.9 15L70.9 0L86.81 0L60.56 26.25L35.44 26.25ZM96 9.19L96 25.1L81 40.1L81 55.9L96 70.9L96 86.81L69.75 60.56L69.75 35.44ZM86.81 96L70.9 96L55.9 81L40.1 81L25.1 96L9.19 96L35.44 69.75L60.56 69.75ZM0 86.81L0 70.9L15 55.9L15 40.1L0 25.1L0 9.19L26.25 35.44L26.25 60.56Z"/>
+</g>
+</svg>
