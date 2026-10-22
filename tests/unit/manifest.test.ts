@@ -41,15 +41,18 @@ describe("manifest", () => {
       ["apysyk-avatar-forest-1024.png", "apysyk-avatar-white-1024.png"],
     );
     expect(sizes("avatars")).toEqual(["1024x1024", "1024x1024"]);
-    expect(sizes("social")).toEqual(
+    const social = manifest.files.filter((f) => f.category === "social" && !f.variant).map((f) => `${f.width}x${f.height}`).sort();
+    expect(social).toEqual(
       sorted(["1128x191", "1584x396", "1500x500", "1640x624", "2560x1440", "1280x640", "1200x630", "1080x1080", "1080x1350", "1080x1920"]),
     );
+    // The seven wide covers and cards come a second time on the bridge photograph.
+    expect(sizes("social", "bridge")).toEqual(sorted(["1128x191", "1584x396", "1500x500", "1640x624", "2560x1440", "1280x640", "1200x630"]));
     expect(sizes("email")).toEqual(sorted(["600x150", "1200x300"]));
     expect(sizes("display")).toEqual(
       sorted(["300x250", "336x280", "728x90", "970x90", "970x250", "160x600", "300x600", "320x50", "320x100"]),
     );
     expect(sizes("imagery")).toEqual(["1200x630", "1200x630", "1200x630"]);
-    for (const variant of ["light", "forest"]) {
+    for (const variant of ["light", "forest", "gradient", "aurora", "prism", "lattice", "lighthouse", "bridge"]) {
       expect(sizes("desktop", variant)).toEqual(
         sorted(["1920x1080", "2560x1440", "3840x2160", "5120x2880", "3440x1440", "2560x1600", "3024x1964", "3456x2234"]),
       );
@@ -58,34 +61,49 @@ describe("manifest", () => {
       expect(sizes("video", variant)).toEqual(["1920x1080"]);
     }
     const variants = new Set(manifest.files.filter((f) => f.group === "wallpapers").map((f) => f.variant));
-    expect([...variants].sort()).toEqual(["forest", "light"]);
+    expect([...variants].sort()).toEqual(["aurora", "bridge", "forest", "gradient", "lattice", "light", "lighthouse", "prism"]);
     const share = manifest.files.find((f) => f.path === "og.png");
     expect(share && `${share.width}x${share.height}`).toBe("1200x630");
   });
 
   test("exports every logo as SVG and as PNG at 512, 1024 and 2048 px wide", () => {
-    const svgs = manifest.files.filter((f) => f.category === "svg").map((f) => f.path.split("/").pop());
+    const svgs = manifest.files.filter((f) => f.group === "logos" && f.category === "svg").map((f) => f.path.split("/").pop());
     expect(svgs.sort()).toEqual(
       [
         "mark",
         "mark-white",
         "mark-black",
+        "mark-on-gradient",
         "wordmark-light",
         "wordmark-dark",
         "lockup-on-dark",
         "lockup-on-light",
         "lockup-white",
         "lockup-black",
+        "lockup-on-gradient",
+        "lockup-stacked-on-dark",
+        "lockup-stacked-on-light",
+        "lockup-stacked-white",
+        "lockup-stacked-black",
       ]
         .map((n) => `apysyk-${n}.svg`)
         .sort(),
     );
     const pngs = manifest.files.filter((f) => f.category === "png");
-    expect(pngs).toHaveLength(27);
+    expect(pngs).toHaveLength(45);
     for (const svg of svgs) {
       const base = svg!.replace(/\.svg$/, "");
       expect(pngs.filter((p) => new RegExp(`/${base}-\\d+\\.png$`).test(p.path)).map((p) => p.width)).toEqual([512, 1024, 2048]);
     }
+  });
+
+  test("offers the seven loading animations as SVG, for light and for dark surfaces", () => {
+    const loading = manifest.files.filter((f) => f.group === "loading");
+    const names = ["sequence", "turn", "focus", "assemble", "lock", "trace", "pulse"];
+    expect(loading.map((f) => f.path).sort()).toEqual(
+      names.flatMap((n) => [`files/loading/apysyk-loading-${n}.svg`, `files/loading/apysyk-loading-${n}-dark.svg`]).sort(),
+    );
+    for (const f of loading) expect(f.format, f.path).toBe("svg");
   });
 
   test("wallpapers are JPG and banners PNG", () => {

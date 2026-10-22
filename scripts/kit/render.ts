@@ -15,6 +15,7 @@ const ROOT = resolve(import.meta.dir, "../..");
 const MOUNTS: Record<string, string> = {
   fonts: join(ROOT, "brand/fonts"),
   logo: join(ROOT, "brand/logo"),
+  photos: join(ROOT, "brand/photos"),
   dist: join(ROOT, "dist"),
 };
 

@@ -1,5 +1,5 @@
-// Serializes traced polygons and glyph outlines into small, self-contained SVG.
-import type { Point } from "./trace.ts";
+// Serializes the mark's polygons and glyph outlines into small, self-contained SVG.
+import type { Point } from "./mark.ts";
 
 /** Two decimals keep the error far below a pixel even at 2048 px exports. */
 export function num(v: number): string {
@@ -27,7 +27,7 @@ export function svgDocument({ title, width, height, body }: SvgOptions): string 
   const h = num(height);
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img">`,
-    // The first-child <title> names the image; no id, so inlined copies cannot clash.
+    // The first-child <title> names the image. The only id is the gradient's, the same in every file.
     `<title>${title}</title>`,
     ...body,
     "</svg>",

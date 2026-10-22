@@ -1,7 +1,7 @@
 // The shape of dist/assets.json. The page is generated from it and the tests
 // check it against the real files, so it is the one list of what the kit holds.
 
-export type ManifestGroup = "logos" | "banners" | "wallpapers" | "downloads" | "site";
+export type ManifestGroup = "logos" | "loading" | "banners" | "wallpapers" | "downloads" | "site";
 
 export interface Thumb {
   path: string;

@@ -1,6 +1,7 @@
 // The published page, as a visitor gets it from dist/ (run `bun run build` first).
 
 import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { COPY, LONG_BOILERPLATE } from "../../scripts/kit/brand.ts";
@@ -53,7 +54,7 @@ async function loadEverything(page: Page): Promise<void> {
 
 test("renders with no console errors, CSP violations or third-party requests", async ({ page }) => {
   const problems = await open(page);
-  await expect(page).toHaveTitle("Media kit · Apysyk");
+  await expect(page).toHaveTitle("Media kit · Risksquad");
   await loadEverything(page);
   const csp = await page.evaluate(() => (window as unknown as { __csp: string[] }).__csp);
   expect(csp).toEqual([]);
@@ -82,7 +83,7 @@ test("every download answers 200 and every image is the size its label says", as
   // Every file of the kit has a download link on the page.
   const manifest: Manifest = await (await request.get("/assets.json")).json();
   const linked = new Set(links.map((l) => new URL(l.href).pathname.slice(1)));
-  const missing = manifest.files.filter((f) => ["logos", "banners", "wallpapers", "downloads"].includes(f.group) && !linked.has(f.path));
+  const missing = manifest.files.filter((f) => ["logos", "loading", "banners", "wallpapers", "downloads"].includes(f.group) && !linked.has(f.path));
   expect(missing.map((f) => f.path)).toEqual([]);
   for (const link of links) {
     const response = await request.get(link.href);
@@ -106,9 +107,10 @@ test("the share image's URL carries its own hash, so share caches refetch it whe
   test.skip(info.project.name !== "chromium-desktop", "the file is the same for every browser: checked once");
   await open(page);
   const tag = page.locator('meta[property="og:image"]');
-  await expect(tag).toHaveAttribute("content", /^https:\/\/mediakit\.apysyk\.com\/og\.png\?v=[0-9a-f]{10}$/);
+  const canonical = (await page.locator('link[rel="canonical"]').getAttribute("href"))!;
   const url = new URL((await tag.getAttribute("content"))!);
-  const file = await request.get(url.pathname + url.search);
+  expect(`${url.origin}${url.pathname}`).toBe(new URL("og.png", canonical).href);
+  const file = await request.get(`/og.png${url.search}`);
   expect(file.status()).toBe(200);
   const body = await file.body();
   expect(url.searchParams.get("v")).toBe(createHash("sha256").update(body).digest("hex").slice(0, 10));
@@ -126,6 +128,47 @@ test("axe finds no serious or critical accessibility violations", async ({ page 
     .filter((v) => v.impact === "serious" || v.impact === "critical")
     .map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
   expect(serious).toEqual([]);
+});
+
+test("the theme toggle turns the page dark, remembers it, and the dark page passes axe too", async ({ page }, info) => {
+  test.skip(info.project.name !== "chromium-desktop", "the theme is the same page everywhere: checked once");
+  await open(page);
+  const toggle = page.getByRole("button", { name: "Dark mode" });
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  await toggle.click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0c1a12");
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await loadEverything(page);
+  const results = await new AxeBuilder({ page }).analyze();
+  const serious = results.violations
+    .filter((v) => v.impact === "serious" || v.impact === "critical")
+    .map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
+  expect(serious).toEqual([]);
+  await page.getByRole("button", { name: "Dark mode" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+});
+
+test("the generator composes a banner in the browser and downloads it at the format's size", async ({ page }, info) => {
+  test.skip(info.project.name !== "chromium-desktop", "canvas rasterization: checked once");
+  await open(page);
+  const generator = page.locator("[data-generator]");
+  await generator.locator('select[name="format"]').selectOption("share-card");
+  await generator.locator('select[name="surface"]').selectOption("lattice");
+  await generator.locator('select[name="headline"]').selectOption("1");
+  await generator.getByRole("button", { name: "Generate" }).click();
+  const preview = generator.locator(".generator__preview");
+  await expect(preview).toBeVisible();
+  await expect.poll(() => preview.evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBe(1200);
+  await expect(generator.locator("[data-caption]")).toContainText("Findings. Owned.");
+  const download = page.waitForEvent("download");
+  await generator.getByRole("button", { name: "Download" }).click();
+  const file = await download;
+  expect(file.suggestedFilename()).toMatch(/^risksquad-share-card-lattice-1200x630\.png$/);
+  const bytes = new Uint8Array(await readFile((await file.path())!));
+  expect(imageSize(bytes)).toEqual({ width: 1200, height: 630 });
 });
 
 test("no horizontal scroll, down to 320 px wide", async ({ page }) => {
@@ -175,11 +218,11 @@ test("copy buttons put the right text on the clipboard", async ({ page, context,
   }
 });
 
-test("every link and button is reachable by keyboard", async ({ page, browserName }) => {
+test("every link, button and select is reachable by keyboard", async ({ page, browserName }) => {
   // WebKit skips links on Tab unless the OS setting "Tab to all controls" is on, so Chromium measures the order.
   test.skip(browserName !== "chromium", "Tab order measured in Chromium");
   await open(page);
-  const total = await page.locator("a[href], button").count();
+  const total = await page.locator("a[href], button:not([disabled]), select").count();
   const reached = new Set<string>();
   for (let i = 0; i < total + 5; i++) {
     await page.keyboard.press("Tab");

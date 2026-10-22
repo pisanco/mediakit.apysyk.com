@@ -1,22 +1,24 @@
 /**
- * Publishes the tested build in dist/ to the gh-pages branch, which GitHub
- * Pages serves at https://mediakit.apysyk.com/. Run `bun run build` (and the
- * tests) first.
+ * Publishes the tested build in dist/ at SITE_URL on the gh-pages branch.
+ * The existing site outside that subdirectory is preserved. Run
+ * `bun run build` (and the tests) first.
  *
  * Why a branch and not a GitHub Actions workflow: pushing workflow files needs
  * the OAuth `workflow` scope, which the publishing account does not grant. A
  * branch also publishes exactly the bytes that were checked locally.
  *
- * The branch holds one orphan commit with the latest build, force-pushed each
- * time, so the repository does not grow by tens of megabytes per release.
+ * A normal fast-forward push preserves the published root and branch history.
  */
-import { cpSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { $ } from "bun";
 
-const DOMAIN = "mediakit.apysyk.com";
+import { SITE_URL } from "./kit/brand.ts";
+
+const directory = new URL(SITE_URL).pathname.slice(1);
+if (!directory) throw new Error("deploy: SITE_URL must name a subdirectory; publishing over the live root is not allowed");
 const root = new URL("..", import.meta.url).pathname;
 const dist = join(root, "dist");
 
@@ -30,15 +32,14 @@ const remote = (await $`git -C ${root} remote get-url origin`.text()).trim();
 
 const work = mkdtempSync(join(tmpdir(), "mediakit-deploy-"));
 try {
-  cpSync(dist, work, { recursive: true });
-  // The custom domain for branch-published Pages, and no Jekyll processing of the static files.
-  writeFileSync(join(work, "CNAME"), `${DOMAIN}\n`);
-  writeFileSync(join(work, ".nojekyll"), "");
-  await $`git -C ${work} init -q -b gh-pages`;
-  await $`git -C ${work} add -A`;
-  await $`git -C ${work} commit -q -m ${`Deploy ${source}`}`;
-  await $`git -C ${work} push -q -f ${remote} gh-pages`;
-  console.log(`deployed ${source} to gh-pages: https://${DOMAIN}/ (GitHub Pages publishes it in a minute or two)`);
+  await $`git clone -q --depth 1 --single-branch --branch gh-pages ${remote} ${work}`;
+  const destination = join(work, directory);
+  rmSync(destination, { recursive: true, force: true });
+  cpSync(dist, destination, { recursive: true });
+  await $`git -C ${work} add -- ${directory}`;
+  await $`git -C ${work} commit -q -m ${`Deploy ${source} to /${directory}`}`;
+  await $`git -C ${work} push -q origin gh-pages`;
+  console.log(`deployed ${source} to ${SITE_URL} (the existing root is unchanged; GitHub Pages publishes it in a minute or two)`);
 } finally {
   rmSync(work, { recursive: true, force: true });
 }

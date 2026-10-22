@@ -1,0 +1,45 @@
+The photographs the kit draws on, all released under CC0 1.0 (public domain
+dedication: https://creativecommons.org/publicdomain/zero/1.0/), kept here
+resized to at most 5120 px wide and recompressed. The kit renders them in a
+green duotone under the logo. The first two also come as wallpapers and
+covers; the rest are surfaces of the generator.
+
+lighthouse.jpg
+  "Night before the arrival", Dmitry Pavlov, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Night_before_the_arrival_(Unsplash).jpg
+  Original 4912 x 2760.
+
+bridge.jpg
+  "Fog over a bridge" (the Severin Bridge, Cologne), Liane Metzler, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Fog_over_a_bridge_(Unsplash).jpg
+  Original 6918 x 4617.
+
+mountains.jpg
+  "Fog-shrouded mountain ridge", Cosmic Timetraveler, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Fog-shrouded_mountain_ridge_(Unsplash).jpg
+  Original 6016 x 4000.
+
+forest.jpg
+  "Evergreen forest wreathed in fog", Milo McDowell, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Evergreen_forest_wreathed_in_fog_(Unsplash).jpg
+  Original 4104 x 2736.
+
+highway.jpg
+  "Highway light trains at night", Jamie Street, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Highway_light_trains_at_night_(Unsplash).jpg
+  Original 4595 x 2872.
+
+glass.jpg
+  "Futuristic facade", Scott Webb, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Futuristic_facade_(Unsplash).jpg
+  Original 4164 x 2759.
+
+dunes.jpg
+  "Desert Dunes", Joe Mania, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Desert_Dunes_(Unsplash).jpg
+  Original 4550 x 2560.
+
+shore.jpg
+  "Gray and blue shoreline", Jeremy Bishop, published on Unsplash under CC0.
+  https://commons.wikimedia.org/wiki/File:Gray_and_blue_shoreline_(Unsplash).jpg
+  Original 5472 x 3648.

@@ -1,7 +1,15 @@
-// Copy buttons. A button copies data-copy-value, or else the text of the
+// The theme toggle, the copy buttons and the generator (site/generator.ts).
+//
+// Theme: a stored choice wins, otherwise the system preference. The toggle
+// flips the page, remembers the choice and announces it. The page is light
+// until this runs; the CSP allows no inline script to pick the theme earlier.
+//
+// Copy buttons: a button copies data-copy-value, or else the text of the
 // element named by data-copy-target; data-copy-name says what it copies, for
 // the announcement. When the browser refuses, the target text is selected so
 // the visitor can copy it by hand.
+
+import { mountGenerator } from "./generator.ts";
 
 const announcer = document.getElementById("copy-status");
 const timers = new WeakMap<HTMLButtonElement, number>();
@@ -31,6 +39,37 @@ function announce(message: string): void {
     announcer.textContent = message;
   }, 50);
 }
+
+const THEME_KEY = "theme";
+const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+
+function applyTheme(dark: boolean): void {
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+  toggle?.setAttribute("aria-pressed", String(dark));
+  if (themeColor) themeColor.content = dark ? "#0c1a12" : "#f6f8f4";
+}
+
+function storedTheme(): string | null {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch {
+    return null;
+  }
+}
+
+applyTheme(storedTheme() ? storedTheme() === "dark" : matchMedia("(prefers-color-scheme: dark)").matches);
+
+toggle?.addEventListener("click", () => {
+  const dark = document.documentElement.dataset.theme !== "dark";
+  applyTheme(dark);
+  try {
+    localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
+  } catch {
+    // Private mode or a locked-down browser: the choice lasts for this page only.
+  }
+  announce(dark ? "Dark mode on" : "Dark mode off");
+});
 
 document.addEventListener("click", async (event) => {
   const button = (event.target as Element | null)?.closest<HTMLButtonElement>("button.copy");
@@ -65,3 +104,5 @@ document.addEventListener("click", async (event) => {
     }, 1800),
   );
 });
+
+mountGenerator(announce);

@@ -1,4 +1,4 @@
-// Outlines the wordmark "apysyk" from Hubot Sans with fontkit, as the site
+// Outlines the wordmark "Risksquad" from Hubot Sans with fontkit, as the site
 // header sets it: weight 700, width 100, kerning on, letter-spacing -0.03em.
 // The font is the unmodified upstream variable TTF; fontkit instances it with
 // getVariation(), which applies gvar to the outlines and HVAR to the advances.
@@ -37,7 +37,7 @@ export interface WordmarkSettings {
   letterSpacing: number;
 }
 
-export const WORDMARK: WordmarkSettings = { text: "apysyk", axes: { wght: 700, wdth: 100 }, letterSpacing: -0.03 };
+export const WORDMARK: WordmarkSettings = { text: "Risksquad", axes: { wght: 700, wdth: 100 }, letterSpacing: -0.03 };
 
 /** A fontkit glyph path (font units, y up) to commands placed by `place`. */
 function pathCommands(path: { command: string; args: number[] }[], place: (x: number, y: number) => { x: number; y: number }): Command[] {

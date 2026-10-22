@@ -11,8 +11,9 @@ if (!(await manifestFile.exists())) throw new Error("dist/assets.json is missing
 const manifest: Manifest = await manifestFile.json();
 
 const EXPECTED: Record<string, string[]> = {
-  "apysyk-media-kit": ["logos", "banners", "wallpapers"],
+  "apysyk-media-kit": ["logos", "loading", "banners", "wallpapers"],
   "apysyk-logos": ["logos"],
+  "apysyk-loading": ["loading"],
   "apysyk-banners": ["banners"],
   "apysyk-wallpapers": ["wallpapers"],
 };

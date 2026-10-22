@@ -4,18 +4,24 @@
 
 import { COLORS } from "./brand.ts";
 import { fontFaces } from "./fonts.ts";
-import { buildEditorial, type EditorialSpec, type Variant } from "./editorial.ts";
+import { buildScene, type SceneSpec, type Surface } from "./scene.ts";
 
 export type LogoFile =
   | "mark.svg"
   | "mark-white.svg"
   | "mark-black.svg"
+  | "mark-on-gradient.svg"
   | "wordmark-light.svg"
   | "wordmark-dark.svg"
   | "lockup-on-dark.svg"
   | "lockup-on-light.svg"
   | "lockup-white.svg"
-  | "lockup-black.svg";
+  | "lockup-black.svg"
+  | "lockup-on-gradient.svg"
+  | "lockup-stacked-on-dark.svg"
+  | "lockup-stacked-on-light.svg"
+  | "lockup-stacked-white.svg"
+  | "lockup-stacked-black.svg";
 
 export interface Box {
   x: number;
@@ -54,9 +60,9 @@ export interface Doc {
   height: number;
   /** CSS background; "transparent" keeps the alpha channel for logo exports. */
   background: string;
-  /** Which ink the copy uses: light surfaces (the default) or Forest. */
-  tone?: Variant;
-  art?: EditorialSpec;
+  /** Which ink the copy uses: light surfaces (the default), Forest, or the gradient. */
+  tone?: Surface;
+  art?: SceneSpec;
   stacks: Stack[];
 }
 
@@ -84,10 +90,13 @@ img { display: block; }
 .eyebrow.g { font-weight: 500; color: ${COLORS.green2}; }
 .label { font-family: "Mona Sans"; font-weight: 500; line-height: 1.2; color: ${COLORS.inkDim}; white-space: nowrap; }
 .pill { display: inline-flex; align-items: center; border-radius: 999px; background: ${COLORS.green}; color: ${COLORS.white}; font-family: "Mona Sans"; font-weight: 600; white-space: nowrap; }
-.forest .headline, .forest .eyebrow { color: ${COLORS.white}; }
+.forest .headline, .forest .eyebrow, .gradient .headline, .gradient .eyebrow { color: ${COLORS.white}; }
 .forest .headline .g, .forest .eyebrow.g { color: ${COLORS.lime}; }
-.forest .label { color: rgba(255, 255, 255, 0.72); }
-.forest .pill { background: ${COLORS.lime}; color: ${COLORS.forest}; }`;
+.gradient .headline .g { color: ${COLORS.white}; }
+.gradient .eyebrow.g { color: rgba(255, 255, 255, 0.82); }
+.forest .label, .gradient .label { color: rgba(255, 255, 255, 0.72); }
+.forest .pill { background: ${COLORS.lime}; color: ${COLORS.forest}; }
+.gradient .pill { background: ${COLORS.white}; color: ${COLORS.forest}; }`;
 
 const JUSTIFY: Record<Align, string> = { start: "flex-start", center: "center", end: "flex-end" };
 
@@ -116,7 +125,7 @@ export interface Prepared {
 }
 
 export function documentFor(doc: Doc): Prepared {
-  const art = doc.art ? buildEditorial(doc.art) : null;
+  const art = doc.art ? buildScene(doc.art) : null;
   const stacks = doc.stacks
     .map((s) => {
       const { x, y, w, h } = s.box;
@@ -124,8 +133,10 @@ export function documentFor(doc: Doc): Prepared {
       return `<div class="stack${s.align === "center" ? " stack--center" : ""}" style="${style}">${s.items.map(itemHtml).join("")}</div>`;
     })
     .join("");
+  // The ink follows the surface: Paper's on light, white and Lime on every dark one, white alone on the gradient.
+  const ink = doc.tone === "gradient" ? "gradient" : doc.tone === "light" || !doc.tone ? "light" : "forest";
   const html = `<!doctype html><html><head><meta charset="utf-8"><style>${FONTS}${CSS}
-html, body { width: ${doc.width}px; height: ${doc.height}px; background: ${doc.background}; }</style></head><body class="${doc.tone ?? "light"}">
+html, body { width: ${doc.width}px; height: ${doc.height}px; background: ${doc.background}; }</style></head><body class="${ink}">
   ${art ? `<div id="art">${art.svg}</div>` : ""}
 ${stacks}</body></html>`;
   return { html };

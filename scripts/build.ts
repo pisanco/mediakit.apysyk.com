@@ -8,11 +8,13 @@ import { dirname, join, relative, resolve } from "node:path";
 import { LOGO_FILES, LOGO_WIDTHS, icon, logoExport, ogImage, renderedAssets } from "./kit/catalog.ts";
 import { FONTS, fontFaces } from "./kit/fonts.ts";
 import { imageSize } from "./kit/image-size.ts";
+import { LOADING_VERSIONS } from "./kit/loading.ts";
 import { formatBytes, type Manifest, type ManifestFile, type ManifestGroup } from "./kit/manifest.ts";
 import { renderPage } from "./kit/page.ts";
 import { Renderer } from "./kit/render.ts";
 import { makeZip } from "./kit/zip.ts";
 import { COLORS, SITE_URL } from "./kit/brand.ts";
+import { PHOTO_FILES } from "./kit/scene.ts";
 
 const ROOT = resolve(import.meta.dir, "..");
 const DIST = join(ROOT, "dist");
@@ -39,7 +41,7 @@ function checked(name: string, data: Uint8Array, width: number, height: number):
 
 /** Thumbnail bounds by category: the page shows previews at about half these sizes, so they stay sharp at 2x. */
 const THUMB_BOX: Record<string, [number, number]> = {
-  avatars: [320, 320],
+  avatars: [720, 720],
   social: [720, 720],
   email: [600, 300],
   imagery: [720, 720],
@@ -83,6 +85,17 @@ try {
   );
   files.push(...logos.flat());
 
+  // Loading animations: self-contained SVG, offered as they are, each for light surfaces and for dark ones.
+  for (const v of LOADING_VERSIONS) {
+    for (const [suffix, label, svg] of [
+      ["", "", v.light],
+      ["-dark", ", dark", v.dark],
+    ] as const) {
+      const path = `files/loading/${v.slug}${suffix}.svg`;
+      files.push({ group: "loading", category: "svg", name: `${v.name}${label}`, width: null, height: null, format: "svg", bytes: await write(path, svg), path });
+    }
+  }
+
   // Avatars, banners, ads and wallpapers.
   const rendered = await Promise.all(
     renderedAssets().map(async (a): Promise<ManifestFile> => {
@@ -102,6 +115,9 @@ try {
     }),
   );
   files.push(...rendered);
+
+  // The photographs the generator composes with, as they are. They are not downloads: the manifest leaves them out.
+  for (const file of PHOTO_FILES) await write(`photos/${file}`, await read(`brand/photos/${file}`));
 
   // The fonts the page itself renders with, each with its license. They are served for the page only,
   // not offered as downloads: visitors get them from the official sources.
@@ -137,8 +153,9 @@ try {
 
 // Archives: one per group and one with everything.
 const ZIPS: { slug: string; name: string; groups: ManifestGroup[] }[] = [
-  { slug: "apysyk-media-kit", name: "Everything", groups: ["logos", "banners", "wallpapers"] },
+  { slug: "apysyk-media-kit", name: "Everything", groups: ["logos", "loading", "banners", "wallpapers"] },
   { slug: "apysyk-logos", name: "Logos", groups: ["logos"] },
+  { slug: "apysyk-loading", name: "Loading", groups: ["loading"] },
   { slug: "apysyk-banners", name: "Banners", groups: ["banners"] },
   { slug: "apysyk-wallpapers", name: "Wallpapers", groups: ["wallpapers"] },
 ];
