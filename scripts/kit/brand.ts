@@ -11,11 +11,11 @@ export const FOOTER = "© 2026 Apysyk. All rights reserved.";
 
 /** Light first, like apysyk.com: paper and white surfaces, ink text, green for emphasis, one deep forest band. */
 export const COLORS = {
-  paper: "#f5f5f0",
+  paper: "#efeee6",
   white: "#ffffff",
   ink: "#0d1a12",
   ink2: "#3b463f",
-  inkDim: "#67736b",
+  inkDim: "#626e66",
   green: "#28743e",
   green2: "#22653a",
   greenStrong: "#174a2a",

@@ -3,7 +3,7 @@
 The public Risksquad media kit for Risksquad and Apysyk OS: logos, loading animations,
 colors, typography, banners, wallpapers and approved descriptions, published at https://mediakit.apysyk.com/new/.
 
-Paper is the warm off-white `#f5f5f0` for the page and light brand backgrounds.
+Paper is the warm off-white `#efeee6` for the page and light brand backgrounds.
 White remains `#ffffff` for cards and white artwork. Both swatches keep their
 brand colors in dark mode.
 
