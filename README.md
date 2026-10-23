@@ -3,6 +3,10 @@
 The public Risksquad media kit for Risksquad and Apysyk OS: logos, loading animations,
 colors, typography, banners, wallpapers and approved descriptions, published at https://mediakit.apysyk.com/new/.
 
+Paper is the warm off-white `#f5f5f0` for the page and light brand backgrounds.
+White remains `#ffffff` for cards and white artwork. Both swatches keep their
+brand colors in dark mode.
+
 Only sources live here. Every image, thumbnail, archive and the page itself is
 rendered by `bun run build` into `dist/` (ignored by git). `bun run deploy`
 publishes that tested build to `/new/` on the existing `gh-pages` branch, which

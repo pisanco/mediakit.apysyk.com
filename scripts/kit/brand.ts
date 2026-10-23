@@ -1,6 +1,6 @@
-// Brand facts shared by the asset templates and the page. The values come from
-// the apysyk.com design tokens (proteus-landing src/styles/tokens.css), the
-// mark's geometry (scripts/logo/mark.ts) and the approved copy; keep them in one
+// Brand facts shared by the asset templates and the page. The palette follows
+// apysyk.com, with warm off-white Paper for the kit. The mark's geometry comes
+// from scripts/logo/mark.ts; keep these values and the approved copy in one
 // place so a banner and the page can never disagree.
 
 import { MARK_COLOR } from "../logo/mark.ts";
@@ -11,11 +11,11 @@ export const FOOTER = "© 2026 Apysyk. All rights reserved.";
 
 /** Light first, like apysyk.com: paper and white surfaces, ink text, green for emphasis, one deep forest band. */
 export const COLORS = {
-  paper: "#f6f8f4",
+  paper: "#f5f5f0",
   white: "#ffffff",
   ink: "#0d1a12",
   ink2: "#3b463f",
-  inkDim: "#68746c",
+  inkDim: "#67736b",
   green: "#28743e",
   green2: "#22653a",
   greenStrong: "#174a2a",
