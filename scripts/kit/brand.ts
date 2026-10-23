@@ -46,7 +46,7 @@ export const PALETTE: { name: string; hex: string; role: string }[] = [
   { name: "Forest", hex: COLORS.forest, role: "The one deep surface; white text on it reads 12:1." },
   { name: "Lime", hex: COLORS.lime, role: "The accent on Forest only (8:1)." },
   { name: "Paper", hex: COLORS.paper, role: "The page and the background of every brand surface." },
-  { name: "White", hex: COLORS.white, role: "Cards and reading surfaces on Paper." },
+  { name: "White", hex: COLORS.white, role: "White brand artwork, logos and high-contrast marks." },
   { name: "Ink", hex: COLORS.ink, role: "Text and lines on light surfaces." },
 ];
 

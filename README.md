@@ -4,8 +4,10 @@ The public Risksquad media kit for Risksquad and Apysyk OS: logos, loading anima
 colors, typography, banners, wallpapers and approved descriptions, published at https://mediakit.apysyk.com/new/.
 
 Paper uses Antique White (`#faebd7`) for the page and light brand backgrounds.
-White remains `#ffffff` for cards and white artwork. Both swatches keep their
-brand colors in dark mode.
+Light-mode cards, controls and reading surfaces use off-white `#fff8ee`, not
+pure white. Brand White remains `#ffffff` only for artwork and its palette
+swatch. The dark palette and the existing white backing of brand demos are
+preserved; the downloadable brand files are not recolored by this UI change.
 
 Only sources live here. Every image, thumbnail, archive and the page itself is
 rendered by `bun run build` into `dist/` (ignored by git). `bun run deploy`
