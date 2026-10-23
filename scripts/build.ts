@@ -85,11 +85,12 @@ try {
   );
   files.push(...logos.flat());
 
-  // Loading animations: self-contained SVG, offered as they are, each for light surfaces and for dark ones.
+  // Loading animations: self-contained SVG in the brand gradient, white and black.
   for (const v of LOADING_VERSIONS) {
     for (const [suffix, label, svg] of [
       ["", "", v.light],
       ["-dark", ", dark", v.dark],
+      ["-black", ", black", v.black],
     ] as const) {
       const path = `files/loading/${v.slug}${suffix}.svg`;
       files.push({ group: "loading", category: "svg", name: `${v.name}${label}`, width: null, height: null, format: "svg", bytes: await write(path, svg), path });

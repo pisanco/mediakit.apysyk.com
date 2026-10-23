@@ -10,6 +10,12 @@ existing high-contrast white foregrounds, including the skip link, stay white.
 The dark palette and the existing white backing of brand demos are preserved;
 the downloadable brand files are not recolored by this UI change.
 
+All seven loading animations are available in the brand gradient, white and
+pure black (`#000000`). Black files use the `-black.svg` suffix, have matching
+gallery previews and individual downloads, and are included in both the loading
+ZIP and the complete kit. Their masks, transparency and motion are preserved;
+the existing gradient and white SVG downloads remain byte-identical.
+
 Only sources live here. Every image, thumbnail, archive and the page itself is
 rendered by `bun run build` into `dist/` (ignored by git). `bun run deploy`
 publishes that tested build to `/new/` on the existing `gh-pages` branch, which
