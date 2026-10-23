@@ -210,6 +210,10 @@ code,
   transform: translateY(-160%);
 }
 
+:root:not([data-theme="dark"]) .skip-link {
+  color: #ffffff;
+}
+
 .skip-link:focus-visible {
   transform: none;
 }

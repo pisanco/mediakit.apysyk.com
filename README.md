@@ -5,9 +5,10 @@ colors, typography, banners, wallpapers and approved descriptions, published at 
 
 Paper uses Antique White (`#faebd7`) for the page and light brand backgrounds.
 Light-mode cards, controls and reading surfaces use off-white `#fff8ee`, not
-pure white. Brand White remains `#ffffff` only for artwork and its palette
-swatch. The dark palette and the existing white backing of brand demos are
-preserved; the downloadable brand files are not recolored by this UI change.
+pure white. Brand White remains `#ffffff` for artwork and its palette swatch;
+existing high-contrast white foregrounds, including the skip link, stay white.
+The dark palette and the existing white backing of brand demos are preserved;
+the downloadable brand files are not recolored by this UI change.
 
 Only sources live here. Every image, thumbnail, archive and the page itself is
 rendered by `bun run build` into `dist/` (ignored by git). `bun run deploy`
