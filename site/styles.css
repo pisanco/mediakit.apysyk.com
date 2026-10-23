@@ -9,13 +9,13 @@
 :root {
   color-scheme: light;
   /* Text tokens hold at least 4.5:1 on --bg and --surface. */
-  --bg: #f6f8f4;
-  --surface: #ffffff;
+  --bg: #faebd7;
+  --surface: #fff8ee;
   --ink: #0d1a12;
   --ink-2: #3b463f;
   --ink-3: #4f5a53;
-  /* Secondary copy: 4.88:1 on white, 4.57:1 on --bg. */
-  --ink-dim: #68746c;
+  /* Secondary copy: 5.05:1 on --surface, 4.55:1 on --bg. */
+  --ink-dim: #626e66;
   --line: rgba(13, 26, 18, 0.1);
   --line-2: rgba(13, 26, 18, 0.16);
   --line-3: rgba(13, 26, 18, 0.32);
@@ -27,12 +27,12 @@
   /* The one deep band: white reads 12:1 on it, the lime accent 8:1. */
   --forest: #123c2b;
   --lime: #a4e35a;
-  /* Paper and White as fixed values: the previews of files drawn for light backgrounds keep them in dark mode. */
-  --paper: #f6f8f4;
-  --paper-surface: #ffffff;
-  --paper-ink-dim: #68746c;
+  /* Paper stays fixed in artwork previews; light-mode demo frames use the card surface. */
+  --paper: #faebd7;
+  --paper-surface: #fff8ee;
+  --paper-ink-dim: #626e66;
   --selection: #d3ebbc;
-  --header-bg: rgba(246, 248, 244, 0.86);
+  --header-bg: rgba(250, 235, 215, 0.86);
   --font-display: "Mona Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-text: "Mona Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
@@ -53,6 +53,8 @@
   color-scheme: dark;
   --bg: #0c1a12;
   --surface: #14271c;
+  /* Keep the existing white backing of brand-demo artwork in dark mode. */
+  --paper-surface: #ffffff;
   --ink: #f4f5f1;
   --ink-2: #cfd8d1;
   --ink-3: #b8c3bb;
@@ -206,6 +208,10 @@ code,
   color: var(--surface);
   font-weight: 600;
   transform: translateY(-160%);
+}
+
+:root:not([data-theme="dark"]) .skip-link {
+  color: #ffffff;
 }
 
 .skip-link:focus-visible {
@@ -926,10 +932,10 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   padding: 10px 10px 22px;
 }
 
-/* The two previews side by side: the gradient version on Paper, the white one on Forest. */
+/* Gradient and black on Paper, then white on Forest. */
 .loading-card__previews {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -1143,7 +1149,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 }
 
 .swatch__chip--paper {
-  background: #f6f8f4;
+  background: var(--paper);
 }
 
 .swatch__chip--white {
@@ -1604,6 +1610,11 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
   background-size: 5px 5px;
   background-repeat: no-repeat;
+}
+
+:root:not([data-theme="dark"]) .generator__select :is(option, optgroup) {
+  background: var(--surface);
+  color: var(--ink);
 }
 
 .generator__select:focus-visible {

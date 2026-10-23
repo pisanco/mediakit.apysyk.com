@@ -1,6 +1,6 @@
-// Brand facts shared by the asset templates and the page. The values come from
-// the apysyk.com design tokens (proteus-landing src/styles/tokens.css), the
-// mark's geometry (scripts/logo/mark.ts) and the approved copy; keep them in one
+// Brand facts shared by the asset templates and the page. The palette follows
+// apysyk.com, with warm off-white Paper for the kit. The mark's geometry comes
+// from scripts/logo/mark.ts; keep these values and the approved copy in one
 // place so a banner and the page can never disagree.
 
 import { MARK_COLOR } from "../logo/mark.ts";
@@ -11,11 +11,11 @@ export const FOOTER = "© 2026 Apysyk. All rights reserved.";
 
 /** Light first, like apysyk.com: paper and white surfaces, ink text, green for emphasis, one deep forest band. */
 export const COLORS = {
-  paper: "#f6f8f4",
+  paper: "#faebd7",
   white: "#ffffff",
   ink: "#0d1a12",
   ink2: "#3b463f",
-  inkDim: "#68746c",
+  inkDim: "#626e66",
   green: "#28743e",
   green2: "#22653a",
   greenStrong: "#174a2a",
@@ -46,7 +46,7 @@ export const PALETTE: { name: string; hex: string; role: string }[] = [
   { name: "Forest", hex: COLORS.forest, role: "The one deep surface; white text on it reads 12:1." },
   { name: "Lime", hex: COLORS.lime, role: "The accent on Forest only (8:1)." },
   { name: "Paper", hex: COLORS.paper, role: "The page and the background of every brand surface." },
-  { name: "White", hex: COLORS.white, role: "Cards and reading surfaces on Paper." },
+  { name: "White", hex: COLORS.white, role: "White brand artwork, logos and high-contrast marks." },
   { name: "Ink", hex: COLORS.ink, role: "Text and lines on light surfaces." },
 ];
 

@@ -188,24 +188,26 @@ ${sectionHead("logo", "Logo", "Four bands in the green gradient around an open s
 
   // ---------- Loading ----------
   // The animations play in the previews: an <img> runs an SVG's own animation, with no script on the page.
-  // Each card shows the version for light surfaces on Paper and the white one for dark surfaces on Forest.
+  // Each card previews the gradient and black on Paper, and white on Forest.
   const loadingCards = LOADING_VERSIONS.map((v) => {
     const light = byPath(`files/loading/${v.slug}.svg`);
     const dark = byPath(`files/loading/${v.slug}-dark.svg`);
+    const black = byPath(`files/loading/${v.slug}-black.svg`);
     return `<article class="card loading-card">
   <div class="loading-card__previews">
     <div class="preview preview--light preview--loading"><img src="${light.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated, for light surfaces`)}" loading="lazy" decoding="async"></div>
+    <div class="preview preview--light preview--loading"><img src="${black.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in black, for light surfaces`)}" loading="lazy" decoding="async"></div>
     <div class="preview preview--forest preview--loading"><img src="${dark.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in white, for dark surfaces`)}" loading="lazy" decoding="async"></div>
   </div>
   <div class="loading-card__body">
     <h3 class="card__title">${esc(v.name)}</h3>
     <p class="body">${esc(v.description)}</p>
-    <div class="dl-row">${download(light, "SVG, light", `${v.name}, for light surfaces`)}${download(dark, "SVG, dark", `${v.name}, for dark surfaces`)}</div>
+    <div class="dl-row">${download(light, "SVG, light", `${v.name}, for light surfaces`)}${download(black, "SVG, black", `${v.name}, in black for light surfaces`)}${download(dark, "SVG, dark", `${v.name}, for dark surfaces`)}</div>
   </div>
 </article>`;
   }).join("\n");
   const loading = `<section class="section" id="loading" aria-labelledby="loading-title">
-${sectionHead("loading", "Loading", "Seven animated versions of the mark for loading states, each in two files: the mark in its gradient for light surfaces, and in white for dark ones. Every file is a self-contained SVG with no script: it works inline, in an image tag and as a background. Show the still mark instead when someone prefers reduced motion.")}
+${sectionHead("loading", "Loading", "Seven animated versions of the mark for loading states, each in the brand gradient, black and white. Every file is a self-contained SVG with no script: it works inline, in an image tag and as a background. Show the still mark instead when someone prefers reduced motion.")}
 <div class="grid grid--loading">${loadingCards}</div>
 </section>`;
 

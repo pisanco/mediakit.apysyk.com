@@ -9,6 +9,7 @@
 // the announcement. When the browser refuses, the target text is selected so
 // the visitor can copy it by hand.
 
+import { COLORS } from "../scripts/kit/brand.ts";
 import { mountGenerator } from "./generator.ts";
 
 const announcer = document.getElementById("copy-status");
@@ -47,7 +48,7 @@ const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-col
 function applyTheme(dark: boolean): void {
   document.documentElement.dataset.theme = dark ? "dark" : "light";
   toggle?.setAttribute("aria-pressed", String(dark));
-  if (themeColor) themeColor.content = dark ? "#0c1a12" : "#f6f8f4";
+  if (themeColor) themeColor.content = dark ? "#0c1a12" : COLORS.paper;
 }
 
 function storedTheme(): string | null {

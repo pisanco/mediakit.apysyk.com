@@ -97,11 +97,11 @@ describe("manifest", () => {
     }
   });
 
-  test("offers the seven loading animations as SVG, for light and for dark surfaces", () => {
+  test("exports every promised animation in gradient, white and black", () => {
     const loading = manifest.files.filter((f) => f.group === "loading");
     const names = ["sequence", "turn", "focus", "assemble", "lock", "trace", "pulse"];
     expect(loading.map((f) => f.path).sort()).toEqual(
-      names.flatMap((n) => [`files/loading/apysyk-loading-${n}.svg`, `files/loading/apysyk-loading-${n}-dark.svg`]).sort(),
+      names.flatMap((n) => [`files/loading/apysyk-loading-${n}.svg`, `files/loading/apysyk-loading-${n}-dark.svg`, `files/loading/apysyk-loading-${n}-black.svg`]).sort(),
     );
     for (const f of loading) expect(f.format, f.path).toBe("svg");
   });

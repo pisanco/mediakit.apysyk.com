@@ -1,13 +1,13 @@
 // Seven animated versions of the mark for loading states. Each one is a
 // self-contained SVG (SMIL, no script): it works inline, in an <img> and as a
 // background. The geometry is the mark's own (scripts/logo/mark.ts) and the
-// colours are the brand gradient, so they can never drift from the logo.
+// paint stays tied to the brand gradient and its white/black variants.
 import { MARK_SIZE, markLoops, markPath, type Point } from "../logo/mark.ts";
 import { loopsToPath, num } from "../logo/svg.ts";
 import { COLORS, MARK_GRADIENT } from "./brand.ts";
 
 export interface LoadingVersion {
-  /** File name without extension; the dark file adds "-dark". */
+  /** File name without extension; monochrome files add "-dark" or "-black". */
   slug: string;
   name: string;
   /** What moves, and what the version suits. */
@@ -16,6 +16,8 @@ export interface LoadingVersion {
   light: string;
   /** The mark in white, for dark surfaces. */
   dark: string;
+  /** The mark in black, for light surfaces. */
+  black: string;
 }
 
 const S = MARK_SIZE;
@@ -55,9 +57,9 @@ function gradient(id: string): string {
   return `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" y1="${S}" x2="${S}" y2="0">${stops}</linearGradient>`;
 }
 
-/** The same animation with the mark in white, for dark surfaces: the gradient's definition goes and every fill that used it turns white. */
-function inWhite(svg: string, id: string): string {
-  return svg.replace(gradient(id), "").replaceAll(`url(#${id})`, COLORS.white);
+/** Replace the mark paint without recoloring the white masks or clip geometry. */
+function inMonochrome(svg: string, id: string, color: string): string {
+  return svg.replace(gradient(id), "").replaceAll(`url(#${id})`, color);
 }
 
 function document(defs: string, body: string): string {
@@ -184,5 +186,8 @@ const VERSIONS: { key: string; name: string; description: string; build: () => s
 
 export const LOADING_VERSIONS: LoadingVersion[] = VERSIONS.map(({ key, name, description, build }) => {
   const light = build();
-  return { slug: `apysyk-loading-${key}`, name, description, light, dark: inWhite(light, `loading-${key}`) };
+  const id = `loading-${key}`;
+  // Pulse's translucent glow is paint too; masks must retain their white fills.
+  const black = inMonochrome(light, id, "#000000").replaceAll(`stop-color="${COLORS.mark}"`, 'stop-color="#000000"');
+  return { slug: `apysyk-loading-${key}`, name, description, light, dark: inMonochrome(light, id, COLORS.white), black };
 });
