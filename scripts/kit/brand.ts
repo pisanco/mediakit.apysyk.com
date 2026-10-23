@@ -5,7 +5,7 @@
 
 import { MARK_COLOR } from "../logo/mark.ts";
 
-export const SITE_URL = "https://mediakit.apysyk.com/new/";
+export const SITE_URL = "https://mediakit.apysyk.com/";
 export const CONTACT = "sales@apysyk.com";
 export const FOOTER = "© 2026 Apysyk. All rights reserved.";
 

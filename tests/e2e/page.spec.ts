@@ -103,11 +103,13 @@ test("every download answers 200 and every image is the size its label says", as
   await expect(header).toContainText(`(.zip, ${formatBytes((await zip.body()).length)})`);
 });
 
-test("the share image's URL carries its own hash, so share caches refetch it when it changes", async ({ page, request }, info) => {
+test("root canonical and share metadata identify the published kit and cache its image by hash", async ({ page, request }, info) => {
   test.skip(info.project.name !== "chromium-desktop", "the file is the same for every browser: checked once");
   await open(page);
   const tag = page.locator('meta[property="og:image"]');
   const canonical = (await page.locator('link[rel="canonical"]').getAttribute("href"))!;
+  expect(canonical).toBe("https://mediakit.apysyk.com/");
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", canonical);
   const url = new URL((await tag.getAttribute("content"))!);
   expect(`${url.origin}${url.pathname}`).toBe(new URL("og.png", canonical).href);
   const file = await request.get(`/og.png${url.search}`);
