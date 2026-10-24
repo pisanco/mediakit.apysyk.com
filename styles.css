@@ -49,6 +49,12 @@
   /* The one deep band: white reads 12:1 on it, the lime accent 8:1. */
   --forest: #123c2b;
   --lime: #a4e35a;
+  /* Paper and White as fixed values: the previews of files drawn for light backgrounds keep them in dark mode. */
+  --paper: #f6f8f4;
+  --paper-surface: #ffffff;
+  --paper-ink-dim: #68746c;
+  --selection: #d3ebbc;
+  --header-bg: rgba(246, 248, 244, 0.86);
   --font-display: "Mona Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-text: "Mona Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
@@ -61,6 +67,27 @@
   --section-pad: 96px;
   --shadow-tile: 0 1px 1px rgba(13, 26, 18, 0.04), 0 8px 24px -8px rgba(13, 26, 18, 0.16);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark: the page on an ink near Forest, cards one step lighter, Lime where the light page uses Text Green.
+   Text tokens hold at least 4.5:1 on --bg and --surface here too. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c1a12;
+  --surface: #14271c;
+  --ink: #f4f5f1;
+  --ink-2: #cfd8d1;
+  --ink-3: #b8c3bb;
+  --ink-dim: #9aa89e;
+  --line: rgba(244, 245, 241, 0.1);
+  --line-2: rgba(244, 245, 241, 0.16);
+  --line-3: rgba(244, 245, 241, 0.32);
+  --apy-2: #a4e35a;
+  --apy-strong: #2f8a4a;
+  --apy-tint: rgba(164, 227, 90, 0.14);
+  --selection: rgba(164, 227, 90, 0.35);
+  --header-bg: rgba(12, 26, 18, 0.82);
+  --shadow-tile: 0 1px 1px rgba(0, 0, 0, 0.3), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
 }
 
 @media (min-width: 600px) {
@@ -78,8 +105,8 @@
   }
 }
 
-/* Wide screens: the section links fit beside the lockup in one 72 px row. */
-@media (min-width: 1300px) {
+/* Wide screens: the nine section links fit beside the lockup, the toggle and the download in one 72 px row. */
+@media (min-width: 1700px) {
   :root {
     --header-h: 72px;
   }
@@ -168,7 +195,7 @@ code,
 }
 
 ::selection {
-  background: #d3ebbc;
+  background: var(--selection);
   color: var(--ink);
 }
 
@@ -403,7 +430,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(246, 248, 244, 0.86);
+  background: var(--header-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--line);
@@ -425,10 +452,62 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   white-space: nowrap;
 }
 
-/* The kit's own lockup for light backgrounds. */
+/* The kit's own lockup: the file for light backgrounds, or for dark ones once the page is dark. */
 .brand__lockup {
   width: 120px;
   height: auto;
+}
+
+.brand__lockup--dark,
+:root[data-theme="dark"] .brand__lockup--light {
+  display: none;
+}
+
+:root[data-theme="dark"] .brand__lockup--dark {
+  display: block;
+}
+
+/* The theme toggle: a round button beside the download button, moon on the light page, sun on the dark one. */
+.theme-toggle {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line-2);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  box-shadow: inset 0 0 0 1px var(--line-3);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--apy);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle__sun,
+:root[data-theme="dark"] .theme-toggle__moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__sun {
+  display: block;
+}
+
+.theme-toggle + .button--header {
+  margin-left: 0;
 }
 
 .brand__kit {
@@ -448,7 +527,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   font-size: 0.875rem;
 }
 
-/* Below 1300 px the section links take a second row that scrolls sideways on its own. */
+/* Below 1700 px the section links take a second row that scrolls sideways on its own. */
 .nav {
   order: 3;
   flex: 1 0 100%;
@@ -510,13 +589,13 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   }
 }
 
-@media (max-width: 1399px) {
+@media (max-width: 1699px) {
   .button__wide {
     display: none;
   }
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1700px) {
   .site-header__inner {
     flex-wrap: nowrap;
     gap: 20px;
@@ -624,7 +703,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 
 @media (min-width: 680px) {
   .hero__stats {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
@@ -741,7 +820,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 
 /* Each logo on the background its file is drawn for. */
 .preview--light {
-  background: var(--bg);
+  background: var(--paper);
 }
 
 .preview--dark,
@@ -751,7 +830,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 
 /* Renders fill the frame; a hairline above them keeps a Paper render's edge visible on a white card. */
 .preview--frame {
-  background: var(--bg);
+  background: var(--paper);
 }
 
 .preview--frame::after {
@@ -768,28 +847,10 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   height: auto;
 }
 
-/* A fixed tile per grid; the render sits inside at its own proportions, never upscaled. */
-.preview--fit {
-  aspect-ratio: var(--tile, 16 / 10);
-  background: var(--bg);
-}
-
-.preview--fit .preview__img {
-  position: absolute;
-  inset: 0;
-  width: auto;
-  height: auto;
-  max-width: calc(100% - 40px);
-  max-height: calc(100% - 40px);
-  margin: auto;
-  box-shadow:
-    0 0 0 1px var(--line),
-    0 8px 20px -10px rgba(13, 26, 18, 0.22);
-}
 
 /* ---------- Logo ---------- */
 
-/* Nine files: one, two, then three columns, so the wide grid closes in three full rows. */
+/* Fifteen files: one, two, then three columns, so the wide grid closes in five full rows. */
 .grid--logos {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -838,6 +899,18 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   width: 22%;
 }
 
+.logo-card .preview--stacked img {
+  width: 30%;
+}
+
+.logo-card .preview--badge img {
+  width: 70%;
+}
+
+.logo-card .preview--tile img {
+  width: 26%;
+}
+
 .logo-card__body {
   display: grid;
   gap: 14px;
@@ -847,6 +920,55 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 .grid--avatars {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
   max-width: 760px;
+}
+
+/* ---------- Loading ---------- */
+
+/* Seven files: one, two, then four columns, so two rows close with one short. */
+.grid--loading {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 600px) {
+  .grid--loading {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .grid--loading {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.loading-card {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: 10px 10px 22px;
+}
+
+/* The two previews side by side: the gradient version on Paper, the white one on Forest. */
+.loading-card__previews {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.loading-card .preview {
+  aspect-ratio: 1;
+}
+
+/* The animation plays at about a third of the tile: the size of a loader in a screen, not a hero. */
+.loading-card .preview img {
+  width: 40%;
+  height: auto;
+}
+
+.loading-card__body {
+  display: grid;
+  gap: 12px;
+  padding-inline: 12px;
 }
 
 .preview__img--avatar {
@@ -876,7 +998,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   margin-top: 16px;
   padding: clamp(16px, 3vw, 40px);
   border-radius: calc(var(--radius) - 10px);
-  background: var(--bg);
+  background: var(--paper);
 }
 
 .clearspace__svg {
@@ -892,13 +1014,18 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   margin-top: 16px;
   padding: 40px 32px 28px;
   border-radius: calc(var(--radius) - 10px);
-  background: var(--bg);
+  background: var(--paper);
 }
 
 .minsize figure {
   display: grid;
   gap: 14px;
   justify-items: start;
+}
+
+/* The captions sit on the fixed Paper panel, so they keep Paper's ink in dark mode too. */
+.minsize figcaption {
+  color: var(--paper-ink-dim);
 }
 
 .minsize__mark {
@@ -940,7 +1067,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: calc(var(--radius) - 6px);
-  background: var(--surface);
+  background: var(--paper-surface);
 }
 
 /* A red-free "no" mark: a diagonal rule across each example. */
@@ -1215,50 +1342,88 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   grid-column: 2;
 }
 
-.grid--social,
-.grid--ads {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+.grid--families {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
 }
 
-.grid--ads {
-  --tile: 4 / 3;
+.family-card {
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
 }
 
-.grid--social {
-  grid-auto-flow: dense;
+/* Artwork meets the card's edges at its own ratio: no paper mat and no cropped logo. */
+.family-card .preview {
+  align-self: start;
+  border-radius: 0;
 }
 
-/* Two columns plus the gap, at the height of a 16:10 tile: about 3.3:1 at every grid width. */
-@media (min-width: 800px) {
-  .asset-card--span {
-    grid-column: span 2;
-    --tile: 3.3;
+.family-card__body {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: clamp(18px, 2.5vw, 30px);
+}
+
+.family-card__body .body {
+  font-size: 0.9rem;
+}
+
+.family-card__downloads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.family-card__downloads li,
+.family-card__download .dl__label {
+  min-width: 0;
+}
+
+.family-card__download {
+  justify-content: space-between;
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  white-space: normal;
+}
+
+.family-card__download .dl__meta {
+  flex: none;
+  font-size: 0.68rem;
+}
+
+.dl__detail {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-dim);
+}
+
+.family-card--wide {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 720px) {
+  .family-card--wide {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .family-card--wide .family-card__body {
+    align-self: center;
   }
 }
 
-/* Phones: a leaderboard in a tall tile would shrink to a sliver; its tile takes the strip's own shape. */
-@media (max-width: 599px) {
-  .asset-card--strip .preview--fit {
-    aspect-ratio: auto;
-    padding: 16px;
+@media (min-width: 980px) {
+  .grid--families {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .asset-card--strip .preview--fit .preview__img {
-    position: static;
-    width: 100%;
-    max-width: 100%;
-    max-height: none;
-  }
-}
-
-.grid--email {
-  --tile: 3 / 1;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr));
-}
-
-.grid--covers {
-  --tile: 1200 / 700;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 }
 
 .wall-group__head {
@@ -1293,6 +1458,12 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   }
 }
 
+@media (min-width: 1200px) {
+  .grid--walls {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .wall-card {
   display: grid;
   gap: 18px;
@@ -1324,7 +1495,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   }
 
   .wall-group--tablet .wall-card {
-    grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
   }
 }
 
@@ -1403,6 +1574,102 @@ a:not(.button, .dl, .brand, .skip-link):hover {
     align-items: flex-start;
     justify-content: space-between;
   }
+}
+
+/* ---------- Generator ---------- */
+
+.generator {
+  display: grid;
+  gap: 20px;
+  padding: clamp(16px, 2.5vw, 28px);
+}
+
+.generator__controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  align-items: end;
+}
+
+@media (min-width: 800px) {
+  .generator__controls {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  }
+}
+
+.generator__field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.generator__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* The selects dress like the ghost buttons: the page's surface, a hairline, the page's type. */
+.generator__select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 40px 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line-3);
+  color: var(--ink);
+  font: 500 0.95rem var(--font-text);
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-dim) 50%), linear-gradient(135deg, var(--ink-dim) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.generator__select:focus-visible {
+  outline: 2px solid var(--apy);
+  outline-offset: 2px;
+}
+
+.generator__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.generator__actions .button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* The stage takes the format's shape once something is generated; before that it is a short note. */
+.generator__stage {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  transition: opacity 0.2s var(--ease-out);
+}
+
+.generator__stage.is-busy {
+  opacity: 0.5;
+}
+
+.generator__hint {
+  max-width: 44ch;
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--paper-ink-dim);
+}
+
+.generator__preview {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.generator__caption {
+  min-height: 1.2em;
 }
 
 /* ---------- Contact: the page's one deep band ---------- */
