@@ -8,7 +8,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5730,
+      "bytes": 5669,
       "path": "files/logos/svg/apysyk-lockup-on-dark.svg"
     },
     {
@@ -16,9 +16,9 @@
       "category": "png",
       "name": "Lockup on dark",
       "width": 512,
-      "height": 74,
+      "height": 85,
       "format": "png",
-      "bytes": 12662,
+      "bytes": 14129,
       "path": "files/logos/png/apysyk-lockup-on-dark-512.png"
     },
     {
@@ -26,9 +26,9 @@
       "category": "png",
       "name": "Lockup on dark",
       "width": 1024,
-      "height": 148,
+      "height": 169,
       "format": "png",
-      "bytes": 26776,
+      "bytes": 29078,
       "path": "files/logos/png/apysyk-lockup-on-dark-1024.png"
     },
     {
@@ -36,9 +36,9 @@
       "category": "png",
       "name": "Lockup on dark",
       "width": 2048,
-      "height": 296,
+      "height": 338,
       "format": "png",
-      "bytes": 64496,
+      "bytes": 72235,
       "path": "files/logos/png/apysyk-lockup-on-dark-2048.png"
     },
     {
@@ -48,7 +48,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5730,
+      "bytes": 5669,
       "path": "files/logos/svg/apysyk-lockup-on-light.svg"
     },
     {
@@ -56,9 +56,9 @@
       "category": "png",
       "name": "Lockup on light",
       "width": 512,
-      "height": 74,
+      "height": 85,
       "format": "png",
-      "bytes": 10022,
+      "bytes": 11375,
       "path": "files/logos/png/apysyk-lockup-on-light-512.png"
     },
     {
@@ -66,9 +66,9 @@
       "category": "png",
       "name": "Lockup on light",
       "width": 1024,
-      "height": 148,
+      "height": 169,
       "format": "png",
-      "bytes": 21000,
+      "bytes": 22787,
       "path": "files/logos/png/apysyk-lockup-on-light-1024.png"
     },
     {
@@ -76,9 +76,9 @@
       "category": "png",
       "name": "Lockup on light",
       "width": 2048,
-      "height": 296,
+      "height": 338,
       "format": "png",
-      "bytes": 52315,
+      "bytes": 59482,
       "path": "files/logos/png/apysyk-lockup-on-light-2048.png"
     },
     {
@@ -128,7 +128,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5946,
+      "bytes": 5902,
       "path": "files/logos/svg/apysyk-lockup-stacked-on-dark.svg"
     },
     {
@@ -136,9 +136,9 @@
       "category": "png",
       "name": "Stacked lockup on dark",
       "width": 512,
-      "height": 378,
+      "height": 381,
       "format": "png",
-      "bytes": 25486,
+      "bytes": 26715,
       "path": "files/logos/png/apysyk-lockup-stacked-on-dark-512.png"
     },
     {
@@ -146,9 +146,9 @@
       "category": "png",
       "name": "Stacked lockup on dark",
       "width": 1024,
-      "height": 756,
+      "height": 762,
       "format": "png",
-      "bytes": 70533,
+      "bytes": 71280,
       "path": "files/logos/png/apysyk-lockup-stacked-on-dark-1024.png"
     },
     {
@@ -156,9 +156,9 @@
       "category": "png",
       "name": "Stacked lockup on dark",
       "width": 2048,
-      "height": 1511,
+      "height": 1525,
       "format": "png",
-      "bytes": 255412,
+      "bytes": 260479,
       "path": "files/logos/png/apysyk-lockup-stacked-on-dark-2048.png"
     },
     {
@@ -168,7 +168,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5946,
+      "bytes": 5902,
       "path": "files/logos/svg/apysyk-lockup-stacked-on-light.svg"
     },
     {
@@ -176,9 +176,9 @@
       "category": "png",
       "name": "Stacked lockup on light",
       "width": 512,
-      "height": 378,
+      "height": 381,
       "format": "png",
-      "bytes": 22035,
+      "bytes": 22925,
       "path": "files/logos/png/apysyk-lockup-stacked-on-light-512.png"
     },
     {
@@ -186,9 +186,9 @@
       "category": "png",
       "name": "Stacked lockup on light",
       "width": 1024,
-      "height": 756,
+      "height": 762,
       "format": "png",
-      "bytes": 63578,
+      "bytes": 63411,
       "path": "files/logos/png/apysyk-lockup-stacked-on-light-1024.png"
     },
     {
@@ -196,9 +196,9 @@
       "category": "png",
       "name": "Stacked lockup on light",
       "width": 2048,
-      "height": 1511,
+      "height": 1525,
       "format": "png",
-      "bytes": 240522,
+      "bytes": 244058,
       "path": "files/logos/png/apysyk-lockup-stacked-on-light-2048.png"
     },
     {
@@ -208,7 +208,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5812,
+      "bytes": 5751,
       "path": "files/logos/svg/apysyk-lockup-on-gradient.svg"
     },
     {
@@ -216,9 +216,9 @@
       "category": "png",
       "name": "Lockup on gradient",
       "width": 512,
-      "height": 142,
+      "height": 158,
       "format": "png",
-      "bytes": 41968,
+      "bytes": 50405,
       "path": "files/logos/png/apysyk-lockup-on-gradient-512.png"
     },
     {
@@ -226,9 +226,9 @@
       "category": "png",
       "name": "Lockup on gradient",
       "width": 1024,
-      "height": 283,
+      "height": 316,
       "format": "png",
-      "bytes": 142667,
+      "bytes": 165159,
       "path": "files/logos/png/apysyk-lockup-on-gradient-1024.png"
     },
     {
@@ -236,9 +236,9 @@
       "category": "png",
       "name": "Lockup on gradient",
       "width": 2048,
-      "height": 566,
+      "height": 633,
       "format": "png",
-      "bytes": 450543,
+      "bytes": 522192,
       "path": "files/logos/png/apysyk-lockup-on-gradient-2048.png"
     },
     {
@@ -248,7 +248,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 4732,
+      "bytes": 4465,
       "path": "files/logos/svg/apysyk-wordmark-light.svg"
     },
     {
@@ -256,9 +256,9 @@
       "category": "png",
       "name": "Wordmark, light",
       "width": 512,
-      "height": 93,
+      "height": 96,
       "format": "png",
-      "bytes": 11180,
+      "bytes": 9193,
       "path": "files/logos/png/apysyk-wordmark-light-512.png"
     },
     {
@@ -266,9 +266,9 @@
       "category": "png",
       "name": "Wordmark, light",
       "width": 1024,
-      "height": 186,
+      "height": 192,
       "format": "png",
-      "bytes": 22761,
+      "bytes": 18472,
       "path": "files/logos/png/apysyk-wordmark-light-1024.png"
     },
     {
@@ -276,9 +276,9 @@
       "category": "png",
       "name": "Wordmark, light",
       "width": 2048,
-      "height": 372,
+      "height": 385,
       "format": "png",
-      "bytes": 46302,
+      "bytes": 37530,
       "path": "files/logos/png/apysyk-wordmark-light-2048.png"
     },
     {
@@ -288,7 +288,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 4732,
+      "bytes": 4465,
       "path": "files/logos/svg/apysyk-wordmark-dark.svg"
     },
     {
@@ -296,9 +296,9 @@
       "category": "png",
       "name": "Wordmark, dark",
       "width": 512,
-      "height": 93,
+      "height": 96,
       "format": "png",
-      "bytes": 7825,
+      "bytes": 8438,
       "path": "files/logos/png/apysyk-wordmark-dark-512.png"
     },
     {
@@ -306,9 +306,9 @@
       "category": "png",
       "name": "Wordmark, dark",
       "width": 1024,
-      "height": 186,
+      "height": 192,
       "format": "png",
-      "bytes": 15825,
+      "bytes": 16815,
       "path": "files/logos/png/apysyk-wordmark-dark-1024.png"
     },
     {
@@ -316,9 +316,9 @@
       "category": "png",
       "name": "Wordmark, dark",
       "width": 2048,
-      "height": 372,
+      "height": 385,
       "format": "png",
-      "bytes": 31880,
+      "bytes": 33773,
       "path": "files/logos/png/apysyk-wordmark-dark-2048.png"
     },
     {
@@ -368,7 +368,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5505,
+      "bytes": 5444,
       "path": "files/logos/svg/apysyk-lockup-white.svg"
     },
     {
@@ -376,9 +376,9 @@
       "category": "png",
       "name": "Lockup, white",
       "width": 512,
-      "height": 74,
+      "height": 85,
       "format": "png",
-      "bytes": 8189,
+      "bytes": 8858,
       "path": "files/logos/png/apysyk-lockup-white-512.png"
     },
     {
@@ -386,9 +386,9 @@
       "category": "png",
       "name": "Lockup, white",
       "width": 1024,
-      "height": 148,
+      "height": 169,
       "format": "png",
-      "bytes": 16200,
+      "bytes": 16885,
       "path": "files/logos/png/apysyk-lockup-white-1024.png"
     },
     {
@@ -396,9 +396,9 @@
       "category": "png",
       "name": "Lockup, white",
       "width": 2048,
-      "height": 296,
+      "height": 338,
       "format": "png",
-      "bytes": 31370,
+      "bytes": 33795,
       "path": "files/logos/png/apysyk-lockup-white-2048.png"
     },
     {
@@ -408,7 +408,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5505,
+      "bytes": 5444,
       "path": "files/logos/svg/apysyk-lockup-black.svg"
     },
     {
@@ -416,9 +416,9 @@
       "category": "png",
       "name": "Lockup, black",
       "width": 512,
-      "height": 74,
+      "height": 85,
       "format": "png",
-      "bytes": 7497,
+      "bytes": 8060,
       "path": "files/logos/png/apysyk-lockup-black-512.png"
     },
     {
@@ -426,9 +426,9 @@
       "category": "png",
       "name": "Lockup, black",
       "width": 1024,
-      "height": 148,
+      "height": 169,
       "format": "png",
-      "bytes": 14779,
+      "bytes": 15394,
       "path": "files/logos/png/apysyk-lockup-black-1024.png"
     },
     {
@@ -436,9 +436,9 @@
       "category": "png",
       "name": "Lockup, black",
       "width": 2048,
-      "height": 296,
+      "height": 338,
       "format": "png",
-      "bytes": 28612,
+      "bytes": 30760,
       "path": "files/logos/png/apysyk-lockup-black-2048.png"
     },
     {
@@ -448,7 +448,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5721,
+      "bytes": 5677,
       "path": "files/logos/svg/apysyk-lockup-stacked-white.svg"
     },
     {
@@ -456,9 +456,9 @@
       "category": "png",
       "name": "Stacked lockup, white",
       "width": 512,
-      "height": 378,
+      "height": 381,
       "format": "png",
-      "bytes": 12832,
+      "bytes": 13459,
       "path": "files/logos/png/apysyk-lockup-stacked-white-512.png"
     },
     {
@@ -466,9 +466,9 @@
       "category": "png",
       "name": "Stacked lockup, white",
       "width": 1024,
-      "height": 756,
+      "height": 762,
       "format": "png",
-      "bytes": 27406,
+      "bytes": 28918,
       "path": "files/logos/png/apysyk-lockup-stacked-white-1024.png"
     },
     {
@@ -476,9 +476,9 @@
       "category": "png",
       "name": "Stacked lockup, white",
       "width": 2048,
-      "height": 1511,
+      "height": 1525,
       "format": "png",
-      "bytes": 58675,
+      "bytes": 60941,
       "path": "files/logos/png/apysyk-lockup-stacked-white-2048.png"
     },
     {
@@ -488,7 +488,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5721,
+      "bytes": 5677,
       "path": "files/logos/svg/apysyk-lockup-stacked-black.svg"
     },
     {
@@ -496,9 +496,9 @@
       "category": "png",
       "name": "Stacked lockup, black",
       "width": 512,
-      "height": 378,
+      "height": 381,
       "format": "png",
-      "bytes": 11966,
+      "bytes": 12639,
       "path": "files/logos/png/apysyk-lockup-stacked-black-512.png"
     },
     {
@@ -506,9 +506,9 @@
       "category": "png",
       "name": "Stacked lockup, black",
       "width": 1024,
-      "height": 756,
+      "height": 762,
       "format": "png",
-      "bytes": 25819,
+      "bytes": 26987,
       "path": "files/logos/png/apysyk-lockup-stacked-black-1024.png"
     },
     {
@@ -516,9 +516,9 @@
       "category": "png",
       "name": "Stacked lockup, black",
       "width": 2048,
-      "height": 1511,
+      "height": 1525,
       "format": "png",
-      "bytes": 54899,
+      "bytes": 57374,
       "path": "files/logos/png/apysyk-lockup-stacked-black-2048.png"
     },
     {
@@ -778,7 +778,7 @@
       "width": 1128,
       "height": 191,
       "format": "png",
-      "bytes": 133852,
+      "bytes": 133523,
       "path": "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-linkedin-company-cover-1128x191.webp",
@@ -793,7 +793,7 @@
       "width": 1584,
       "height": 396,
       "format": "png",
-      "bytes": 373958,
+      "bytes": 373614,
       "path": "files/banners/social/apysyk-linkedin-profile-banner-1584x396.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-linkedin-profile-banner-1584x396.webp",
@@ -808,7 +808,7 @@
       "width": 1500,
       "height": 500,
       "format": "png",
-      "bytes": 452910,
+      "bytes": 452404,
       "path": "files/banners/social/apysyk-x-header-1500x500.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-x-header-1500x500.webp",
@@ -823,7 +823,7 @@
       "width": 1640,
       "height": 624,
       "format": "png",
-      "bytes": 655067,
+      "bytes": 654104,
       "path": "files/banners/social/apysyk-facebook-cover-1640x624.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-facebook-cover-1640x624.webp",
@@ -838,7 +838,7 @@
       "width": 2560,
       "height": 1440,
       "format": "png",
-      "bytes": 1787551,
+      "bytes": 1786139,
       "path": "files/banners/social/apysyk-youtube-banner-2560x1440.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-youtube-banner-2560x1440.webp",
@@ -853,7 +853,7 @@
       "width": 1280,
       "height": 640,
       "format": "png",
-      "bytes": 519325,
+      "bytes": 519056,
       "path": "files/banners/social/apysyk-github-social-preview-1280x640.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-github-social-preview-1280x640.webp",
@@ -868,7 +868,7 @@
       "width": 1200,
       "height": 630,
       "format": "png",
-      "bytes": 428190,
+      "bytes": 427135,
       "path": "files/banners/social/apysyk-share-card-1200x630.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-share-card-1200x630.webp",
@@ -884,7 +884,7 @@
       "width": 1128,
       "height": 191,
       "format": "png",
-      "bytes": 163674,
+      "bytes": 163335,
       "path": "files/banners/social/apysyk-linkedin-company-cover-bridge-1128x191.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-linkedin-company-cover-bridge-1128x191.webp",
@@ -900,7 +900,7 @@
       "width": 1584,
       "height": 396,
       "format": "png",
-      "bytes": 509851,
+      "bytes": 509247,
       "path": "files/banners/social/apysyk-linkedin-profile-banner-bridge-1584x396.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-linkedin-profile-banner-bridge-1584x396.webp",
@@ -916,7 +916,7 @@
       "width": 1500,
       "height": 500,
       "format": "png",
-      "bytes": 615737,
+      "bytes": 615767,
       "path": "files/banners/social/apysyk-x-header-bridge-1500x500.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-x-header-bridge-1500x500.webp",
@@ -932,7 +932,7 @@
       "width": 1640,
       "height": 624,
       "format": "png",
-      "bytes": 841632,
+      "bytes": 840244,
       "path": "files/banners/social/apysyk-facebook-cover-bridge-1640x624.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-facebook-cover-bridge-1640x624.webp",
@@ -948,7 +948,7 @@
       "width": 2560,
       "height": 1440,
       "format": "png",
-      "bytes": 2785324,
+      "bytes": 2784636,
       "path": "files/banners/social/apysyk-youtube-banner-bridge-2560x1440.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-youtube-banner-bridge-2560x1440.webp",
@@ -964,7 +964,7 @@
       "width": 1280,
       "height": 640,
       "format": "png",
-      "bytes": 630784,
+      "bytes": 630092,
       "path": "files/banners/social/apysyk-github-social-preview-bridge-1280x640.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-github-social-preview-bridge-1280x640.webp",
@@ -980,7 +980,7 @@
       "width": 1200,
       "height": 630,
       "format": "png",
-      "bytes": 575375,
+      "bytes": 574827,
       "path": "files/banners/social/apysyk-share-card-bridge-1200x630.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-share-card-bridge-1200x630.webp",
@@ -995,7 +995,7 @@
       "width": 1080,
       "height": 1080,
       "format": "png",
-      "bytes": 666557,
+      "bytes": 667515,
       "path": "files/banners/social/apysyk-instagram-square-1080x1080.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-instagram-square-1080x1080.webp",
@@ -1010,7 +1010,7 @@
       "width": 1080,
       "height": 1350,
       "format": "png",
-      "bytes": 786978,
+      "bytes": 787195,
       "path": "files/banners/social/apysyk-instagram-portrait-1080x1350.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-instagram-portrait-1080x1350.webp",
@@ -1025,7 +1025,7 @@
       "width": 1080,
       "height": 1920,
       "format": "png",
-      "bytes": 1010554,
+      "bytes": 1010016,
       "path": "files/banners/social/apysyk-instagram-story-1080x1920.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-instagram-story-1080x1920.webp",
@@ -1040,7 +1040,7 @@
       "width": 600,
       "height": 150,
       "format": "png",
-      "bytes": 13822,
+      "bytes": 13861,
       "path": "files/banners/email/apysyk-email-signature-600x150.png",
       "thumb": {
         "path": "thumbs/banners/email/apysyk-email-signature-600x150.webp",
@@ -1055,7 +1055,7 @@
       "width": 1200,
       "height": 300,
       "format": "png",
-      "bytes": 35087,
+      "bytes": 34874,
       "path": "files/banners/email/apysyk-email-signature-1200x300.png",
       "thumb": {
         "path": "thumbs/banners/email/apysyk-email-signature-1200x300.webp",
@@ -1070,7 +1070,7 @@
       "width": 300,
       "height": 250,
       "format": "png",
-      "bytes": 60187,
+      "bytes": 59956,
       "path": "files/banners/display/apysyk-ad-300x250.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-300x250.webp",
@@ -1085,7 +1085,7 @@
       "width": 336,
       "height": 280,
       "format": "png",
-      "bytes": 73139,
+      "bytes": 72988,
       "path": "files/banners/display/apysyk-ad-336x280.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-336x280.webp",
@@ -1100,7 +1100,7 @@
       "width": 728,
       "height": 90,
       "format": "png",
-      "bytes": 48519,
+      "bytes": 48511,
       "path": "files/banners/display/apysyk-ad-728x90.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-728x90.webp",
@@ -1115,7 +1115,7 @@
       "width": 970,
       "height": 90,
       "format": "png",
-      "bytes": 58841,
+      "bytes": 58472,
       "path": "files/banners/display/apysyk-ad-970x90.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-970x90.webp",
@@ -1130,7 +1130,7 @@
       "width": 970,
       "height": 250,
       "format": "png",
-      "bytes": 157972,
+      "bytes": 157299,
       "path": "files/banners/display/apysyk-ad-970x250.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-970x250.webp",
@@ -1145,7 +1145,7 @@
       "width": 160,
       "height": 600,
       "format": "png",
-      "bytes": 68239,
+      "bytes": 67593,
       "path": "files/banners/display/apysyk-ad-160x600.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-160x600.webp",
@@ -1160,7 +1160,7 @@
       "width": 300,
       "height": 600,
       "format": "png",
-      "bytes": 115691,
+      "bytes": 115188,
       "path": "files/banners/display/apysyk-ad-300x600.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-300x600.webp",
@@ -1190,7 +1190,7 @@
       "width": 320,
       "height": 100,
       "format": "png",
-      "bytes": 22870,
+      "bytes": 22457,
       "path": "files/banners/display/apysyk-ad-320x100.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-320x100.webp",
@@ -1205,7 +1205,7 @@
       "width": 1200,
       "height": 630,
       "format": "jpg",
-      "bytes": 65689,
+      "bytes": 64909,
       "path": "files/banners/imagery/apysyk-cover-home-1200x630.jpg",
       "thumb": {
         "path": "thumbs/banners/imagery/apysyk-cover-home-1200x630.webp",
@@ -1220,7 +1220,7 @@
       "width": 1200,
       "height": 630,
       "format": "jpg",
-      "bytes": 66808,
+      "bytes": 66027,
       "path": "files/banners/imagery/apysyk-cover-platform-1200x630.jpg",
       "thumb": {
         "path": "thumbs/banners/imagery/apysyk-cover-platform-1200x630.webp",
@@ -1235,7 +1235,7 @@
       "width": 1200,
       "height": 630,
       "format": "jpg",
-      "bytes": 62192,
+      "bytes": 61400,
       "path": "files/banners/imagery/apysyk-cover-solutions-1200x630.jpg",
       "thumb": {
         "path": "thumbs/banners/imagery/apysyk-cover-solutions-1200x630.webp",
@@ -1251,7 +1251,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 37272,
+      "bytes": 38374,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-1920x1080.webp",
@@ -1267,7 +1267,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 54419,
+      "bytes": 55636,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-2560x1440.webp",
@@ -1283,7 +1283,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 97483,
+      "bytes": 100793,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3840x2160.webp",
@@ -1299,7 +1299,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 151661,
+      "bytes": 152668,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-5120x2880.webp",
@@ -1315,7 +1315,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 62728,
+      "bytes": 63650,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3440x1440.webp",
@@ -1331,7 +1331,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 60145,
+      "bytes": 61407,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-2560x1600.webp",
@@ -1347,7 +1347,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 81006,
+      "bytes": 81917,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3024x1964.webp",
@@ -1363,7 +1363,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 97783,
+      "bytes": 97146,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3456x2234.webp",
@@ -1379,7 +1379,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 48582,
+      "bytes": 48341,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1179x2556.webp",
@@ -1395,7 +1395,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 54806,
+      "bytes": 54987,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1290x2796.webp",
@@ -1411,7 +1411,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 43472,
+      "bytes": 43936,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1080x2400.webp",
@@ -1427,7 +1427,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 62221,
+      "bytes": 64446,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1440x3200.webp",
@@ -1443,7 +1443,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 80093,
+      "bytes": 80577,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-light-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-light-2048x2732.webp",
@@ -1459,7 +1459,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 60367,
+      "bytes": 62152,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-light-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-light-1640x2360.webp",
@@ -1475,7 +1475,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 44651,
+      "bytes": 43815,
       "path": "files/wallpapers/video/apysyk-video-call-light-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-light-1920x1080.webp",
@@ -1491,7 +1491,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 35682,
+      "bytes": 36913,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-1920x1080.webp",
@@ -1507,7 +1507,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 52676,
+      "bytes": 53413,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-2560x1440.webp",
@@ -1523,7 +1523,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 94596,
+      "bytes": 97161,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-3840x2160.webp",
@@ -1539,7 +1539,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 148610,
+      "bytes": 148862,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-5120x2880.webp",
@@ -1555,7 +1555,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 60753,
+      "bytes": 60879,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-3440x1440.webp",
@@ -1571,7 +1571,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 58154,
+      "bytes": 59123,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-2560x1600.webp",
@@ -1587,7 +1587,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 78149,
+      "bytes": 79028,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-3024x1964.webp",
@@ -1603,7 +1603,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 94056,
+      "bytes": 94112,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-forest-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-forest-3456x2234.webp",
@@ -1619,7 +1619,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 46106,
+      "bytes": 45694,
       "path": "files/wallpapers/phone/apysyk-wallpaper-forest-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-forest-1179x2556.webp",
@@ -1635,7 +1635,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 52236,
+      "bytes": 52227,
       "path": "files/wallpapers/phone/apysyk-wallpaper-forest-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-forest-1290x2796.webp",
@@ -1651,7 +1651,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 40984,
+      "bytes": 41401,
       "path": "files/wallpapers/phone/apysyk-wallpaper-forest-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-forest-1080x2400.webp",
@@ -1667,7 +1667,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 59587,
+      "bytes": 61309,
       "path": "files/wallpapers/phone/apysyk-wallpaper-forest-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-forest-1440x3200.webp",
@@ -1683,7 +1683,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 76436,
+      "bytes": 77226,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-forest-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-forest-2048x2732.webp",
@@ -1699,7 +1699,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 58150,
+      "bytes": 59046,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-forest-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-forest-1640x2360.webp",
@@ -1715,7 +1715,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 40475,
+      "bytes": 39645,
       "path": "files/wallpapers/video/apysyk-video-call-forest-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-forest-1920x1080.webp",
@@ -1731,7 +1731,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 51128,
+      "bytes": 52394,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-1920x1080.webp",
@@ -1747,7 +1747,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 73184,
+      "bytes": 74241,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-2560x1440.webp",
@@ -1763,7 +1763,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 126603,
+      "bytes": 130010,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-3840x2160.webp",
@@ -1779,7 +1779,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 191726,
+      "bytes": 192028,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-5120x2880.webp",
@@ -1795,7 +1795,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 83078,
+      "bytes": 83537,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-3440x1440.webp",
@@ -1811,7 +1811,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 80307,
+      "bytes": 81585,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-2560x1600.webp",
@@ -1827,7 +1827,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 106312,
+      "bytes": 107186,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-3024x1964.webp",
@@ -1843,7 +1843,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 127532,
+      "bytes": 126558,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-gradient-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-gradient-3456x2234.webp",
@@ -1859,7 +1859,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 63473,
+      "bytes": 62959,
       "path": "files/wallpapers/phone/apysyk-wallpaper-gradient-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-gradient-1179x2556.webp",
@@ -1875,7 +1875,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 71098,
+      "bytes": 71008,
       "path": "files/wallpapers/phone/apysyk-wallpaper-gradient-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-gradient-1290x2796.webp",
@@ -1891,7 +1891,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 56729,
+      "bytes": 57409,
       "path": "files/wallpapers/phone/apysyk-wallpaper-gradient-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-gradient-1080x2400.webp",
@@ -1907,7 +1907,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 79313,
+      "bytes": 81658,
       "path": "files/wallpapers/phone/apysyk-wallpaper-gradient-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-gradient-1440x3200.webp",
@@ -1923,7 +1923,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 103593,
+      "bytes": 103801,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-gradient-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-gradient-2048x2732.webp",
@@ -1939,7 +1939,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 79470,
+      "bytes": 81011,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-gradient-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-gradient-1640x2360.webp",
@@ -1955,7 +1955,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 57440,
+      "bytes": 56572,
       "path": "files/wallpapers/video/apysyk-video-call-gradient-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-gradient-1920x1080.webp",
@@ -1971,7 +1971,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 60639,
+      "bytes": 62043,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-1920x1080.webp",
@@ -1987,7 +1987,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 103239,
+      "bytes": 104099,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-2560x1440.webp",
@@ -2003,7 +2003,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 184836,
+      "bytes": 188405,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-3840x2160.webp",
@@ -2019,7 +2019,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 284857,
+      "bytes": 285209,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-5120x2880.webp",
@@ -2035,7 +2035,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 122724,
+      "bytes": 122968,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-3440x1440.webp",
@@ -2051,7 +2051,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 98969,
+      "bytes": 100216,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-2560x1600.webp",
@@ -2067,7 +2067,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 131914,
+      "bytes": 133098,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-3024x1964.webp",
@@ -2083,7 +2083,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 158939,
+      "bytes": 158953,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-aurora-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-aurora-3456x2234.webp",
@@ -2099,7 +2099,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 86335,
+      "bytes": 86100,
       "path": "files/wallpapers/phone/apysyk-wallpaper-aurora-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-aurora-1179x2556.webp",
@@ -2115,7 +2115,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 97768,
+      "bytes": 97838,
       "path": "files/wallpapers/phone/apysyk-wallpaper-aurora-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-aurora-1290x2796.webp",
@@ -2131,7 +2131,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 77058,
+      "bytes": 77607,
       "path": "files/wallpapers/phone/apysyk-wallpaper-aurora-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-aurora-1080x2400.webp",
@@ -2147,7 +2147,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 112915,
+      "bytes": 115050,
       "path": "files/wallpapers/phone/apysyk-wallpaper-aurora-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-aurora-1440x3200.webp",
@@ -2163,7 +2163,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 140200,
+      "bytes": 140915,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-aurora-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-aurora-2048x2732.webp",
@@ -2179,7 +2179,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 107438,
+      "bytes": 108579,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-aurora-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-aurora-1640x2360.webp",
@@ -2195,7 +2195,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 62904,
+      "bytes": 62010,
       "path": "files/wallpapers/video/apysyk-video-call-aurora-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-aurora-1920x1080.webp",
@@ -2211,7 +2211,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 60832,
+      "bytes": 62021,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-1920x1080.webp",
@@ -2227,7 +2227,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 88735,
+      "bytes": 89522,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-2560x1440.webp",
@@ -2243,7 +2243,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 152160,
+      "bytes": 154782,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-3840x2160.webp",
@@ -2259,7 +2259,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 235318,
+      "bytes": 235495,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-5120x2880.webp",
@@ -2275,7 +2275,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 101492,
+      "bytes": 101674,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-3440x1440.webp",
@@ -2291,7 +2291,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 94684,
+      "bytes": 95562,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-2560x1600.webp",
@@ -2307,7 +2307,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 128864,
+      "bytes": 129600,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-3024x1964.webp",
@@ -2323,7 +2323,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 151420,
+      "bytes": 151337,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-prism-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-prism-3456x2234.webp",
@@ -2339,7 +2339,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 77668,
+      "bytes": 77289,
       "path": "files/wallpapers/phone/apysyk-wallpaper-prism-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-prism-1179x2556.webp",
@@ -2355,7 +2355,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 85537,
+      "bytes": 85468,
       "path": "files/wallpapers/phone/apysyk-wallpaper-prism-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-prism-1290x2796.webp",
@@ -2371,7 +2371,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 69116,
+      "bytes": 69513,
       "path": "files/wallpapers/phone/apysyk-wallpaper-prism-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-prism-1080x2400.webp",
@@ -2387,7 +2387,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 100862,
+      "bytes": 102682,
       "path": "files/wallpapers/phone/apysyk-wallpaper-prism-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-prism-1440x3200.webp",
@@ -2403,7 +2403,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 129877,
+      "bytes": 130554,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-prism-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-prism-2048x2732.webp",
@@ -2419,7 +2419,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 97421,
+      "bytes": 98388,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-prism-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-prism-1640x2360.webp",
@@ -2435,7 +2435,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 58985,
+      "bytes": 58165,
       "path": "files/wallpapers/video/apysyk-video-call-prism-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-prism-1920x1080.webp",
@@ -2451,7 +2451,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 70546,
+      "bytes": 71807,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-1920x1080.webp",
@@ -2467,7 +2467,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 117346,
+      "bytes": 118044,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-2560x1440.webp",
@@ -2483,7 +2483,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 218497,
+      "bytes": 221507,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-3840x2160.webp",
@@ -2499,7 +2499,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 328011,
+      "bytes": 328381,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-5120x2880.webp",
@@ -2515,7 +2515,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 145290,
+      "bytes": 145615,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-3440x1440.webp",
@@ -2531,7 +2531,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 133984,
+      "bytes": 134816,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-2560x1600.webp",
@@ -2547,7 +2547,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 173905,
+      "bytes": 174760,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-3024x1964.webp",
@@ -2563,7 +2563,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 207714,
+      "bytes": 207494,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lattice-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lattice-3456x2234.webp",
@@ -2579,7 +2579,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 103295,
+      "bytes": 102921,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lattice-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lattice-1179x2556.webp",
@@ -2595,7 +2595,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 119726,
+      "bytes": 119802,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lattice-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lattice-1290x2796.webp",
@@ -2611,7 +2611,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 84099,
+      "bytes": 84518,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lattice-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lattice-1080x2400.webp",
@@ -2627,7 +2627,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 138109,
+      "bytes": 140132,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lattice-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lattice-1440x3200.webp",
@@ -2643,7 +2643,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 166797,
+      "bytes": 167413,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-lattice-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-lattice-2048x2732.webp",
@@ -2659,7 +2659,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 129329,
+      "bytes": 130295,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-lattice-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-lattice-1640x2360.webp",
@@ -2675,7 +2675,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 72536,
+      "bytes": 71739,
       "path": "files/wallpapers/video/apysyk-video-call-lattice-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-lattice-1920x1080.webp",
@@ -2691,7 +2691,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 128674,
+      "bytes": 129433,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-1920x1080.webp",
@@ -2707,7 +2707,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 224975,
+      "bytes": 225652,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-2560x1440.webp",
@@ -2723,7 +2723,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 463568,
+      "bytes": 464324,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-3840x2160.webp",
@@ -2739,7 +2739,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 789769,
+      "bytes": 792332,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-5120x2880.webp",
@@ -2755,7 +2755,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 291739,
+      "bytes": 292155,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-3440x1440.webp",
@@ -2771,7 +2771,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 240059,
+      "bytes": 239850,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-2560x1600.webp",
@@ -2787,7 +2787,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 330703,
+      "bytes": 332481,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-3024x1964.webp",
@@ -2803,7 +2803,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 420637,
+      "bytes": 422399,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-lighthouse-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-lighthouse-3456x2234.webp",
@@ -2819,7 +2819,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 128995,
+      "bytes": 128681,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lighthouse-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lighthouse-1179x2556.webp",
@@ -2835,7 +2835,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 152702,
+      "bytes": 152922,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lighthouse-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lighthouse-1290x2796.webp",
@@ -2851,7 +2851,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 109479,
+      "bytes": 110061,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lighthouse-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lighthouse-1080x2400.webp",
@@ -2867,7 +2867,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 185628,
+      "bytes": 187672,
       "path": "files/wallpapers/phone/apysyk-wallpaper-lighthouse-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-lighthouse-1440x3200.webp",
@@ -2883,7 +2883,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 298332,
+      "bytes": 299433,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-lighthouse-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-lighthouse-2048x2732.webp",
@@ -2899,7 +2899,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 203640,
+      "bytes": 205016,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-lighthouse-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-lighthouse-1640x2360.webp",
@@ -2915,7 +2915,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 131857,
+      "bytes": 131107,
       "path": "files/wallpapers/video/apysyk-video-call-lighthouse-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-lighthouse-1920x1080.webp",
@@ -2931,7 +2931,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 165994,
+      "bytes": 167366,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-1920x1080.webp",
@@ -2947,7 +2947,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 268561,
+      "bytes": 269566,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-2560x1440.webp",
@@ -2963,7 +2963,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 612955,
+      "bytes": 616685,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-3840x2160.webp",
@@ -2979,7 +2979,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 1052690,
+      "bytes": 1055644,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-5120x2880.webp",
@@ -2995,7 +2995,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 346046,
+      "bytes": 346753,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-3440x1440.webp",
@@ -3011,7 +3011,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 310523,
+      "bytes": 312203,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-2560x1600.webp",
@@ -3027,7 +3027,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 492563,
+      "bytes": 495075,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-3024x1964.webp",
@@ -3043,7 +3043,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 621280,
+      "bytes": 623496,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-bridge-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-bridge-3456x2234.webp",
@@ -3059,7 +3059,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 266719,
+      "bytes": 266450,
       "path": "files/wallpapers/phone/apysyk-wallpaper-bridge-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-bridge-1179x2556.webp",
@@ -3075,7 +3075,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 312045,
+      "bytes": 312508,
       "path": "files/wallpapers/phone/apysyk-wallpaper-bridge-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-bridge-1290x2796.webp",
@@ -3091,7 +3091,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 232534,
+      "bytes": 232652,
       "path": "files/wallpapers/phone/apysyk-wallpaper-bridge-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-bridge-1080x2400.webp",
@@ -3107,7 +3107,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 380699,
+      "bytes": 382208,
       "path": "files/wallpapers/phone/apysyk-wallpaper-bridge-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-bridge-1440x3200.webp",
@@ -3123,7 +3123,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 467328,
+      "bytes": 469315,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-bridge-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-bridge-2048x2732.webp",
@@ -3139,7 +3139,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 336670,
+      "bytes": 338065,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-bridge-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-bridge-1640x2360.webp",
@@ -3155,7 +3155,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 173327,
+      "bytes": 172492,
       "path": "files/wallpapers/video/apysyk-video-call-bridge-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-bridge-1920x1080.webp",
@@ -3170,7 +3170,7 @@
       "width": 1200,
       "height": 630,
       "format": "png",
-      "bytes": 432065,
+      "bytes": 431389,
       "path": "og.png"
     },
     {
@@ -3180,7 +3180,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 38170385,
+      "bytes": 38394552,
       "path": "downloads/apysyk-media-kit.zip",
       "contents": [
         "files/logos/svg/apysyk-lockup-on-dark.svg",
@@ -3419,7 +3419,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 5128767,
+      "bytes": 5268608,
       "path": "downloads/apysyk-logos.zip",
       "contents": [
         "files/logos/svg/apysyk-lockup-on-dark.svg",
@@ -3519,7 +3519,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 13806158,
+      "bytes": 13792167,
       "path": "downloads/apysyk-banners.zip",
       "contents": [
         "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
@@ -3562,7 +3562,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 19224782,
+      "bytes": 19323099,
       "path": "downloads/apysyk-wallpapers.zip",
       "contents": [
         "files/wallpapers/desktop/apysyk-wallpaper-light-1920x1080.jpg",
