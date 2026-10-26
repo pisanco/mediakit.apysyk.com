@@ -1,4 +1,4 @@
-// Writes every SVG in brand/logo/ from the two sources: the mark's geometry (mark.ts) and Hubot Sans.
+// Writes every SVG in brand/logo/ from the original mark geometry and Space Grotesk Medium.
 //   bun scripts/logo/generate.ts
 import { mkdir } from "node:fs/promises";
 import { MARK_GRADIENT, SURFACE_GRADIENT } from "../kit/brand.ts";
@@ -7,7 +7,7 @@ import { num, svgDocument } from "./svg.ts";
 import { type Outline, outlineToPath, outlineWordmark } from "./wordmark.ts";
 
 const ROOT = new URL("../../", import.meta.url).pathname;
-export const WORDMARK_FONT = `${ROOT}brand/fonts/HubotSans.ttf`;
+export const WORDMARK_FONT = `${ROOT}brand/fonts/SpaceGrotesk.ttf`;
 export const LOGO_DIR = `${ROOT}brand/logo`;
 
 const INK = "#f4f5f1";
@@ -36,11 +36,10 @@ const GRADIENT: Paint = {
 };
 
 /**
- * The lockup, as multiples of the mark's height: the wordmark's font size
- * (its ascenders reach 87% of the mark) and the gap after the mark. The
- * wordmark's ink is centred on the mark.
+ * Keep the reference's full-ink heights and gap, but align the symbol with the
+ * capital letters. The q descender must not pull the name above the symbol.
  */
-const LOCKUP = { fontSize: 1.19, gap: 0.45 };
+const LOCKUP = { wordHeight: 51 / 54, gap: 27 / 54 };
 
 interface Lockup {
   width: number;
@@ -49,9 +48,9 @@ interface Lockup {
 }
 
 function lockup(word: Outline): Lockup {
-  const fontSize = LOCKUP.fontSize * MARK_SIZE;
-  const textX = MARK_SIZE * (1 + LOCKUP.gap);
-  const baseline = MARK_SIZE / 2 - ((word.bbox.minY + word.bbox.maxY) / 2) * fontSize;
+  const fontSize = (LOCKUP.wordHeight * MARK_SIZE) / (word.bbox.maxY - word.bbox.minY);
+  const textX = MARK_SIZE * (1 + LOCKUP.gap) - word.bbox.minX * fontSize;
+  const baseline = (MARK_SIZE + word.capHeight * fontSize) / 2;
   const top = Math.min(0, baseline + word.bbox.minY * fontSize);
   const bottom = Math.max(MARK_SIZE, baseline + word.bbox.maxY * fontSize);
   return {
@@ -117,7 +116,7 @@ export async function generateLogos(): Promise<Record<string, string>> {
   const em = 1000;
   const wordBox = { width: (word.bbox.maxX - word.bbox.minX) * em, height: (word.bbox.maxY - word.bbox.minY) * em };
   for (const [name, color] of [
-    ["wordmark-light.svg", INK],
+    ["wordmark-light.svg", WHITE],
     ["wordmark-dark.svg", BLACK],
   ]) {
     files[name] = svgDocument({

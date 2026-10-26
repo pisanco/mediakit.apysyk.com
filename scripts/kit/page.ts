@@ -15,7 +15,7 @@ const CSP =
   "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'";
 
 const DESCRIPTION =
-  "The Risksquad media kit: logos, loading animations, colors, typography, banners, wallpapers and approved descriptions, free to use when writing about or referring to Risksquad and Apysyk OS.";
+  "The Risksquad media kit: logos, loading animations, colors, typography, banners, wallpapers and approved descriptions, free to use when writing about or referring to Risksquad.";
 
 const SECTIONS = [
   ["about", "About"],
@@ -74,12 +74,13 @@ export function renderPage(manifest: Manifest, shareVersion: string): string {
   const everything = zip("apysyk-media-kit");
   const kitFiles = files.filter((f) => ["logos", "loading", "banners", "wallpapers"].includes(f.group));
   const count = (pred: (f: ManifestFile) => boolean) => kitFiles.filter(pred).length;
-  const mark = byPath("files/logos/svg/apysyk-mark.svg");
-  const markPng = where((f) => /^files\/logos\/png\/apysyk-mark-\d+\.png$/.test(f.path))[0];
-  // The page is light first: the lockup and its size come from the version drawn for light backgrounds; the dark page swaps the file.
-  const lockup = byPath("files/logos/svg/apysyk-lockup-on-light.svg");
-  const lockupDark = byPath("files/logos/svg/apysyk-lockup-on-dark.svg");
-  const lockupPng = where((f) => f.path.startsWith("files/logos/png/apysyk-lockup-on-light-"))[0];
+  const mark = byPath("files/logos/svg/apysyk-mark-black.svg");
+  const markDark = byPath("files/logos/svg/apysyk-mark-white.svg");
+  const markPng = where((f) => /^files\/logos\/png\/apysyk-mark-black-\d+\.png$/.test(f.path))[0];
+  // Primary signatures match the site and product: black on light, white on dark.
+  const lockup = byPath("files/logos/svg/apysyk-lockup-black.svg");
+  const lockupDark = byPath("files/logos/svg/apysyk-lockup-white.svg");
+  const lockupPng = where((f) => f.path.startsWith("files/logos/png/apysyk-lockup-black-"))[0];
   const lockupHeight = (width: number) => Math.round((width * lockupPng.height!) / lockupPng.width!);
 
   // ---------- About ----------
@@ -96,14 +97,13 @@ export function renderPage(manifest: Manifest, shareVersion: string): string {
     )
     .join("\n");
   const about = `<section class="section" id="about" aria-labelledby="about-title">
-${sectionHead("about", "About Apysyk", "Approved descriptions. Quote them as they are.")}
+${sectionHead("about", "About Risksquad", "Approved descriptions. Quote them as they are.")}
 <div class="about">
   <div class="about__copy">${boilerplates}</div>
   <aside class="card facts" aria-labelledby="facts-title">
     <h3 class="card__label" id="facts-title">Quick facts</h3>
     <dl>
-      <div><dt>Company</dt><dd>Risksquad</dd></div>
-      <div><dt>Product</dt><dd>Apysyk OS</dd></div>
+      <div><dt>Brand</dt><dd>Risksquad</dd></div>
       <div><dt>Category</dt><dd>${COPY.category}</dd></div>
       <div><dt>Website</dt><dd><a href="https://apysyk.com/">apysyk.com</a></dd></div>
       <div><dt>Contact</dt><dd><a href="mailto:${CONTACT}">${CONTACT}</a></dd></div>
@@ -163,7 +163,7 @@ ${sectionHead("about", "About Apysyk", "Approved descriptions. Quote them as the
     )
     .join("");
   const logo = `<section class="section" id="logo" aria-labelledby="logo-title">
-${sectionHead("logo", "Logo", "Four bands in the green gradient around an open square, and the wordmark: side by side, stacked, alone, and in white on the gradient. Use the files as supplied: full color on light or dark backgrounds, one color where color is not possible.")}
+${sectionHead("logo", "Logo", "Use the black signature on light surfaces and the white signature on dark surfaces. The symbol and Space Grotesk Medium wordmark are optically aligned on the capital letters; the q descender stays intact. Color, stacked and standalone variants are also available. Use the files as supplied; never retype or distort the name.")}
 <div class="grid grid--logos">${logoCards}</div>
 <h3 class="subhead">Avatars</h3>
 <div class="grid grid--avatars">${avatars}</div>
@@ -236,12 +236,12 @@ ${sectionHead("color", "Color", "Light first: Paper and White surfaces, Ink for 
   const axesLabel = (f: BrandFont, role: string) =>
     [role, `weights ${range(f.releaseWeight ?? f.weight)}`, ...(f.width ? [`widths ${range(f.width, "%")}`] : [])].join(" · ");
   const licenseLink = (f: BrandFont) => `fonts/${f.license}`;
-  const hubot = fontByFamily("Hubot Sans");
+  const space = fontByFamily("Space Grotesk");
   const mona = fontByFamily("Mona Sans");
   const jet = fontByFamily("JetBrains Mono");
   const sourceLink = (f: BrandFont) => `<a href="${f.source}">${f.source.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "")}</a>`;
   const typography = `<section class="section" id="typography" aria-labelledby="typography-title">
-${sectionHead("typography", "Typography", "Three open-source families from GitHub and JetBrains, all free under the SIL Open Font License. Get them from their official sources.")}
+${sectionHead("typography", "Typography", "Three open-source families from Florian Karsten, GitHub and JetBrains, free under the SIL Open Font License. Get them from their official sources.")}
 <div class="type">
   <article class="card specimen specimen--mona">
     <div class="specimen__meta"><h3 class="card__title">Mona Sans</h3><p class="size">${axesLabel(mona, "Display and text")}</p></div>
@@ -250,11 +250,11 @@ ${sectionHead("typography", "Typography", "Three open-source families from GitHu
     <p class="body">Headlines at weight 600 with tight tracking, in sentence case. Body copy, buttons and interface text.</p>
     <p class="specimen__links">${sourceLink(mona)} · <a href="${licenseLink(mona)}">License</a></p>
   </article>
-  <article class="card specimen specimen--hubot">
-    <div class="specimen__meta"><h3 class="card__title">Hubot Sans</h3><p class="size">${axesLabel(hubot, "Wordmark")}</p></div>
+  <article class="card specimen specimen--space">
+    <div class="specimen__meta"><h3 class="card__title">Space Grotesk</h3><p class="size">${axesLabel(space, "Wordmark")}</p></div>
     <p class="specimen__sample specimen__sample--glyphs" aria-hidden="true">Aa</p>
-    <p class="body">The wordmark is Hubot Sans 700 at its default width. Use the logo files; never retype the wordmark.</p>
-    <p class="specimen__links">${sourceLink(hubot)} · <a href="${licenseLink(hubot)}">License</a></p>
+    <p class="body">The wordmark is Space Grotesk Medium (500), with native kerning. Use the outlined logo files; never retype or distort the wordmark.</p>
+    <p class="specimen__links">${sourceLink(space)} · <a href="${licenseLink(space)}">License</a></p>
   </article>
   <article class="card specimen specimen--mono">
     <div class="specimen__meta"><h3 class="card__title">JetBrains Mono</h3><p class="size">${axesLabel(jet, "Technical values")}</p></div>
@@ -430,7 +430,7 @@ ${sectionHead("generator", "Generator", "Pick a format and generate a banner or 
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="shell site-header__inner">
-    <a class="brand" href="#top"><img class="brand__lockup brand__lockup--light" src="${lockup.path}" width="152" height="${lockupHeight(152)}" alt="Risksquad"><img class="brand__lockup brand__lockup--dark" src="${lockupDark.path}" width="152" height="${lockupHeight(152)}" alt="" aria-hidden="true"><span class="brand__kit">Media kit</span></a>
+    <a class="brand" href="#top" aria-label="Risksquad media kit"><img class="brand__lockup brand__lockup--light" src="${lockup.path}" width="152" height="${lockupHeight(152)}" alt=""><img class="brand__lockup brand__lockup--dark" src="${lockupDark.path}" width="152" height="${lockupHeight(152)}" alt=""><span class="brand__kit">Media kit</span></a>
     <nav class="nav" aria-label="Sections"><ul class="nav__list">${nav}</ul></nav>
     <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode">
       <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -444,9 +444,10 @@ ${sectionHead("generator", "Generator", "Pick a format and generate a banner or 
   <div class="shell hero__inner">
     <p class="kicker hero__kicker">Risksquad media kit</p>
     <h1 class="hero__title" id="hero-title"><span>Brand</span> <em>assets.</em></h1>
-    <p class="intro hero__lead">Everything here may be used to write about or refer to Risksquad and Apysyk OS, its product.</p>
+    <p class="intro hero__lead">Everything here may be used to write about or refer to Risksquad.</p>
     <figure class="hero__stage">
-      <img class="hero__mark" src="${mark.path}" width="${markPng.width}" height="${markPng.height}" alt="The Risksquad mark" fetchpriority="high">
+      <img class="hero__mark hero__mark--light" src="${mark.path}" width="${markPng.width}" height="${markPng.height}" alt="The Risksquad mark" fetchpriority="high">
+      <img class="hero__mark hero__mark--dark" src="${markDark.path}" width="${markPng.width}" height="${markPng.height}" alt="The Risksquad mark">
     </figure>
     <dl class="hero__stats">
       <div><dt>Logo files</dt><dd>${count((f) => f.group === "logos")}</dd></div>

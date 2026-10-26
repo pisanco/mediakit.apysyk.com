@@ -55,12 +55,12 @@ export const PALETTE: { name: string; hex: string; role: string }[] = [
  * description, the Solutions page). Nothing else may describe Apysyk.
  */
 export const COPY = {
-  oneLiner: "Apysyk OS brings security findings, applications and owners into one workflow.",
+  oneLiner: "Risksquad brings security findings, applications and owners into one workflow.",
   short:
-    "Apysyk OS brings security findings, applications and owners into one workflow. Prioritize the work, assign responsibility and track progress without replacing your tools.",
-  context: "Scanners already find. Apysyk OS adds the context that turns a finding into owned work.",
+    "Risksquad brings security findings, applications and owners into one workflow. Prioritize the work, assign responsibility and track progress without replacing your tools.",
+  context: "Scanners already find. Risksquad adds the context that turns a finding into owned work.",
   connect:
-    "Apysyk connects the tools you already use and turns their signals into coordinated security work across AI, application security, supply chain, cloud, and posture management.",
+    "Risksquad connects the tools you already use and turns their signals into coordinated security work across AI, application security, supply chain, cloud, and posture management.",
   headline: ["Security.", "In sync."] as const,
   category: "One operating layer for every security workflow",
 } as const;

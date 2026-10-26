@@ -1,9 +1,6 @@
-// The three brand fonts as the page and the renders load them. Hubot Sans and
-// Mona Sans are the unmodified upstream releases (their Reserved Font Names
-// allow nothing else); JetBrains Mono, which has no Reserved Font Name, is a
-// subset used only to render the page. Axis ranges are read from the files
-// instead of being typed in, so the @font-face rules never claim weights or
-// widths a file does not have.
+// The active brand fonts as the page and renders load them. Source files remain
+// unmodified, with their licenses alongside them. Axis ranges come from each
+// font instead of being typed in, so CSS never advertises unsupported weights.
 
 import { create } from "fontkit";
 import { readFileSync } from "node:fs";
@@ -52,8 +49,7 @@ function load(family: string, file: string, source: string, releaseWeight?: Axis
 }
 
 export const FONTS: BrandFont[] = [
-  // Served as the upstream TTF: converting it to WOFF2 would make it a Modified Version.
-  load("Hubot Sans", "HubotSans.ttf", "https://github.com/github/hubot-sans"),
+  load("Space Grotesk", "SpaceGrotesk.ttf", "https://github.com/floriankarsten/space-grotesk"),
   load("Mona Sans", "MonaSans.woff2", "https://github.com/github/mona-sans"),
   // The official JetBrains Mono release spans weights 100-800; the subset here keeps 400-600.
   load("JetBrains Mono", "JetBrainsMono.woff2", "https://www.jetbrains.com/lp/mono/", { min: 100, max: 800 }),
@@ -65,7 +61,7 @@ export function fontByFamily(family: string): BrandFont {
   return font;
 }
 
-/** @font-face rules for the three fonts, served from `base` (e.g. "fonts/" or "/fonts/"). */
+/** @font-face rules for the active fonts, served from `base` (e.g. "fonts/" or "/fonts/"). */
 export function fontFaces(base: string): string {
   return FONTS.map(
     (f) => `@font-face {

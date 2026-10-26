@@ -1,12 +1,12 @@
-// Outlines the wordmark "Risksquad" from Hubot Sans with fontkit, as the site
-// header sets it: weight 700, width 100, kerning on, letter-spacing -0.03em.
-// The font is the unmodified upstream variable TTF; fontkit instances it with
-// getVariation(), which applies gvar to the outlines and HVAR to the advances.
+// Outlines the wordmark "Risksquad" from Space Grotesk Medium, with native kerning.
+// The font is the unmodified upstream variable TTF; fontkit instances weight 500
+// with getVariation(), applying gvar to outlines and HVAR to advances.
 import * as fontkit from "fontkit";
 
 /** The parts of fontkit's font object this module relies on (fontkit ships no types). */
 interface Font {
   unitsPerEm: number;
+  capHeight: number;
   getVariation(axes: Record<string, number>): Font;
   layout(text: string): {
     glyphs: { path: { commands: { command: string; args: number[] }[] } }[];
@@ -28,6 +28,8 @@ export interface Outline {
   commands: Command[];
   /** Exact ink bounds (curve extrema included), in em units. */
   bbox: Box;
+  /** Capital-letter height above the baseline, in em units. */
+  capHeight: number;
 }
 
 export interface WordmarkSettings {
@@ -37,7 +39,7 @@ export interface WordmarkSettings {
   letterSpacing: number;
 }
 
-export const WORDMARK: WordmarkSettings = { text: "Risksquad", axes: { wght: 700, wdth: 100 }, letterSpacing: -0.03 };
+export const WORDMARK: WordmarkSettings = { text: "Risksquad", axes: { wght: 500 }, letterSpacing: 0 };
 
 /** A fontkit glyph path (font units, y up) to commands placed by `place`. */
 function pathCommands(path: { command: string; args: number[] }[], place: (x: number, y: number) => { x: number; y: number }): Command[] {
@@ -105,7 +107,7 @@ export async function outlineWordmark(fontPath: string, settings: WordmarkSettin
     );
     pen += pos.xAdvance + (i < run.glyphs.length - 1 ? settings.letterSpacing * em : 0);
   });
-  return { commands, bbox: outlineBox(commands) };
+  return { commands, bbox: outlineBox(commands), capHeight: font.capHeight / em };
 }
 
 /** Path data for an outline, scaled by `size` (the font size) and moved by (dx, dy). */

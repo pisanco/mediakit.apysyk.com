@@ -158,7 +158,7 @@ function text(s: string, x: number, y: number, size: number, weight: number, col
 
 /**
  * An eyebrow and a two-line headline, drawn upward from a baseline or downward from a top, as the kit's
- * stacks do: "Apysyk OS" above, then the two lines at line-height 0.96, the second in the accent.
+ * stacks do: "Risksquad" above, then the two lines at line-height 0.96, the second in the accent.
  */
 function message(headline: readonly [string, string], x: number, boxWidth: number, max: number, eyebrowSize: number, anchor: "top" | "bottom", edge: number, ink: Ink): string {
   const size = fit(headline, max, boxWidth);
@@ -168,7 +168,7 @@ function message(headline: readonly [string, string], x: number, boxWidth: numbe
   const eyebrowBase = top + eyebrowSize * 0.95;
   const firstBase = eyebrowBase + size * 0.035 * 10 + size * 0.74;
   const secondBase = firstBase + lead;
-  return [text("Apysyk OS", x, eyebrowBase, eyebrowSize, 600, ink.text), text(headline[0], x, firstBase, size, 600, ink.text), text(headline[1], x, secondBase, size, 600, ink.accent)].join("");
+  return [text("Risksquad", x, eyebrowBase, eyebrowSize, 600, ink.text), text(headline[0], x, firstBase, size, 600, ink.text), text(headline[1], x, secondBase, size, 600, ink.accent)].join("");
 }
 
 // ---------- Composition ----------

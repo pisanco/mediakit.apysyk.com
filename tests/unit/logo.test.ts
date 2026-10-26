@@ -59,3 +59,27 @@ test(
   },
   60_000,
 );
+
+test("horizontal lockup aligns capital letters with the symbol without clipping the descender", async () => {
+  const page = await browser.newPage();
+  try {
+    await page.setContent(await Bun.file(`${LOGO_DIR}/lockup-black.svg`).text());
+    const geometry = await page.$eval("svg", (root) => {
+      if (!(root instanceof SVGSVGElement)) throw new Error("Expected an SVG root");
+      const [mark, wordmark] = Array.from(root.querySelectorAll("path"), (path) => path.getBBox());
+      const frame = root.viewBox.baseVal;
+      return {
+        heightRatio: wordmark.height / mark.height,
+        gapRatio: (wordmark.x - mark.x - mark.width) / mark.height,
+        capCenterOffset: (wordmark.y + wordmark.height * 7 / 18 - mark.y - mark.height / 2) / mark.height,
+        inside: [mark, wordmark].every((box) => box.x >= frame.x && box.y >= frame.y && box.x + box.width <= frame.x + frame.width + 0.01 && box.y + box.height <= frame.y + frame.height + 0.01),
+      };
+    });
+    expect(geometry.heightRatio).toBeCloseTo(51 / 54, 3);
+    expect(geometry.gapRatio).toBeCloseTo(27 / 54, 3);
+    expect(geometry.capCenterOffset).toBeCloseTo(0, 3);
+    expect(geometry.inside).toBe(true);
+  } finally {
+    await page.close();
+  }
+});
