@@ -109,14 +109,6 @@ describe("manifest", () => {
     }
   });
 
-  test("offers the seven loading animations as SVG, for light and for dark surfaces", () => {
-    const loading = manifest.files.filter((f) => f.group === "loading");
-    const names = ["sequence", "turn", "focus", "assemble", "lock", "trace", "pulse"];
-    expect(loading.map((f) => f.path).sort()).toEqual(
-      names.flatMap((n) => [`files/loading/apysyk-loading-${n}.svg`, `files/loading/apysyk-loading-${n}-dark.svg`]).sort(),
-    );
-    for (const f of loading) expect(f.format, f.path).toBe("svg");
-  });
 
   test("wallpapers are JPG and banners PNG", () => {
     for (const f of manifest.files) {

@@ -1,13 +1,13 @@
 // Seven animated versions of the mark for loading states. Each one is a
 // self-contained SVG (SMIL, no script): it works inline, in an <img> and as a
-// background. The geometry is the mark's own (scripts/logo/mark.ts) and the
-// colours are the brand gradient, so they can never drift from the logo.
+// background. Geometry and motion are shared by the gradient, black and white
+// variants; recoloring must never change the luminance masks or animation.
 import { MARK_SIZE, markLoops, markPath, type Point } from "../logo/mark.ts";
 import { loopsToPath, num } from "../logo/svg.ts";
 import { COLORS, MARK_GRADIENT } from "./brand.ts";
 
 export interface LoadingVersion {
-  /** File name without extension; the dark file adds "-dark". */
+  /** File name without extension; monochrome files add "-black" or "-dark". */
   slug: string;
   name: string;
   /** What moves, and what the version suits. */
@@ -16,11 +16,14 @@ export interface LoadingVersion {
   light: string;
   /** The mark in white, for dark surfaces. */
   dark: string;
+  /** The mark and Pulse glow in native black, for light surfaces. */
+  black: string;
 }
 
 const S = MARK_SIZE;
 const C = S / 2;
 const EASE = "0.65 0 0.35 1";
+const BLACK = "#000000";
 
 const loops = markLoops();
 /** The four bands, clockwise from the top, and the whole mark. */
@@ -55,9 +58,9 @@ function gradient(id: string): string {
   return `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" y1="${S}" x2="${S}" y2="0">${stops}</linearGradient>`;
 }
 
-/** The same animation with the mark in white, for dark surfaces: the gradient's definition goes and every fill that used it turns white. */
-function inWhite(svg: string, id: string): string {
-  return svg.replace(gradient(id), "").replaceAll(`url(#${id})`, COLORS.white);
+/** Replace only the visible gradient paint; keep white luminance masks and clip references intact. */
+function inSolid(svg: string, id: string, color: string): string {
+  return svg.replace(gradient(id), "").replaceAll(`url(#${id})`, color);
 }
 
 function document(defs: string, body: string): string {
@@ -184,5 +187,8 @@ const VERSIONS: { key: string; name: string; description: string; build: () => s
 
 export const LOADING_VERSIONS: LoadingVersion[] = VERSIONS.map(({ key, name, description, build }) => {
   const light = build();
-  return { slug: `apysyk-loading-${key}`, name, description, light, dark: inWhite(light, `loading-${key}`) };
+  const id = `loading-${key}`;
+  // Pulse uses a separate radial glow: recolor its stops without touching opacity.
+  const black = inSolid(light, id, BLACK).replaceAll(`stop-color="${COLORS.mark}"`, `stop-color="${BLACK}"`);
+  return { slug: `apysyk-loading-${key}`, name, description, light, dark: inSolid(light, id, COLORS.white), black };
 });

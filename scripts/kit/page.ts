@@ -188,24 +188,25 @@ ${sectionHead("logo", "Logo", "Use the black signature on light surfaces and the
 
   // ---------- Loading ----------
   // The animations play in the previews: an <img> runs an SVG's own animation, with no script on the page.
-  // Each card shows the version for light surfaces on Paper and the white one for dark surfaces on Forest.
+  // Show the primary black/white pair; the original color variant remains downloadable.
   const loadingCards = LOADING_VERSIONS.map((v) => {
     const light = byPath(`files/loading/${v.slug}.svg`);
     const dark = byPath(`files/loading/${v.slug}-dark.svg`);
+    const black = byPath(`files/loading/${v.slug}-black.svg`);
     return `<article class="card loading-card">
   <div class="loading-card__previews">
-    <div class="preview preview--light preview--loading"><img src="${light.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated, for light surfaces`)}" loading="lazy" decoding="async"></div>
+    <div class="preview preview--light preview--loading"><img src="${black.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in black, for light surfaces`)}" loading="lazy" decoding="async"></div>
     <div class="preview preview--forest preview--loading"><img src="${dark.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in white, for dark surfaces`)}" loading="lazy" decoding="async"></div>
   </div>
   <div class="loading-card__body">
     <h3 class="card__title">${esc(v.name)}</h3>
     <p class="body">${esc(v.description)}</p>
-    <div class="dl-row">${download(light, "SVG, light", `${v.name}, for light surfaces`)}${download(dark, "SVG, dark", `${v.name}, for dark surfaces`)}</div>
+    <div class="dl-row">${download(black, "SVG, black", `${v.name}, black`)}${download(dark, "SVG, white", `${v.name}, white`)}${download(light, "SVG, color", `${v.name}, color gradient`)}</div>
   </div>
 </article>`;
   }).join("\n");
   const loading = `<section class="section" id="loading" aria-labelledby="loading-title">
-${sectionHead("loading", "Loading", "Seven animated versions of the mark for loading states, each in two files: the mark in its gradient for light surfaces, and in white for dark ones. Every file is a self-contained SVG with no script: it works inline, in an image tag and as a background. Show the still mark instead when someone prefers reduced motion.")}
+${sectionHead("loading", "Loading", "Seven animations, each in black, white and the original color gradient. Use black on light surfaces and white on dark ones. Every file is a self-contained SVG with no script: it works inline, in an image tag and as a background. Show the still mark instead when someone prefers reduced motion.")}
 <div class="grid grid--loading">${loadingCards}</div>
 </section>`;
 
@@ -351,7 +352,7 @@ ${wallGroup("video", "Video calls", "The center stays calm where you sit; the lo
     "apysyk-logos": "SVG sources, PNGs at 512, 1024 and 2048 px, and avatars.",
     "apysyk-banners": "Social, display ads, email signature and cover cards.",
     "apysyk-wallpapers": "Desktop, phone, tablet and video calls: light, forest, gradient, aurora, prism, lattice, lighthouse and bridge.",
-    "apysyk-loading": "Seven animated versions of the mark, each for light and for dark surfaces, as self-contained SVG.",
+    "apysyk-loading": "Seven animations in black, white and the original color gradient, as self-contained SVG.",
   };
   const downloads = `<section class="section" id="downloads" aria-labelledby="downloads-title">
 ${sectionHead("downloads", "Downloads", "Everything in one archive, or one archive per group.")}
