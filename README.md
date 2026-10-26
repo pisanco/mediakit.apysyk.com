@@ -41,6 +41,7 @@ bun run deploy       # later checked, committed releases; preserves /old/
 - `brand/fonts/`: unmodified upstream font files and their SIL Open Font Licenses. Space Grotesk supplies the outlined wordmark; Mona Sans remains the display/body typeface and JetBrains Mono the technical typeface. The previous Hubot source is retained for historical work, not used by the active logo. Fonts are not offered as downloads. Space Grotesk's variable TTF and license come from `google/fonts` commit `5e8a3ba899557829a76cfdac30fa512bda91d7ca`, `ofl/spacegrotesk/`, without conversion.
 - `brand/photos/`: eight real CC0 photographs, with their credits and source URLs in `SOURCES.txt`. All are available in the generator; the six new surfaces (Mountains, Woods, Highway, Glass, Dunes and Shore) are generator-only, so they do not multiply the prebuilt downloads.
 - `scripts/kit/`: the asset catalog and layouts, shared surface artwork, loading animations, renderer and page.
+- Loading: all seven motions have native black (`-black.svg`), white (`-dark.svg`) and original gradient (`.svg`) downloads. Cards preview black/white; both loading and full-kit ZIPs include all three. Recoloring preserves timing, shape, transparency and white luminance masks; the black Pulse variant also uses a black radial glow.
 - `site/`: the stylesheet, theme and copy controls, and the client-side generator. The generator offers fourteen surfaces and exports full-resolution PNG banners or JPEG wallpapers.
 
 The Banners section shows each composition once, edge to edge without a white mat,

@@ -22,6 +22,7 @@ test(
         ...LOADING_VERSIONS.flatMap((v) => [
           { file: `${v.slug}.svg`, markup: v.light },
           { file: `${v.slug}-dark.svg`, markup: v.dark },
+          { file: `${v.slug}-black.svg`, markup: v.black },
         ]),
       ];
       for (const { file, markup } of files) {
