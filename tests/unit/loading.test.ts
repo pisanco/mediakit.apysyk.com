@@ -38,10 +38,11 @@ async function raster(page: Page, svg: string, time: number): Promise<{ alpha: n
   }, screenshot.toString("base64"));
 }
 
-for (const version of LOADING_VERSIONS) {
-  test(`${version.name} paints only black while preserving animated geometry, masks and transparency`, async () => {
-    const page = await browser.newPage({ viewport: { width: 128, height: 128 } });
-    try {
+test("black loaders preserve rendered motion, masks and transparency with native black ink", async () => {
+  const page = await browser.newPage({ viewport: { width: 128, height: 128 } });
+  try {
+    // Each sample replaces the SVG document; one browser host serves this isolated test.
+    for (const version of LOADING_VERSIONS) {
       for (const time of [0.35, 0.95, 1.65]) {
         const original = await raster(page, version.light, time);
         const black = await raster(page, version.black, time);
@@ -51,8 +52,8 @@ for (const version of LOADING_VERSIONS) {
         // Native solid/gradient antialiasing can round one 8-bit alpha unit apart.
         expect(maximumAlphaError, `${version.name} rendered shape/opacity at ${time}s`).toBeLessThanOrEqual(1);
       }
-    } finally {
-      await page.close();
     }
-  }, 60_000);
-}
+  } finally {
+    await page.close();
+  }
+}, 60_000);
