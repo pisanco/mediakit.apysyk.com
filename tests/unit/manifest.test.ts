@@ -20,6 +20,18 @@ const sizes = (category: string, variant?: string) =>
 const sorted = (list: string[]) => [...list].sort();
 
 describe("manifest", () => {
+  test("publishes file and thumbnail metadata relative to the canonical domain root", () => {
+    expect(manifest.site).toBe("https://mediakit.apysyk.com/");
+    const paths = manifest.files.flatMap((file) => [file.path, ...(file.thumb ? [file.thumb.path] : [])]);
+    for (const path of paths) {
+      expect(path.startsWith("/"), path).toBe(false);
+      const url = new URL(path, manifest.site);
+      expect(url.origin, path).toBe("https://mediakit.apysyk.com");
+      expect(url.pathname, path).toBe(`/${path}`);
+      expect(url.pathname, path).not.toMatch(/^\/(?:new|old)\//);
+    }
+  });
+
   test("every file exists with the listed byte size and pixel size", async () => {
     for (const f of manifest.files) {
       const file = Bun.file(join(DIST, f.path));

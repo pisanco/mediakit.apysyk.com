@@ -71,7 +71,7 @@ const gap = (h: number): Item => ({ kind: "gap", h: round(h) });
 const pill = (h: number): Item => ({ kind: "pill", text: "apysyk.com", h: round(h) });
 const label = (text: string, size: number): Item => ({ kind: "label", text, size: round(size) });
 /** The product name above a headline, in sentence case like the apysyk.com hero. */
-const eyebrow = (size: number): Item => ({ kind: "eyebrow", text: "Apysyk OS", size: round(size) });
+const eyebrow = (size: number): Item => ({ kind: "eyebrow", text: "Risksquad", size: round(size) });
 
 /** The lockup for a surface, in a box of exactly its size. */
 function lockupAt(surface: Surface, x: number, y: number, h: number): Stack {
@@ -483,7 +483,7 @@ function wallpapers(): RenderedAsset[] {
 /** The apysyk.com share images: each page's label and hero. */
 function imagery(): RenderedAsset[] {
   const cards: { slug: string; name: string; doc: Doc }[] = [
-    { slug: "home", name: "Home", doc: pageCard("Apysyk OS", HEAD2, 150) },
+    { slug: "home", name: "Home", doc: pageCard("Risksquad", HEAD2, 150) },
     {
       slug: "platform",
       name: "Platform",

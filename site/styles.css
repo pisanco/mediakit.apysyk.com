@@ -649,6 +649,15 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   height: clamp(120px, 19vw, 260px);
 }
 
+.hero__mark--dark,
+:root[data-theme="dark"] .hero__mark--light {
+  display: none;
+}
+
+:root[data-theme="dark"] .hero__mark--dark {
+  display: block;
+}
+
 .hero__stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1245,10 +1254,10 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 }
 
 .specimen__sample--glyphs {
-  font-family: "Hubot Sans", var(--font-display);
+  font-family: "Space Grotesk", var(--font-display);
   font-size: clamp(5rem, 9vw, 8rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  letter-spacing: 0;
   line-height: 1;
 }
 
