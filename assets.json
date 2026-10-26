@@ -624,6 +624,16 @@
     {
       "group": "loading",
       "category": "svg",
+      "name": "Sequence, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 1124,
+      "path": "files/loading/apysyk-loading-sequence-black.svg"
+    },
+    {
+      "group": "loading",
+      "category": "svg",
       "name": "Turn",
       "width": null,
       "height": null,
@@ -640,6 +650,16 @@
       "format": "svg",
       "bytes": 864,
       "path": "files/loading/apysyk-loading-turn-dark.svg"
+    },
+    {
+      "group": "loading",
+      "category": "svg",
+      "name": "Turn, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 864,
+      "path": "files/loading/apysyk-loading-turn-black.svg"
     },
     {
       "group": "loading",
@@ -664,6 +684,16 @@
     {
       "group": "loading",
       "category": "svg",
+      "name": "Focus, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 1337,
+      "path": "files/loading/apysyk-loading-focus-black.svg"
+    },
+    {
+      "group": "loading",
+      "category": "svg",
       "name": "Assemble",
       "width": null,
       "height": null,
@@ -680,6 +710,16 @@
       "format": "svg",
       "bytes": 2011,
       "path": "files/loading/apysyk-loading-assemble-dark.svg"
+    },
+    {
+      "group": "loading",
+      "category": "svg",
+      "name": "Assemble, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 2011,
+      "path": "files/loading/apysyk-loading-assemble-black.svg"
     },
     {
       "group": "loading",
@@ -704,6 +744,16 @@
     {
       "group": "loading",
       "category": "svg",
+      "name": "Lock, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 1874,
+      "path": "files/loading/apysyk-loading-lock-black.svg"
+    },
+    {
+      "group": "loading",
+      "category": "svg",
       "name": "Trace",
       "width": null,
       "height": null,
@@ -724,6 +774,16 @@
     {
       "group": "loading",
       "category": "svg",
+      "name": "Trace, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 1980,
+      "path": "files/loading/apysyk-loading-trace-black.svg"
+    },
+    {
+      "group": "loading",
+      "category": "svg",
       "name": "Pulse",
       "width": null,
       "height": null,
@@ -740,6 +800,16 @@
       "format": "svg",
       "bytes": 1749,
       "path": "files/loading/apysyk-loading-pulse-dark.svg"
+    },
+    {
+      "group": "loading",
+      "category": "svg",
+      "name": "Pulse, black",
+      "width": null,
+      "height": null,
+      "format": "svg",
+      "bytes": 1749,
+      "path": "files/loading/apysyk-loading-pulse-black.svg"
     },
     {
       "group": "logos",
@@ -3180,7 +3250,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 38394552,
+      "bytes": 38399420,
       "path": "downloads/apysyk-media-kit.zip",
       "contents": [
         "files/logos/svg/apysyk-lockup-on-dark.svg",
@@ -3245,18 +3315,25 @@
         "files/logos/png/apysyk-mark-black-2048.png",
         "files/loading/apysyk-loading-sequence.svg",
         "files/loading/apysyk-loading-sequence-dark.svg",
+        "files/loading/apysyk-loading-sequence-black.svg",
         "files/loading/apysyk-loading-turn.svg",
         "files/loading/apysyk-loading-turn-dark.svg",
+        "files/loading/apysyk-loading-turn-black.svg",
         "files/loading/apysyk-loading-focus.svg",
         "files/loading/apysyk-loading-focus-dark.svg",
+        "files/loading/apysyk-loading-focus-black.svg",
         "files/loading/apysyk-loading-assemble.svg",
         "files/loading/apysyk-loading-assemble-dark.svg",
+        "files/loading/apysyk-loading-assemble-black.svg",
         "files/loading/apysyk-loading-lock.svg",
         "files/loading/apysyk-loading-lock-dark.svg",
+        "files/loading/apysyk-loading-lock-black.svg",
         "files/loading/apysyk-loading-trace.svg",
         "files/loading/apysyk-loading-trace-dark.svg",
+        "files/loading/apysyk-loading-trace-black.svg",
         "files/loading/apysyk-loading-pulse.svg",
         "files/loading/apysyk-loading-pulse-dark.svg",
+        "files/loading/apysyk-loading-pulse-black.svg",
         "files/logos/avatars/apysyk-avatar-white-1024.png",
         "files/logos/avatars/apysyk-avatar-forest-1024.png",
         "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
@@ -3493,23 +3570,30 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 10308,
+      "bytes": 15148,
       "path": "downloads/apysyk-loading.zip",
       "contents": [
         "files/loading/apysyk-loading-sequence.svg",
         "files/loading/apysyk-loading-sequence-dark.svg",
+        "files/loading/apysyk-loading-sequence-black.svg",
         "files/loading/apysyk-loading-turn.svg",
         "files/loading/apysyk-loading-turn-dark.svg",
+        "files/loading/apysyk-loading-turn-black.svg",
         "files/loading/apysyk-loading-focus.svg",
         "files/loading/apysyk-loading-focus-dark.svg",
+        "files/loading/apysyk-loading-focus-black.svg",
         "files/loading/apysyk-loading-assemble.svg",
         "files/loading/apysyk-loading-assemble-dark.svg",
+        "files/loading/apysyk-loading-assemble-black.svg",
         "files/loading/apysyk-loading-lock.svg",
         "files/loading/apysyk-loading-lock-dark.svg",
+        "files/loading/apysyk-loading-lock-black.svg",
         "files/loading/apysyk-loading-trace.svg",
         "files/loading/apysyk-loading-trace-dark.svg",
+        "files/loading/apysyk-loading-trace-black.svg",
         "files/loading/apysyk-loading-pulse.svg",
-        "files/loading/apysyk-loading-pulse-dark.svg"
+        "files/loading/apysyk-loading-pulse-dark.svg",
+        "files/loading/apysyk-loading-pulse-black.svg"
       ]
     },
     {

@@ -956,7 +956,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   padding: 10px 10px 22px;
 }
 
-/* The two previews side by side: the gradient version on Paper, the white one on Forest. */
+/* The primary previews side by side: black on Paper, white on Forest. */
 .loading-card__previews {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
