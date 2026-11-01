@@ -11,7 +11,7 @@ export const WORDMARK_FONT = `${ROOT}brand/fonts/SpaceGrotesk.ttf`;
 export const LOGO_DIR = `${ROOT}brand/logo`;
 
 const INK = "#f4f5f1";
-const BLACK = "#000000";
+const BLACK = "#181818";
 const WHITE = "#ffffff";
 
 /** What the mark is painted with: a flat colour, or the gradient a file defines once under a fixed id. */
@@ -39,7 +39,7 @@ const GRADIENT: Paint = {
  * Keep the reference's full-ink heights and gap, but align the symbol with the
  * capital letters. The q descender must not pull the name above the symbol.
  */
-const LOCKUP = { wordHeight: 51 / 54, gap: 27 / 54 };
+const LOCKUP = { wordHeight: 51 / 54, gap: 57 / 117 };
 
 interface Lockup {
   width: number;
