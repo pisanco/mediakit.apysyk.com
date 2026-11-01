@@ -173,6 +173,24 @@ test("the generator composes a banner in the browser and downloads it at the for
   expect(imageSize(bytes)).toEqual({ width: 1200, height: 630 });
 });
 
+test("offers the exact supplied master and the approved headline in the generator", async ({ page, request }) => {
+  await open(page);
+  const master = page.getByRole("article").filter({ has: page.getByRole("heading", { name: "Master lockup · exact PNG" }) });
+  const image = master.getByRole("img", { name: "Risksquad logo, exact supplied master PNG" });
+  await image.scrollIntoViewIfNeeded();
+  await expect(image).toBeVisible();
+  await expect.poll(() => image.evaluate((img) => `${(img as HTMLImageElement).naturalWidth}x${(img as HTMLImageElement).naturalHeight}`)).toBe("763x126");
+  const download = master.getByRole("link", { name: "Risksquad master lockup, exact supplied PNG, 763 × 126 px" });
+  const response = await request.get((await download.getAttribute("href"))!);
+  expect(response.status()).toBe(200);
+  expect(await response.body()).toEqual(await readFile(new URL("../../brand/logo/risksquad-lockup-reference.png", import.meta.url)));
+  const generator = page.locator("[data-generator]");
+  await generator.locator('select[name="headline"]').selectOption({ label: "Redefining how AppSec gets done" });
+  await generator.getByRole("button", { name: "Generate" }).click();
+  await expect(generator.locator("[data-caption]")).toContainText("Redefining how AppSec gets done");
+  await expect.poll(() => generator.locator(".generator__preview").evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+});
+
 test("no horizontal scroll, down to 320 px wide", async ({ page }) => {
   await open(page);
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
