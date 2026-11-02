@@ -8,7 +8,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5669,
+      "bytes": 5648,
       "path": "files/logos/svg/apysyk-lockup-on-dark.svg"
     },
     {
@@ -18,7 +18,7 @@
       "width": 512,
       "height": 85,
       "format": "png",
-      "bytes": 14129,
+      "bytes": 13953,
       "path": "files/logos/png/apysyk-lockup-on-dark-512.png"
     },
     {
@@ -28,7 +28,7 @@
       "width": 1024,
       "height": 169,
       "format": "png",
-      "bytes": 29078,
+      "bytes": 28772,
       "path": "files/logos/png/apysyk-lockup-on-dark-1024.png"
     },
     {
@@ -36,9 +36,9 @@
       "category": "png",
       "name": "Lockup on dark",
       "width": 2048,
-      "height": 338,
+      "height": 339,
       "format": "png",
-      "bytes": 72235,
+      "bytes": 72733,
       "path": "files/logos/png/apysyk-lockup-on-dark-2048.png"
     },
     {
@@ -48,7 +48,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5669,
+      "bytes": 5648,
       "path": "files/logos/svg/apysyk-lockup-on-light.svg"
     },
     {
@@ -58,7 +58,7 @@
       "width": 512,
       "height": 85,
       "format": "png",
-      "bytes": 11375,
+      "bytes": 13263,
       "path": "files/logos/png/apysyk-lockup-on-light-512.png"
     },
     {
@@ -68,7 +68,7 @@
       "width": 1024,
       "height": 169,
       "format": "png",
-      "bytes": 22787,
+      "bytes": 27360,
       "path": "files/logos/png/apysyk-lockup-on-light-1024.png"
     },
     {
@@ -76,9 +76,9 @@
       "category": "png",
       "name": "Lockup on light",
       "width": 2048,
-      "height": 338,
+      "height": 339,
       "format": "png",
-      "bytes": 59482,
+      "bytes": 70210,
       "path": "files/logos/png/apysyk-lockup-on-light-2048.png"
     },
     {
@@ -178,7 +178,7 @@
       "width": 512,
       "height": 381,
       "format": "png",
-      "bytes": 22925,
+      "bytes": 25476,
       "path": "files/logos/png/apysyk-lockup-stacked-on-light-512.png"
     },
     {
@@ -188,7 +188,7 @@
       "width": 1024,
       "height": 762,
       "format": "png",
-      "bytes": 63411,
+      "bytes": 69316,
       "path": "files/logos/png/apysyk-lockup-stacked-on-light-1024.png"
     },
     {
@@ -198,7 +198,7 @@
       "width": 2048,
       "height": 1525,
       "format": "png",
-      "bytes": 244058,
+      "bytes": 257314,
       "path": "files/logos/png/apysyk-lockup-stacked-on-light-2048.png"
     },
     {
@@ -208,7 +208,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5751,
+      "bytes": 5730,
       "path": "files/logos/svg/apysyk-lockup-on-gradient.svg"
     },
     {
@@ -216,9 +216,9 @@
       "category": "png",
       "name": "Lockup on gradient",
       "width": 512,
-      "height": 158,
+      "height": 159,
       "format": "png",
-      "bytes": 50405,
+      "bytes": 48187,
       "path": "files/logos/png/apysyk-lockup-on-gradient-512.png"
     },
     {
@@ -226,9 +226,9 @@
       "category": "png",
       "name": "Lockup on gradient",
       "width": 1024,
-      "height": 316,
+      "height": 317,
       "format": "png",
-      "bytes": 165159,
+      "bytes": 164014,
       "path": "files/logos/png/apysyk-lockup-on-gradient-1024.png"
     },
     {
@@ -236,9 +236,9 @@
       "category": "png",
       "name": "Lockup on gradient",
       "width": 2048,
-      "height": 633,
+      "height": 634,
       "format": "png",
-      "bytes": 522192,
+      "bytes": 523987,
       "path": "files/logos/png/apysyk-lockup-on-gradient-2048.png"
     },
     {
@@ -298,7 +298,7 @@
       "width": 512,
       "height": 96,
       "format": "png",
-      "bytes": 8438,
+      "bytes": 11050,
       "path": "files/logos/png/apysyk-wordmark-dark-512.png"
     },
     {
@@ -308,7 +308,7 @@
       "width": 1024,
       "height": 192,
       "format": "png",
-      "bytes": 16815,
+      "bytes": 22665,
       "path": "files/logos/png/apysyk-wordmark-dark-1024.png"
     },
     {
@@ -318,7 +318,7 @@
       "width": 2048,
       "height": 385,
       "format": "png",
-      "bytes": 33773,
+      "bytes": 46866,
       "path": "files/logos/png/apysyk-wordmark-dark-2048.png"
     },
     {
@@ -368,7 +368,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5444,
+      "bytes": 5423,
       "path": "files/logos/svg/apysyk-lockup-white.svg"
     },
     {
@@ -378,7 +378,7 @@
       "width": 512,
       "height": 85,
       "format": "png",
-      "bytes": 8858,
+      "bytes": 8811,
       "path": "files/logos/png/apysyk-lockup-white-512.png"
     },
     {
@@ -388,7 +388,7 @@
       "width": 1024,
       "height": 169,
       "format": "png",
-      "bytes": 16885,
+      "bytes": 16694,
       "path": "files/logos/png/apysyk-lockup-white-1024.png"
     },
     {
@@ -396,9 +396,9 @@
       "category": "png",
       "name": "Lockup, white",
       "width": 2048,
-      "height": 338,
+      "height": 339,
       "format": "png",
-      "bytes": 33795,
+      "bytes": 34340,
       "path": "files/logos/png/apysyk-lockup-white-2048.png"
     },
     {
@@ -408,7 +408,7 @@
       "width": null,
       "height": null,
       "format": "svg",
-      "bytes": 5444,
+      "bytes": 5423,
       "path": "files/logos/svg/apysyk-lockup-black.svg"
     },
     {
@@ -418,7 +418,7 @@
       "width": 512,
       "height": 85,
       "format": "png",
-      "bytes": 8060,
+      "bytes": 10477,
       "path": "files/logos/png/apysyk-lockup-black-512.png"
     },
     {
@@ -428,7 +428,7 @@
       "width": 1024,
       "height": 169,
       "format": "png",
-      "bytes": 15394,
+      "bytes": 20155,
       "path": "files/logos/png/apysyk-lockup-black-1024.png"
     },
     {
@@ -436,9 +436,9 @@
       "category": "png",
       "name": "Lockup, black",
       "width": 2048,
-      "height": 338,
+      "height": 339,
       "format": "png",
-      "bytes": 30760,
+      "bytes": 41628,
       "path": "files/logos/png/apysyk-lockup-black-2048.png"
     },
     {
@@ -498,7 +498,7 @@
       "width": 512,
       "height": 381,
       "format": "png",
-      "bytes": 12639,
+      "bytes": 15751,
       "path": "files/logos/png/apysyk-lockup-stacked-black-512.png"
     },
     {
@@ -508,7 +508,7 @@
       "width": 1024,
       "height": 762,
       "format": "png",
-      "bytes": 26987,
+      "bytes": 33762,
       "path": "files/logos/png/apysyk-lockup-stacked-black-1024.png"
     },
     {
@@ -518,7 +518,7 @@
       "width": 2048,
       "height": 1525,
       "format": "png",
-      "bytes": 57374,
+      "bytes": 70441,
       "path": "files/logos/png/apysyk-lockup-stacked-black-2048.png"
     },
     {
@@ -578,7 +578,7 @@
       "width": 512,
       "height": 512,
       "format": "png",
-      "bytes": 7925,
+      "bytes": 7585,
       "path": "files/logos/png/apysyk-mark-black-512.png"
     },
     {
@@ -588,7 +588,7 @@
       "width": 1024,
       "height": 1024,
       "format": "png",
-      "bytes": 16727,
+      "bytes": 16878,
       "path": "files/logos/png/apysyk-mark-black-1024.png"
     },
     {
@@ -598,8 +598,18 @@
       "width": 2048,
       "height": 2048,
       "format": "png",
-      "bytes": 43761,
+      "bytes": 43901,
       "path": "files/logos/png/apysyk-mark-black-2048.png"
+    },
+    {
+      "group": "logos",
+      "category": "png",
+      "name": "Risksquad master lockup — supplied PNG",
+      "width": 763,
+      "height": 126,
+      "format": "png",
+      "bytes": 10075,
+      "path": "files/logos/png/risksquad-lockup-reference.png"
     },
     {
       "group": "loading",
@@ -848,7 +858,7 @@
       "width": 1128,
       "height": 191,
       "format": "png",
-      "bytes": 133523,
+      "bytes": 139032,
       "path": "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-linkedin-company-cover-1128x191.webp",
@@ -863,7 +873,7 @@
       "width": 1584,
       "height": 396,
       "format": "png",
-      "bytes": 373614,
+      "bytes": 376982,
       "path": "files/banners/social/apysyk-linkedin-profile-banner-1584x396.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-linkedin-profile-banner-1584x396.webp",
@@ -878,7 +888,7 @@
       "width": 1500,
       "height": 500,
       "format": "png",
-      "bytes": 452404,
+      "bytes": 451931,
       "path": "files/banners/social/apysyk-x-header-1500x500.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-x-header-1500x500.webp",
@@ -893,7 +903,7 @@
       "width": 1640,
       "height": 624,
       "format": "png",
-      "bytes": 654104,
+      "bytes": 653731,
       "path": "files/banners/social/apysyk-facebook-cover-1640x624.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-facebook-cover-1640x624.webp",
@@ -908,7 +918,7 @@
       "width": 2560,
       "height": 1440,
       "format": "png",
-      "bytes": 1786139,
+      "bytes": 1797317,
       "path": "files/banners/social/apysyk-youtube-banner-2560x1440.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-youtube-banner-2560x1440.webp",
@@ -923,7 +933,7 @@
       "width": 1280,
       "height": 640,
       "format": "png",
-      "bytes": 519056,
+      "bytes": 519094,
       "path": "files/banners/social/apysyk-github-social-preview-1280x640.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-github-social-preview-1280x640.webp",
@@ -938,7 +948,7 @@
       "width": 1200,
       "height": 630,
       "format": "png",
-      "bytes": 427135,
+      "bytes": 427458,
       "path": "files/banners/social/apysyk-share-card-1200x630.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-share-card-1200x630.webp",
@@ -970,7 +980,7 @@
       "width": 1584,
       "height": 396,
       "format": "png",
-      "bytes": 509247,
+      "bytes": 508873,
       "path": "files/banners/social/apysyk-linkedin-profile-banner-bridge-1584x396.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-linkedin-profile-banner-bridge-1584x396.webp",
@@ -986,7 +996,7 @@
       "width": 1500,
       "height": 500,
       "format": "png",
-      "bytes": 615767,
+      "bytes": 615614,
       "path": "files/banners/social/apysyk-x-header-bridge-1500x500.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-x-header-bridge-1500x500.webp",
@@ -1002,7 +1012,7 @@
       "width": 1640,
       "height": 624,
       "format": "png",
-      "bytes": 840244,
+      "bytes": 840152,
       "path": "files/banners/social/apysyk-facebook-cover-bridge-1640x624.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-facebook-cover-bridge-1640x624.webp",
@@ -1018,7 +1028,7 @@
       "width": 2560,
       "height": 1440,
       "format": "png",
-      "bytes": 2784636,
+      "bytes": 2784638,
       "path": "files/banners/social/apysyk-youtube-banner-bridge-2560x1440.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-youtube-banner-bridge-2560x1440.webp",
@@ -1034,7 +1044,7 @@
       "width": 1280,
       "height": 640,
       "format": "png",
-      "bytes": 630092,
+      "bytes": 630223,
       "path": "files/banners/social/apysyk-github-social-preview-bridge-1280x640.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-github-social-preview-bridge-1280x640.webp",
@@ -1050,7 +1060,7 @@
       "width": 1200,
       "height": 630,
       "format": "png",
-      "bytes": 574827,
+      "bytes": 574907,
       "path": "files/banners/social/apysyk-share-card-bridge-1200x630.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-share-card-bridge-1200x630.webp",
@@ -1065,7 +1075,7 @@
       "width": 1080,
       "height": 1080,
       "format": "png",
-      "bytes": 667515,
+      "bytes": 667460,
       "path": "files/banners/social/apysyk-instagram-square-1080x1080.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-instagram-square-1080x1080.webp",
@@ -1080,7 +1090,7 @@
       "width": 1080,
       "height": 1350,
       "format": "png",
-      "bytes": 787195,
+      "bytes": 786974,
       "path": "files/banners/social/apysyk-instagram-portrait-1080x1350.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-instagram-portrait-1080x1350.webp",
@@ -1095,7 +1105,7 @@
       "width": 1080,
       "height": 1920,
       "format": "png",
-      "bytes": 1010016,
+      "bytes": 1010100,
       "path": "files/banners/social/apysyk-instagram-story-1080x1920.png",
       "thumb": {
         "path": "thumbs/banners/social/apysyk-instagram-story-1080x1920.webp",
@@ -1110,7 +1120,7 @@
       "width": 600,
       "height": 150,
       "format": "png",
-      "bytes": 13861,
+      "bytes": 18273,
       "path": "files/banners/email/apysyk-email-signature-600x150.png",
       "thumb": {
         "path": "thumbs/banners/email/apysyk-email-signature-600x150.webp",
@@ -1125,7 +1135,7 @@
       "width": 1200,
       "height": 300,
       "format": "png",
-      "bytes": 34874,
+      "bytes": 43928,
       "path": "files/banners/email/apysyk-email-signature-1200x300.png",
       "thumb": {
         "path": "thumbs/banners/email/apysyk-email-signature-1200x300.webp",
@@ -1140,7 +1150,7 @@
       "width": 300,
       "height": 250,
       "format": "png",
-      "bytes": 59956,
+      "bytes": 62987,
       "path": "files/banners/display/apysyk-ad-300x250.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-300x250.webp",
@@ -1155,7 +1165,7 @@
       "width": 336,
       "height": 280,
       "format": "png",
-      "bytes": 72988,
+      "bytes": 76517,
       "path": "files/banners/display/apysyk-ad-336x280.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-336x280.webp",
@@ -1170,7 +1180,7 @@
       "width": 728,
       "height": 90,
       "format": "png",
-      "bytes": 48511,
+      "bytes": 53270,
       "path": "files/banners/display/apysyk-ad-728x90.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-728x90.webp",
@@ -1185,7 +1195,7 @@
       "width": 970,
       "height": 90,
       "format": "png",
-      "bytes": 58472,
+      "bytes": 63465,
       "path": "files/banners/display/apysyk-ad-970x90.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-970x90.webp",
@@ -1200,7 +1210,7 @@
       "width": 970,
       "height": 250,
       "format": "png",
-      "bytes": 157299,
+      "bytes": 163563,
       "path": "files/banners/display/apysyk-ad-970x250.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-970x250.webp",
@@ -1215,7 +1225,7 @@
       "width": 160,
       "height": 600,
       "format": "png",
-      "bytes": 67593,
+      "bytes": 67296,
       "path": "files/banners/display/apysyk-ad-160x600.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-160x600.webp",
@@ -1230,7 +1240,7 @@
       "width": 300,
       "height": 600,
       "format": "png",
-      "bytes": 115188,
+      "bytes": 115311,
       "path": "files/banners/display/apysyk-ad-300x600.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-300x600.webp",
@@ -1245,7 +1255,7 @@
       "width": 320,
       "height": 50,
       "format": "png",
-      "bytes": 13483,
+      "bytes": 14354,
       "path": "files/banners/display/apysyk-ad-320x50.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-320x50.webp",
@@ -1260,7 +1270,7 @@
       "width": 320,
       "height": 100,
       "format": "png",
-      "bytes": 22457,
+      "bytes": 24734,
       "path": "files/banners/display/apysyk-ad-320x100.png",
       "thumb": {
         "path": "thumbs/banners/display/apysyk-ad-320x100.webp",
@@ -1275,7 +1285,7 @@
       "width": 1200,
       "height": 630,
       "format": "jpg",
-      "bytes": 64909,
+      "bytes": 67828,
       "path": "files/banners/imagery/apysyk-cover-home-1200x630.jpg",
       "thumb": {
         "path": "thumbs/banners/imagery/apysyk-cover-home-1200x630.webp",
@@ -1290,7 +1300,7 @@
       "width": 1200,
       "height": 630,
       "format": "jpg",
-      "bytes": 66027,
+      "bytes": 65898,
       "path": "files/banners/imagery/apysyk-cover-platform-1200x630.jpg",
       "thumb": {
         "path": "thumbs/banners/imagery/apysyk-cover-platform-1200x630.webp",
@@ -1305,7 +1315,7 @@
       "width": 1200,
       "height": 630,
       "format": "jpg",
-      "bytes": 61400,
+      "bytes": 61284,
       "path": "files/banners/imagery/apysyk-cover-solutions-1200x630.jpg",
       "thumb": {
         "path": "thumbs/banners/imagery/apysyk-cover-solutions-1200x630.webp",
@@ -1321,7 +1331,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 38374,
+      "bytes": 37993,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-1920x1080.webp",
@@ -1337,7 +1347,7 @@
       "width": 2560,
       "height": 1440,
       "format": "jpg",
-      "bytes": 55636,
+      "bytes": 55117,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-2560x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-2560x1440.webp",
@@ -1353,7 +1363,7 @@
       "width": 3840,
       "height": 2160,
       "format": "jpg",
-      "bytes": 100793,
+      "bytes": 100061,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3840x2160.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3840x2160.webp",
@@ -1369,7 +1379,7 @@
       "width": 5120,
       "height": 2880,
       "format": "jpg",
-      "bytes": 152668,
+      "bytes": 151759,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-5120x2880.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-5120x2880.webp",
@@ -1385,7 +1395,7 @@
       "width": 3440,
       "height": 1440,
       "format": "jpg",
-      "bytes": 63650,
+      "bytes": 63140,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3440x1440.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3440x1440.webp",
@@ -1401,7 +1411,7 @@
       "width": 2560,
       "height": 1600,
       "format": "jpg",
-      "bytes": 61407,
+      "bytes": 60866,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-2560x1600.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-2560x1600.webp",
@@ -1417,7 +1427,7 @@
       "width": 3024,
       "height": 1964,
       "format": "jpg",
-      "bytes": 81917,
+      "bytes": 81285,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3024x1964.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3024x1964.webp",
@@ -1433,7 +1443,7 @@
       "width": 3456,
       "height": 2234,
       "format": "jpg",
-      "bytes": 97146,
+      "bytes": 96452,
       "path": "files/wallpapers/desktop/apysyk-wallpaper-light-3456x2234.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/desktop/apysyk-wallpaper-light-3456x2234.webp",
@@ -1449,7 +1459,7 @@
       "width": 1179,
       "height": 2556,
       "format": "jpg",
-      "bytes": 48341,
+      "bytes": 47910,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1179x2556.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1179x2556.webp",
@@ -1465,7 +1475,7 @@
       "width": 1290,
       "height": 2796,
       "format": "jpg",
-      "bytes": 54987,
+      "bytes": 54517,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1290x2796.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1290x2796.webp",
@@ -1481,7 +1491,7 @@
       "width": 1080,
       "height": 2400,
       "format": "jpg",
-      "bytes": 43936,
+      "bytes": 43519,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1080x2400.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1080x2400.webp",
@@ -1497,7 +1507,7 @@
       "width": 1440,
       "height": 3200,
       "format": "jpg",
-      "bytes": 64446,
+      "bytes": 63903,
       "path": "files/wallpapers/phone/apysyk-wallpaper-light-1440x3200.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/phone/apysyk-wallpaper-light-1440x3200.webp",
@@ -1513,7 +1523,7 @@
       "width": 2048,
       "height": 2732,
       "format": "jpg",
-      "bytes": 80577,
+      "bytes": 79898,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-light-2048x2732.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-light-2048x2732.webp",
@@ -1529,7 +1539,7 @@
       "width": 1640,
       "height": 2360,
       "format": "jpg",
-      "bytes": 62152,
+      "bytes": 61591,
       "path": "files/wallpapers/tablet/apysyk-wallpaper-light-1640x2360.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/tablet/apysyk-wallpaper-light-1640x2360.webp",
@@ -1545,7 +1555,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 43815,
+      "bytes": 43638,
       "path": "files/wallpapers/video/apysyk-video-call-light-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-light-1920x1080.webp",
@@ -1785,7 +1795,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 39645,
+      "bytes": 39633,
       "path": "files/wallpapers/video/apysyk-video-call-forest-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-forest-1920x1080.webp",
@@ -2025,7 +2035,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 56572,
+      "bytes": 56588,
       "path": "files/wallpapers/video/apysyk-video-call-gradient-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-gradient-1920x1080.webp",
@@ -2265,7 +2275,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 62010,
+      "bytes": 62001,
       "path": "files/wallpapers/video/apysyk-video-call-aurora-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-aurora-1920x1080.webp",
@@ -2505,7 +2515,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 58165,
+      "bytes": 58130,
       "path": "files/wallpapers/video/apysyk-video-call-prism-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-prism-1920x1080.webp",
@@ -2745,7 +2755,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 71739,
+      "bytes": 71717,
       "path": "files/wallpapers/video/apysyk-video-call-lattice-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-lattice-1920x1080.webp",
@@ -2985,7 +2995,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 131107,
+      "bytes": 131095,
       "path": "files/wallpapers/video/apysyk-video-call-lighthouse-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-lighthouse-1920x1080.webp",
@@ -3225,7 +3235,7 @@
       "width": 1920,
       "height": 1080,
       "format": "jpg",
-      "bytes": 172492,
+      "bytes": 172495,
       "path": "files/wallpapers/video/apysyk-video-call-bridge-1920x1080.jpg",
       "thumb": {
         "path": "thumbs/wallpapers/video/apysyk-video-call-bridge-1920x1080.webp",
@@ -3240,7 +3250,7 @@
       "width": 1200,
       "height": 630,
       "format": "png",
-      "bytes": 431389,
+      "bytes": 431796,
       "path": "og.png"
     },
     {
@@ -3250,7 +3260,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 38399420,
+      "bytes": 38562148,
       "path": "downloads/apysyk-media-kit.zip",
       "contents": [
         "files/logos/svg/apysyk-lockup-on-dark.svg",
@@ -3313,6 +3323,7 @@
         "files/logos/png/apysyk-mark-black-512.png",
         "files/logos/png/apysyk-mark-black-1024.png",
         "files/logos/png/apysyk-mark-black-2048.png",
+        "files/logos/png/risksquad-lockup-reference.png",
         "files/loading/apysyk-loading-sequence.svg",
         "files/loading/apysyk-loading-sequence-dark.svg",
         "files/loading/apysyk-loading-sequence-black.svg",
@@ -3496,7 +3507,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 5268608,
+      "bytes": 5378933,
       "path": "downloads/apysyk-logos.zip",
       "contents": [
         "files/logos/svg/apysyk-lockup-on-dark.svg",
@@ -3559,6 +3570,7 @@
         "files/logos/png/apysyk-mark-black-512.png",
         "files/logos/png/apysyk-mark-black-1024.png",
         "files/logos/png/apysyk-mark-black-2048.png",
+        "files/logos/png/risksquad-lockup-reference.png",
         "files/logos/avatars/apysyk-avatar-white-1024.png",
         "files/logos/avatars/apysyk-avatar-forest-1024.png"
       ]
@@ -3603,7 +3615,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 13792167,
+      "bytes": 13852829,
       "path": "downloads/apysyk-banners.zip",
       "contents": [
         "files/banners/social/apysyk-linkedin-company-cover-1128x191.png",
@@ -3646,7 +3658,7 @@
       "width": null,
       "height": null,
       "format": "zip",
-      "bytes": 19323099,
+      "bytes": 19314832,
       "path": "downloads/apysyk-wallpapers.zip",
       "contents": [
         "files/wallpapers/desktop/apysyk-wallpaper-light-1920x1080.jpg",
