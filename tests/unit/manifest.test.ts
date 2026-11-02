@@ -102,11 +102,21 @@ describe("manifest", () => {
         .sort(),
     );
     const pngs = manifest.files.filter((f) => f.category === "png");
-    expect(pngs).toHaveLength(45);
+    expect(pngs).toHaveLength(46);
     for (const svg of svgs) {
       const base = svg!.replace(/\.svg$/, "");
       expect(pngs.filter((p) => new RegExp(`/${base}-\\d+\\.png$`).test(p.path)).map((p) => p.width)).toEqual([512, 1024, 2048]);
     }
+  });
+
+  test("preserves the supplied master PNG byte for byte", async () => {
+    const path = "files/logos/png/risksquad-lockup-reference.png";
+    const entry = manifest.files.find((file) => file.path === path);
+    expect(entry).toMatchObject({ group: "logos", category: "png", width: 763, height: 126, format: "png" });
+    const source = new Uint8Array(await Bun.file(resolve(import.meta.dir, "../../brand/logo/risksquad-lockup-reference.png")).arrayBuffer());
+    const output = new Uint8Array(await Bun.file(join(DIST, path)).arrayBuffer());
+    expect(imageSize(source)).toEqual({ width: 763, height: 126 });
+    expect(output).toEqual(source);
   });
 
 

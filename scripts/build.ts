@@ -84,6 +84,22 @@ try {
     }),
   );
   files.push(...logos.flat());
+  const referencePath = "files/logos/png/risksquad-lockup-reference.png";
+  const reference = await read("brand/logo/risksquad-lockup-reference.png");
+  const referenceSize = imageSize(reference);
+  if (referenceSize.width !== 763 || referenceSize.height !== 126) {
+    throw new Error(`Risksquad master lockup is ${referenceSize.width}x${referenceSize.height}, expected 763x126`);
+  }
+  files.push({
+    group: "logos",
+    category: "png",
+    name: "Risksquad master lockup — supplied PNG",
+    width: referenceSize.width,
+    height: referenceSize.height,
+    format: "png",
+    bytes: await write(referencePath, reference),
+    path: referencePath,
+  });
 
   // Every motion is available in its original gradient, white and native black.
   for (const v of LOADING_VERSIONS) {

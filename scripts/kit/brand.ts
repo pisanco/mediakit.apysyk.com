@@ -61,7 +61,7 @@ export const COPY = {
   context: "Scanners already find. Risksquad adds the context that turns a finding into owned work.",
   connect:
     "Risksquad connects the tools you already use and turns their signals into coordinated security work across AI, application security, supply chain, cloud, and posture management.",
-  headline: ["Security.", "In sync."] as const,
+  headline: ["Redefining how", "AppSec gets done"] as const,
   category: "One operating layer for every security workflow",
 } as const;
 

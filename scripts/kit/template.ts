@@ -81,7 +81,7 @@ html, body { overflow: hidden; -webkit-font-smoothing: antialiased; }
 .stack > * { flex: none; }
 img { display: block; }
 .headline { font-family: "Mona Sans"; font-weight: 600; letter-spacing: calc(-0.028em + 0.3px); line-height: 0.96; color: ${COLORS.ink}; white-space: nowrap; }
-/* Room for the descenders of "In sync.", so the measured box holds the ink. */
+/* Room for headline descenders, so the measured box holds the ink. */
 .headline { padding-bottom: 0.1em; }
 .headline span { display: block; width: max-content; }
 .stack--center .headline span { margin-inline: auto; }

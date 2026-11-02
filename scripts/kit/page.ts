@@ -82,6 +82,7 @@ export function renderPage(manifest: Manifest, shareVersion: string): string {
   const lockupDark = byPath("files/logos/svg/apysyk-lockup-white.svg");
   const lockupPng = where((f) => f.path.startsWith("files/logos/png/apysyk-lockup-black-"))[0];
   const lockupHeight = (width: number) => Math.round((width * lockupPng.height!) / lockupPng.width!);
+  const referenceLockup = byPath("files/logos/png/risksquad-lockup-reference.png");
 
   // ---------- About ----------
   const boilerplates = [
@@ -128,6 +129,14 @@ ${sectionHead("about", "About Risksquad", "Approved descriptions. Quote them as 
   </div>
 </article>`;
   }).join("\n");
+  const referenceCard = `<article class="card logo-card">
+  <div class="preview preview--light preview--lockup"><img src="${referenceLockup.path}" width="${referenceLockup.width}" height="${referenceLockup.height}" alt="Risksquad logo, exact supplied master PNG" loading="lazy" decoding="async"></div>
+  <div class="logo-card__body">
+    <h3 class="card__title">Master lockup · exact PNG</h3>
+    <p class="body">The original 763 × 126 px file. Use this for an identical reproduction.</p>
+    <div class="dl-row">${download(referenceLockup, "PNG · original", "Risksquad master lockup, exact supplied PNG, 763 × 126 px")}</div>
+  </div>
+</article>`;
   const avatars = where((f) => f.category === "avatars")
     .map(
       (f) => `<article class="card asset-card">
@@ -164,7 +173,7 @@ ${sectionHead("about", "About Risksquad", "Approved descriptions. Quote them as 
     .join("");
   const logo = `<section class="section" id="logo" aria-labelledby="logo-title">
 ${sectionHead("logo", "Logo", "Use the black signature on light surfaces and the white signature on dark surfaces. The symbol and Space Grotesk Medium wordmark are optically aligned on the capital letters; the q descender stays intact. Color, stacked and standalone variants are also available. Use the files as supplied; never retype or distort the name.")}
-<div class="grid grid--logos">${logoCards}</div>
+<div class="grid grid--logos">${logoCards}${referenceCard}</div>
 <h3 class="subhead">Avatars</h3>
 <div class="grid grid--avatars">${avatars}</div>
 <div class="rules">
@@ -431,7 +440,7 @@ ${sectionHead("generator", "Generator", "Pick a format and generate a banner or 
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="shell site-header__inner">
-    <a class="brand" href="#top" aria-label="Risksquad media kit"><img class="brand__lockup brand__lockup--light" src="${lockup.path}" width="152" height="${lockupHeight(152)}" alt=""><img class="brand__lockup brand__lockup--dark" src="${lockupDark.path}" width="152" height="${lockupHeight(152)}" alt=""><span class="brand__kit">Media kit</span></a>
+    <a class="brand" href="#top" aria-label="Risksquad media kit"><img class="brand__lockup brand__lockup--light" src="${referenceLockup.path}" width="${referenceLockup.width}" height="${referenceLockup.height}" alt=""><img class="brand__lockup brand__lockup--dark" src="${lockupDark.path}" width="152" height="${lockupHeight(152)}" alt=""><span class="brand__kit">Media kit</span></a>
     <nav class="nav" aria-label="Sections"><ul class="nav__list">${nav}</ul></nav>
     <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode">
       <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
