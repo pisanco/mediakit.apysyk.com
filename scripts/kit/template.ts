@@ -128,7 +128,7 @@ export function documentFor(doc: Doc): Prepared {
       return `<div class="stack${s.align === "center" ? " stack--center" : ""}" style="${style}">${s.items.map(itemHtml).join("")}</div>`;
     })
     .join("");
-  // The ink follows the surface: Paper's on light, white and Lime on every dark one, white alone on the gradient.
+  // The ink follows the surface: Ink and Forest on light, Off-white on every dark one and on the gradient.
   const ink = doc.tone === "gradient" ? "gradient" : doc.tone === "light" || !doc.tone ? "light" : "forest";
   const html = `<!doctype html><html><head><meta charset="utf-8"><style>${FONTS}${CSS}
 html, body { width: ${doc.width}px; height: ${doc.height}px; background: ${doc.background}; }</style></head><body class="${ink}">

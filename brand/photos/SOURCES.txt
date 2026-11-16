@@ -1,8 +1,8 @@
 The photographs the kit draws on, all released under CC0 1.0 (public domain
 dedication: https://creativecommons.org/publicdomain/zero/1.0/), kept here
-resized to at most 5120 px wide and recompressed. The kit renders them in a
-green duotone under the logo. The first two also come as wallpapers and
-covers; the rest are surfaces of the generator.
+resized to at most 5120 px wide and recompressed. The kit renders them in an
+Ink, Forest and Off-white tritone under the logo. The first two also come as
+wallpapers and covers; the rest are surfaces of the generator.
 
 lighthouse.jpg
   "Night before the arrival", Dmitry Pavlov, published on Unsplash under CC0.

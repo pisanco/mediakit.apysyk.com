@@ -13,21 +13,25 @@ afterAll(async () => {
   await browser?.close();
 });
 
-test("every logo and loading SVG paints only the three brand colors", async () => {
+test("every logo SVG paints only the three brand colors, and every loading SVG only its own", async () => {
   const palette: string[] = Object.values(COLORS);
-  const files = [
-    ...(await Promise.all(LOGO_FILES.map(async ({ file }) => ({ file, markup: await Bun.file(`${LOGO_DIR}/${file}`).text() })))),
-    ...LOADING_VERSIONS.flatMap((v) => [
-      { file: `${v.slug}.svg`, markup: v.light },
-      { file: `${v.slug}-dark.svg`, markup: v.dark },
-      { file: `${v.slug}-black.svg`, markup: v.black },
-    ]),
-  ];
-  for (const { file, markup } of files) {
-    // A mask's white is luminance, not paint.
-    const painted = markup.replace(/<mask\b[\s\S]*?<\/mask>/g, "");
-    const colors = [...painted.matchAll(/(?:fill|stroke|stop-color)="([^"]+)"/g)].map(([, value]) => value).filter((value) => value !== "none" && !value.startsWith("url(#"));
-    expect({ file, offPalette: colors.filter((color) => !palette.includes(color.toLowerCase())) }).toEqual({ file, offPalette: [] });
+  // A mask's white is luminance, not paint.
+  const painted = (markup: string) =>
+    [...markup.replace(/<mask\b[\s\S]*?<\/mask>/g, "").matchAll(/(?:fill|stroke|stop-color)="([^"]+)"/g)]
+      .map(([, value]) => value.toLowerCase())
+      .filter((value) => value !== "none" && !value.startsWith("url(#"));
+  for (const { file } of LOGO_FILES) {
+    const colors = painted(await Bun.file(`${LOGO_DIR}/${file}`).text());
+    expect({ file, offPalette: colors.filter((color) => !palette.includes(color)) }).toEqual({ file, offPalette: [] });
+  }
+  for (const v of LOADING_VERSIONS) {
+    for (const [file, markup, color] of [
+      [`${v.slug}.svg`, v.light, COLORS.forest],
+      [`${v.slug}-dark.svg`, v.dark, COLORS.offWhite],
+      [`${v.slug}-black.svg`, v.black, COLORS.ink],
+    ] as const) {
+      expect({ file, colors: [...new Set(painted(markup))] }).toEqual({ file, colors: [color] });
+    }
   }
 });
 

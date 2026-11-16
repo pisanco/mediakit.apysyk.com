@@ -559,13 +559,13 @@ export function ogImage(): Doc {
   );
 }
 
-/** A logo file alone on a transparent or solid square, for favicons. */
-export function icon(size: number, background: string, scale: number): Doc {
+/** A mark file alone on a transparent or solid square, for favicons and home-screen icons. */
+export function icon(size: number, background: string, file: LogoFile, scale: number): Doc {
   return {
     width: size,
     height: size,
     background,
-    stacks: [{ box: box(0, 0, size, size), align: "center", valign: "center", items: [logo("mark.svg", size * scale)] }],
+    stacks: [{ box: box(0, 0, size, size), align: "center", valign: "center", items: [logo(file, size * scale)] }],
   };
 }
 

@@ -225,7 +225,7 @@ code,
 
 /* ---------- Type ---------- */
 
-/* A quiet sentence-case label in the text green, never a shouted mono tag. */
+/* A quiet sentence-case label in the emphasis color, never a shouted mono tag. */
 .kicker {
   font-size: clamp(1rem, 1.25vw, 1.25rem);
   font-weight: 600;
@@ -939,7 +939,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   padding: 10px 10px 22px;
 }
 
-/* The primary previews side by side: black on Paper, white on Forest. */
+/* The primary previews side by side: Ink on Off-white, Off-white on Forest. */
 .loading-card__previews {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
