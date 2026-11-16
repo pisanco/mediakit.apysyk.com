@@ -2,9 +2,9 @@
 // numbers are in output pixels and derived from the size, so one composition
 // family serves several sizes; the renderer then fits each headline to its box.
 //
-// Three surfaces carry everything: Forest, the brand gradient, and Paper. The
-// logo is always drawn whole from its own files, sitting in a glow with clear
-// space around it; the copy keeps to the side it leaves free.
+// Three surfaces carry everything: Forest, the Ink-to-Forest gradient, and
+// Off-white. The logo is always drawn whole from its own files, sitting in a
+// glow with clear space around it; the copy keeps to the side it leaves free.
 
 import { COLORS, HEADLINES, WEBSITE } from "./brand.ts";
 import { LOCKUP_ASPECT, STACKED_ASPECT } from "./logo-geometry.ts";
@@ -28,23 +28,21 @@ export interface RenderedAsset {
   doc: Doc;
 }
 
-/** The background each logo file is made for: Paper or White, a dark field, Forest for the one-colour white files, or its own gradient. */
+/** The background each logo file is made for: Off-white for the color and Ink files, a dark field for the Off-white ones, or its own gradient. */
 export const LOGO_FILES: { file: LogoFile; name: string; background: "dark" | "light" | "forest" }[] = [
-  { file: "lockup-on-dark.svg", name: "Lockup on dark", background: "dark" },
   { file: "lockup-on-light.svg", name: "Lockup on light", background: "light" },
-  { file: "mark.svg", name: "Mark", background: "light" },
-  { file: "lockup-stacked-on-dark.svg", name: "Stacked lockup on dark", background: "dark" },
+  { file: "lockup-white.svg", name: "Lockup, Off-white", background: "forest" },
+  { file: "mark.svg", name: "Mark, Forest", background: "light" },
   { file: "lockup-stacked-on-light.svg", name: "Stacked lockup on light", background: "light" },
+  { file: "lockup-stacked-white.svg", name: "Stacked lockup, Off-white", background: "forest" },
   { file: "lockup-on-gradient.svg", name: "Lockup on gradient", background: "light" },
-  { file: "wordmark-light.svg", name: "Wordmark, light", background: "dark" },
-  { file: "wordmark-dark.svg", name: "Wordmark, dark", background: "light" },
+  { file: "wordmark-light.svg", name: "Wordmark, Off-white", background: "dark" },
+  { file: "wordmark-dark.svg", name: "Wordmark, Ink", background: "light" },
   { file: "mark-on-gradient.svg", name: "Mark on gradient", background: "light" },
-  { file: "lockup-white.svg", name: "Lockup, white", background: "forest" },
-  { file: "lockup-black.svg", name: "Lockup, black", background: "light" },
-  { file: "lockup-stacked-white.svg", name: "Stacked lockup, white", background: "forest" },
-  { file: "lockup-stacked-black.svg", name: "Stacked lockup, black", background: "light" },
-  { file: "mark-white.svg", name: "Mark, white", background: "forest" },
-  { file: "mark-black.svg", name: "Mark, black", background: "light" },
+  { file: "lockup-black.svg", name: "Lockup, Ink", background: "light" },
+  { file: "lockup-stacked-black.svg", name: "Stacked lockup, Ink", background: "light" },
+  { file: "mark-white.svg", name: "Mark, Off-white", background: "forest" },
+  { file: "mark-black.svg", name: "Mark, Ink", background: "light" },
 ];
 
 export const LOGO_WIDTHS = [512, 1024, 2048] as const;
@@ -147,7 +145,7 @@ function pageCard(pageLabel: string, lines: Line[], max: number): Doc {
       {
         box: box(66, 120, w * 0.54, h - 190),
         valign: "center",
-        items: [{ kind: "eyebrow", text: pageLabel, size: 20, green: true }, gap(22), headline(lines, max)],
+        items: [{ kind: "eyebrow", text: pageLabel, size: 20, accent: true }, gap(22), headline(lines, max)],
       },
       markAt("aurora", at.x, at.y, h * 0.5),
     ],
@@ -208,7 +206,7 @@ function social(): RenderedAsset[] {
     );
   };
 
-  /** Instagram: the gradient itself, white copy, the mark in white as the hero. */
+  /** Instagram: the gradient itself, Off-white copy, the mark in Off-white as the hero. */
   const square = (w: number, h: number): Doc => {
     const pad = w * 0.078;
     const lh = w * 0.046;
@@ -283,7 +281,7 @@ function social(): RenderedAsset[] {
   ];
 }
 
-/** Display ads: all on the gradient, white copy, the mark in white beside the message. */
+/** Display ads: all on the gradient, Off-white copy, the mark in Off-white beside the message. */
 function display(): RenderedAsset[] {
   const make = (name: string, w: number, h: number, doc: Doc): RenderedAsset => ({
     group: "banners",
@@ -522,20 +520,25 @@ function imagery(): RenderedAsset[] {
 }
 
 function avatars(): RenderedAsset[] {
-  return (["white", "forest"] as const).map((bg) => ({
+  // The slugs keep their published file names; the light one is now Off-white.
+  const variants = [
+    { slug: "white", name: "Off-white", background: COLORS.offWhite, mark: "mark.svg" },
+    { slug: "forest", name: "Forest", background: COLORS.forest, mark: "mark-white.svg" },
+  ] as const;
+  return variants.map(({ slug, name, background, mark }) => ({
     group: "logos",
     category: "avatars",
-    name: `Avatar on ${bg}`,
-    slug: `risksquad-avatar-${bg}-1024`,
+    name: `Avatar on ${name}`,
+    slug: `risksquad-avatar-${slug}-1024`,
     width: 1024,
     height: 1024,
     format: "png",
     doc: {
       width: 1024,
       height: 1024,
-      background: COLORS[bg],
+      background,
       // 56% of the side keeps the mark inside a circular crop with room around it.
-      stacks: [{ box: box(0, 0, 1024, 1024), align: "center", valign: "center", items: [logo("mark.svg", 1024 * 0.56)] }],
+      stacks: [{ box: box(0, 0, 1024, 1024), align: "center", valign: "center", items: [logo(mark, 1024 * 0.56)] }],
     },
   }));
 }

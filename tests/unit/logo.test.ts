@@ -1,5 +1,6 @@
 import { afterAll, beforeAll, expect, test } from "bun:test";
 import { type Browser, chromium } from "@playwright/test";
+import { COLORS } from "../../scripts/kit/brand.ts";
 import { LOGO_FILES } from "../../scripts/kit/catalog.ts";
 import { LOADING_VERSIONS } from "../../scripts/kit/loading.ts";
 import { LOGO_DIR } from "../../scripts/logo/generate.ts";
@@ -10,6 +11,24 @@ beforeAll(async () => {
 });
 afterAll(async () => {
   await browser?.close();
+});
+
+test("every logo and loading SVG paints only the three brand colors", async () => {
+  const palette: string[] = Object.values(COLORS);
+  const files = [
+    ...(await Promise.all(LOGO_FILES.map(async ({ file }) => ({ file, markup: await Bun.file(`${LOGO_DIR}/${file}`).text() })))),
+    ...LOADING_VERSIONS.flatMap((v) => [
+      { file: `${v.slug}.svg`, markup: v.light },
+      { file: `${v.slug}-dark.svg`, markup: v.dark },
+      { file: `${v.slug}-black.svg`, markup: v.black },
+    ]),
+  ];
+  for (const { file, markup } of files) {
+    // A mask's white is luminance, not paint.
+    const painted = markup.replace(/<mask\b[\s\S]*?<\/mask>/g, "");
+    const colors = [...painted.matchAll(/(?:fill|stroke|stop-color)="([^"]+)"/g)].map(([, value]) => value).filter((value) => value !== "none" && !value.startsWith("url(#"));
+    expect({ file, offPalette: colors.filter((color) => !palette.includes(color.toLowerCase())) }).toEqual({ file, offPalette: [] });
+  }
 });
 
 test(
@@ -65,7 +84,7 @@ test("horizontal lockup aligns capital letters with the symbol without clipping 
   const page = await browser.newPage();
   try {
     await page.setContent(await Bun.file(`${LOGO_DIR}/lockup-black.svg`).text());
-    expect(await page.locator("path").evaluateAll((paths) => paths.map((path) => path.getAttribute("fill")))).toEqual(["#181818", "#181818"]);
+    expect(await page.locator("path").evaluateAll((paths) => paths.map((path) => path.getAttribute("fill")))).toEqual([COLORS.ink, COLORS.ink]);
     const geometry = await page.$eval("svg", (root) => {
       if (!(root instanceof SVGSVGElement)) throw new Error("Expected an SVG root");
       const [mark, wordmark] = Array.from(root.querySelectorAll("path"), (path) => path.getBBox());

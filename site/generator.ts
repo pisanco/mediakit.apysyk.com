@@ -4,7 +4,7 @@
 // The SVG embeds everything it needs as data URLs, because an SVG drawn as an
 // image may load nothing external and the canvas must stay untainted.
 
-import { COLORS, HEADLINES, WEBSITE } from "../scripts/kit/brand.ts";
+import { COLORS, DIM, HEADLINES, WEBSITE } from "../scripts/kit/brand.ts";
 import { buildScene, logosOn, photoOf, type Surface } from "../scripts/kit/scene.ts";
 
 type Family = "cover" | "card" | "square" | "story" | "wallpaper";
@@ -57,9 +57,8 @@ interface Ink {
 
 /** The ink of the copy on each surface, as the kit's layouts paint it. */
 function inkOn(surface: Surface): Ink {
-  if (surface === "light") return { text: COLORS.ink, accent: COLORS.green2, dim: COLORS.inkDim };
-  if (surface === "gradient") return { text: COLORS.white, accent: COLORS.white, dim: "rgba(255,255,255,0.72)" };
-  return { text: COLORS.white, accent: COLORS.lime, dim: "rgba(255,255,255,0.72)" };
+  if (surface === "light") return { text: COLORS.ink, accent: COLORS.forest, dim: DIM.onLight };
+  return { text: COLORS.offWhite, accent: COLORS.offWhite, dim: DIM.onDark };
 }
 
 const pick = <T>(list: readonly T[]): T => list[Math.floor(Math.random() * list.length)];

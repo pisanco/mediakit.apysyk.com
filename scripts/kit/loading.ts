@@ -1,29 +1,28 @@
 // Seven animated versions of the mark for loading states. Each one is a
 // self-contained SVG (SMIL, no script): it works inline, in an <img> and as a
-// background. Geometry and motion are shared by the gradient, black and white
-// variants; recoloring must never change the luminance masks or animation.
+// background. Every version is built once per color from the same geometry and
+// motion, so the Forest, Off-white and Ink files can never move differently.
 import { MARK_SIZE, markLoops, markPath, type Point } from "../logo/mark.ts";
 import { loopsToPath, num } from "../logo/svg.ts";
-import { COLORS, MARK_GRADIENT } from "./brand.ts";
+import { COLORS } from "./brand.ts";
 
 export interface LoadingVersion {
-  /** File name without extension; monochrome files add "-black" or "-dark". */
+  /** File name without extension; the one-color files add "-black" (Ink) or "-dark" (Off-white). */
   slug: string;
   name: string;
   /** What moves, and what the version suits. */
   description: string;
-  /** The mark in its gradient, for light surfaces. */
+  /** The mark in Forest, for light surfaces. */
   light: string;
-  /** The mark in white, for dark surfaces. */
+  /** The mark in Off-white, for dark surfaces. */
   dark: string;
-  /** The mark and Pulse glow in native black, for light surfaces. */
+  /** The mark and Pulse glow in Ink, for light surfaces. */
   black: string;
 }
 
 const S = MARK_SIZE;
 const C = S / 2;
 const EASE = "0.65 0 0.35 1";
-const BLACK = "#000000";
 
 const loops = markLoops();
 /** The four bands, clockwise from the top, and the whole mark. */
@@ -52,17 +51,6 @@ const centrelines = [0, 1, 2, 3].map((quarters) =>
 );
 const bandWidth = top[7].y - top[2].y;
 
-/** The brand gradient in mark units, so bands animated on their own still share one gradient. */
-function gradient(id: string): string {
-  const stops = MARK_GRADIENT.map((color, i) => `<stop offset="${num(i / (MARK_GRADIENT.length - 1))}" stop-color="${color}"/>`).join("");
-  return `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" y1="${S}" x2="${S}" y2="0">${stops}</linearGradient>`;
-}
-
-/** Replace only the visible gradient paint; keep white luminance masks and clip references intact. */
-function inSolid(svg: string, id: string, color: string): string {
-  return svg.replace(gradient(id), "").replaceAll(`url(#${id})`, color);
-}
-
 function document(defs: string, body: string): string {
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}" width="${S}" height="${S}" role="img" aria-label="Loading">`,
@@ -74,37 +62,34 @@ function document(defs: string, body: string): string {
   ].join("\n");
 }
 
-function sequence(): string {
-  const id = "loading-sequence";
+function sequence(color: string): string {
   const paths = bands.map(
     (d, i) =>
       `<path d="${d}" opacity="0.25"><animate attributeName="opacity" values="1;0.25;0.25;1" keyTimes="0;0.4;0.85;1" dur="1.2s" begin="${num(-i * 0.3)}s" repeatCount="indefinite"/></path>`,
   );
-  return document(gradient(id), `<g fill="url(#${id})">${paths.join("")}</g>`);
+  return document("", `<g fill="${color}">${paths.join("")}</g>`);
 }
 
-function turn(): string {
+function turn(color: string): string {
   const id = "loading-turn";
-  // The clip turns and the gradient stays, so the light never moves with the mark. The mark sits at 70%
-  // (its diagonal over its side), so no corner leaves the canvas mid-turn.
+  // The clip turns over a still field. The mark sits at 70% (its diagonal over its side), so no corner
+  // leaves the canvas mid-turn.
   const rotate = `<animateTransform attributeName="transform" type="rotate" values="0;0;90" keyTimes="0;0.3;1" calcMode="spline" keySplines="0 0 1 1;${EASE}" dur="1s" repeatCount="indefinite" additive="sum"/>`;
   return document(
-    `${gradient(id)}<clipPath id="${id}-clip"><path d="${markPath(-C, -C)}" transform="translate(${num(C)} ${num(C)}) scale(0.7)">${rotate}</path></clipPath>`,
-    `<rect width="${S}" height="${S}" fill="url(#${id})" clip-path="url(#${id}-clip)"/>`,
+    `<clipPath id="${id}-clip"><path d="${markPath(-C, -C)}" transform="translate(${num(C)} ${num(C)}) scale(0.7)">${rotate}</path></clipPath>`,
+    `<rect width="${S}" height="${S}" fill="${color}" clip-path="url(#${id}-clip)"/>`,
   );
 }
 
-function focus(): string {
-  const id = "loading-focus";
+function focus(color: string): string {
   const paths = bands.map((d, i) => {
     const [x, y] = INWARD[i];
     return `<path d="${d}"><animateTransform attributeName="transform" type="translate" values="0 0;${x * 10} ${y * 10};0 0" keyTimes="0;0.5;1" calcMode="spline" keySplines="${EASE};${EASE}" dur="1.6s" repeatCount="indefinite"/></path>`;
   });
-  return document(gradient(id), `<g fill="url(#${id})">${paths.join("")}</g>`);
+  return document("", `<g fill="${color}">${paths.join("")}</g>`);
 }
 
-function assemble(): string {
-  const id = "loading-assemble";
+function assemble(color: string): string {
   const paths = bands.map((d, i) => {
     const [x, y] = INWARD[i];
     const begin = `${num(i * 0.12)}s`;
@@ -115,10 +100,10 @@ function assemble(): string {
       "</path>"
     );
   });
-  return document(gradient(id), `<g fill="url(#${id})">${paths.join("")}</g>`);
+  return document("", `<g fill="${color}">${paths.join("")}</g>`);
 }
 
-function trace(): string {
+function trace(color: string): string {
   const id = "loading-trace";
   // A stroke along each band's centreline, clipped to the mark so its ends and corners are the mark's own.
   // Each band is drawn clockwise from its start to its end, holds, then leaves the same way: its start
@@ -131,12 +116,12 @@ function trace(): string {
       "</path>",
   );
   return document(
-    `${gradient(id)}<clipPath id="${id}-clip"><path d="${whole}"/></clipPath>`,
-    `<g clip-path="url(#${id}-clip)" fill="none" stroke="url(#${id})" stroke-width="${num(bandWidth + 1)}" stroke-linejoin="miter">${paths.join("")}</g>`,
+    `<clipPath id="${id}-clip"><path d="${whole}"/></clipPath>`,
+    `<g clip-path="url(#${id}-clip)" fill="none" stroke="${color}" stroke-width="${num(bandWidth + 1)}" stroke-linejoin="miter">${paths.join("")}</g>`,
   );
 }
 
-function pulse(): string {
+function pulse(color: string): string {
   const id = "loading-pulse";
   // A heartbeat: two quick beats, then rest. The mark swells with each beat and a soft round glow behind it
   // swells with it. The mark sits at 84% so the beats have room.
@@ -150,34 +135,34 @@ function pulse(): string {
     `<animate attributeName="opacity" values="${beat(0.3, 0.7)}" ${timing} dur="1.6s" repeatCount="indefinite"/>` +
     "</circle>";
   const mark =
-    `<path d="${markPath(-C, -C)}" fill="url(#${id})">` +
+    `<path d="${markPath(-C, -C)}" fill="${color}">` +
     `<animateTransform attributeName="transform" type="translate" values="${num(C)} ${num(C)}" dur="1.6s" repeatCount="indefinite"/>` +
     `<animateTransform attributeName="transform" type="scale" values="${beat(rest, rest * 1.1)}" ${timing} dur="1.6s" repeatCount="indefinite" additive="sum"/>` +
     "</path>";
-  const glowDef = `<radialGradient id="${id}-glow"><stop offset="0" stop-color="${COLORS.mark}" stop-opacity="0.45"/><stop offset="1" stop-color="${COLORS.mark}" stop-opacity="0"/></radialGradient>`;
-  return document(`${gradient(id)}${glowDef}`, `${glow}${mark}`);
+  const glowDef = `<radialGradient id="${id}-glow"><stop offset="0" stop-color="${color}" stop-opacity="0.45"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`;
+  return document(glowDef, `${glow}${mark}`);
 }
 
-function lock(): string {
+function lock(color: string): string {
   const id = "loading-lock";
   // Focus and Turn at once: the bands close on the window while the mark makes a quarter turn, hold,
   // then open while it makes the next quarter turn; a half turn lands on the same mark, so the loop is
-  // seamless. The paths animate inside a mask, so the gradient stays still on the screen. The mark sits
-  // at 74%, so even the closed mark keeps every corner inside the canvas as it turns.
+  // seamless. The paths animate inside a mask over a still field. The mark sits at 74%, so even the
+  // closed mark keeps every corner inside the canvas as it turns.
   const closing = (i: number) => {
     const [x, y] = INWARD[i];
     return `<animateTransform attributeName="transform" type="translate" values="0 0;${x * 10} ${y * 10};${x * 10} ${y * 10};0 0" keyTimes="0;0.45;0.55;1" calcMode="spline" keySplines="${EASE};0 0 1 1;${EASE}" dur="2.4s" repeatCount="indefinite"/>`;
   };
   const turning = `<animateTransform attributeName="transform" type="rotate" values="0;90;90;180" keyTimes="0;0.45;0.55;1" calcMode="spline" keySplines="${EASE};0 0 1 1;${EASE}" dur="2.4s" repeatCount="indefinite" additive="sum"/>`;
   return document(
-    `${gradient(id)}<mask id="${id}-mask"><g transform="translate(${num(C)} ${num(C)}) scale(0.74)">${turning}<g transform="translate(${num(-C)} ${num(-C)})">${bands.map((d, i) => `<path d="${d}" fill="#ffffff">${closing(i)}</path>`).join("")}</g></g></mask>`,
-    `<rect width="${S}" height="${S}" fill="url(#${id})" mask="url(#${id}-mask)"/>`,
+    `<mask id="${id}-mask"><g transform="translate(${num(C)} ${num(C)}) scale(0.74)">${turning}<g transform="translate(${num(-C)} ${num(-C)})">${bands.map((d, i) => `<path d="${d}" fill="#ffffff">${closing(i)}</path>`).join("")}</g></g></mask>`,
+    `<rect width="${S}" height="${S}" fill="${color}" mask="url(#${id}-mask)"/>`,
   );
 }
 
-const VERSIONS: { key: string; name: string; description: string; build: () => string }[] = [
+const VERSIONS: { key: string; name: string; description: string; build: (color: string) => string }[] = [
   { key: "sequence", name: "Sequence", description: "One band lights up after another, clockwise, with a tail. The classic spinner, built from the mark's own parts.", build: sequence },
-  { key: "turn", name: "Turn", description: "A quarter turn, a pause, again. The mark's 90° symmetry closes the loop, and the gradient stays still.", build: turn },
+  { key: "turn", name: "Turn", description: "A quarter turn, a pause, again. The mark's 90° symmetry closes the loop.", build: turn },
   { key: "focus", name: "Focus", description: "The four bands close on the window and open again, like a lens finding focus. Slow, and no spin.", build: focus },
   { key: "assemble", name: "Assemble", description: "The bands fly in one by one, form the mark, hold and leave. For longer waits, such as a screen opening.", build: assemble },
   { key: "lock", name: "Lock", description: "Focus and Turn at once: the bands close on the window as the mark turns, hold, then open as it turns again. Like a lock.", build: lock },
@@ -185,10 +170,11 @@ const VERSIONS: { key: string; name: string; description: string; build: () => s
   { key: "pulse", name: "Pulse", description: "A heartbeat: two quick beats and a rest. The mark swells with each beat, and a soft glow behind it swells too.", build: pulse },
 ];
 
-export const LOADING_VERSIONS: LoadingVersion[] = VERSIONS.map(({ key, name, description, build }) => {
-  const light = build();
-  const id = `loading-${key}`;
-  // Pulse uses a separate radial glow: recolor its stops without touching opacity.
-  const black = inSolid(light, id, BLACK).replaceAll(`stop-color="${COLORS.mark}"`, `stop-color="${BLACK}"`);
-  return { slug: `risksquad-loading-${key}`, name, description, light, dark: inSolid(light, id, COLORS.white), black };
-});
+export const LOADING_VERSIONS: LoadingVersion[] = VERSIONS.map(({ key, name, description, build }) => ({
+  slug: `risksquad-loading-${key}`,
+  name,
+  description,
+  light: build(COLORS.forest),
+  dark: build(COLORS.offWhite),
+  black: build(COLORS.ink),
+}));

@@ -159,7 +159,7 @@ test("the theme toggle turns the page dark, remembers it, and the dark page pass
   await toggle.click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await expect(toggle).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0c1a12");
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0d1a12");
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await loadEverything(page);
@@ -242,8 +242,8 @@ test("copy buttons put the right text on the clipboard", async ({ page, context,
     ["#about .copy-card:nth-of-type(1) .copy", COPY.oneLiner],
     ["#about .copy-card:nth-of-type(2) .copy", COPY.short],
     ["#about .copy-card:nth-of-type(3) .copy", LONG_BOILERPLATE],
-    ['.copy[data-copy-value="#4da61d"]', "#4da61d"],
-    ['.copy[data-copy-value="rgb(77, 166, 29)"]', "rgb(77, 166, 29)"],
+    ['.copy[data-copy-value="#123c2b"]', "#123c2b"],
+    ['.copy[data-copy-value="rgb(18, 60, 43)"]', "rgb(18, 60, 43)"],
   ];
   for (const [selector, expected] of cases) {
     const button = page.locator(selector);

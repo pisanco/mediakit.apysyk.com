@@ -78,7 +78,7 @@ describe("manifest", () => {
   test("exports every logo as SVG and as PNG at 512, 1024 and 2048 px wide", () => {
     const svgs = manifest.files.filter((f) => f.group === "logos" && f.category === "svg").map((f) => f.path.split("/").pop());
     const pngs = manifest.files.filter((f) => f.category === "png");
-    expect(pngs).toHaveLength(46);
+    expect(pngs).toHaveLength(40);
     for (const svg of svgs) {
       const base = svg!.replace(/\.svg$/, "");
       expect(pngs.filter((p) => new RegExp(`/${base}-\\d+\\.png$`).test(p.path)).map((p) => p.width)).toEqual([512, 1024, 2048]);

@@ -10,9 +10,6 @@ export interface Point {
   y: number;
 }
 
-/** The green of the mark: the only colour of mark.svg and of the mark inside the colour lockups. */
-export const MARK_COLOR = "#4da61d";
-
 /** The mark's square, in its own units: the viewBox of mark.svg. */
 export const MARK_SIZE = 96;
 /** From the square's edge to the outer edge of a band. */
