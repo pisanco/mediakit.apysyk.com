@@ -18,8 +18,8 @@ export function viewBox(file: string): { w: number; h: number } {
   return { w, h };
 }
 
-const lockup = viewBox("lockup-on-dark.svg");
-const stacked = viewBox("lockup-stacked-on-dark.svg");
+const lockup = viewBox("lockup-on-light.svg");
+const stacked = viewBox("lockup-stacked-on-light.svg");
 
 /** Width over height of every lockup (they share one geometry), and of every stacked lockup. */
 export const LOCKUP_ASPECT = lockup.w / lockup.h;
@@ -27,8 +27,8 @@ export const STACKED_ASPECT = stacked.w / stacked.h;
 
 // The clear-space unit is the side of the mark's window, in mark units. In the lockup, the mark is
 // the first path (the wordmark is the second), and its y extent is the mark's height there.
-const paths = [...svg("lockup-on-dark.svg").matchAll(/<path[^>]* d="([^"]+)"/g)].map((m) => m[1]);
-if (paths.length !== 2) throw new Error("lockup-on-dark.svg: expected the mark path and the wordmark path");
+const paths = [...svg("lockup-on-light.svg").matchAll(/<path[^>]* d="([^"]+)"/g)].map((m) => m[1]);
+if (paths.length !== 2) throw new Error("lockup-on-light.svg: expected the mark path and the wordmark path");
 const ys = [...paths[0].matchAll(/(-?[\d.]+)[ ,](-?[\d.]+)/g)].map((p) => Number(p[2]));
 const markInLockup = Math.max(...ys) - Math.min(...ys);
 

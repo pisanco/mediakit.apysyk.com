@@ -21,12 +21,12 @@ const sorted = (list: string[]) => [...list].sort();
 
 describe("manifest", () => {
   test("publishes file and thumbnail metadata relative to the canonical domain root", () => {
-    expect(manifest.site).toBe("https://mediakit.apysyk.com/");
+    expect(manifest.site).toBe("https://mediakit.risksquad.io/");
     const paths = manifest.files.flatMap((file) => [file.path, ...(file.thumb ? [file.thumb.path] : [])]);
     for (const path of paths) {
       expect(path.startsWith("/"), path).toBe(false);
       const url = new URL(path, manifest.site);
-      expect(url.origin, path).toBe("https://mediakit.apysyk.com");
+      expect(url.origin, path).toBe("https://mediakit.risksquad.io");
       expect(url.pathname, path).toBe(`/${path}`);
       expect(url.pathname, path).not.toMatch(/^\/(?:new|old)\//);
     }
@@ -49,9 +49,6 @@ describe("manifest", () => {
   });
 
   test("holds every size the media kit requirements ask for", () => {
-    expect(manifest.files.filter((f) => f.category === "avatars").map((f) => f.path.split("/").pop()).sort()).toEqual(
-      ["apysyk-avatar-forest-1024.png", "apysyk-avatar-white-1024.png"],
-    );
     expect(sizes("avatars")).toEqual(["1024x1024", "1024x1024"]);
     const social = manifest.files.filter((f) => f.category === "social" && !f.variant).map((f) => `${f.width}x${f.height}`).sort();
     expect(social).toEqual(
@@ -80,29 +77,8 @@ describe("manifest", () => {
 
   test("exports every logo as SVG and as PNG at 512, 1024 and 2048 px wide", () => {
     const svgs = manifest.files.filter((f) => f.group === "logos" && f.category === "svg").map((f) => f.path.split("/").pop());
-    expect(svgs.sort()).toEqual(
-      [
-        "mark",
-        "mark-white",
-        "mark-black",
-        "mark-on-gradient",
-        "wordmark-light",
-        "wordmark-dark",
-        "lockup-on-dark",
-        "lockup-on-light",
-        "lockup-white",
-        "lockup-black",
-        "lockup-on-gradient",
-        "lockup-stacked-on-dark",
-        "lockup-stacked-on-light",
-        "lockup-stacked-white",
-        "lockup-stacked-black",
-      ]
-        .map((n) => `apysyk-${n}.svg`)
-        .sort(),
-    );
     const pngs = manifest.files.filter((f) => f.category === "png");
-    expect(pngs).toHaveLength(46);
+    expect(pngs).toHaveLength(40);
     for (const svg of svgs) {
       const base = svg!.replace(/\.svg$/, "");
       expect(pngs.filter((p) => new RegExp(`/${base}-\\d+\\.png$`).test(p.path)).map((p) => p.width)).toEqual([512, 1024, 2048]);

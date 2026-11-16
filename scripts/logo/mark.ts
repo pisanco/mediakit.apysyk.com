@@ -1,4 +1,4 @@
-// The Apysyk mark, drawn from its proportions: four bands bridge the sides of
+// The Risksquad mark, drawn from its proportions: four bands bridge the sides of
 // a square window, each one running along a side and climbing at 45 degrees
 // to the two nearest corners, with the square's diagonals left open. Every
 // file in brand/logo/ and every layout that draws the mark reads this one
@@ -9,9 +9,6 @@ export interface Point {
   x: number;
   y: number;
 }
-
-/** The green of the mark: the only colour of mark.svg and of the mark inside the colour lockups. */
-export const MARK_COLOR = "#4da61d";
 
 /** The mark's square, in its own units: the viewBox of mark.svg. */
 export const MARK_SIZE = 96;

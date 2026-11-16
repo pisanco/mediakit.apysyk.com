@@ -2,11 +2,11 @@
 // numbers are in output pixels and derived from the size, so one composition
 // family serves several sizes; the renderer then fits each headline to its box.
 //
-// Three surfaces carry everything: Forest, the brand gradient, and Paper. The
-// logo is always drawn whole from its own files, sitting in a glow with clear
-// space around it; the copy keeps to the side it leaves free.
+// Three surfaces carry everything: Forest, the Ink-to-Forest gradient, and
+// Off-white. The logo is always drawn whole from its own files, sitting in a
+// glow with clear space around it; the copy keeps to the side it leaves free.
 
-import { COLORS, HEADLINES } from "./brand.ts";
+import { COLORS, HEADLINES, WEBSITE } from "./brand.ts";
 import { LOCKUP_ASPECT, STACKED_ASPECT } from "./logo-geometry.ts";
 import { fieldOf, logosOn, type Surface } from "./scene.ts";
 import type { Box, Doc, Item, Line, LogoFile, Stack } from "./template.ts";
@@ -28,23 +28,21 @@ export interface RenderedAsset {
   doc: Doc;
 }
 
-/** The background each logo file is made for: Paper or White, a dark field, Forest for the one-colour white files, or its own gradient. */
+/** The background each logo file is made for: Off-white for the color and Ink files, a dark field for the Off-white ones, or its own gradient. */
 export const LOGO_FILES: { file: LogoFile; name: string; background: "dark" | "light" | "forest" }[] = [
-  { file: "lockup-on-dark.svg", name: "Lockup on dark", background: "dark" },
   { file: "lockup-on-light.svg", name: "Lockup on light", background: "light" },
-  { file: "mark.svg", name: "Mark", background: "light" },
-  { file: "lockup-stacked-on-dark.svg", name: "Stacked lockup on dark", background: "dark" },
+  { file: "lockup-white.svg", name: "Lockup, Off-white", background: "forest" },
+  { file: "mark.svg", name: "Mark, Forest", background: "light" },
   { file: "lockup-stacked-on-light.svg", name: "Stacked lockup on light", background: "light" },
+  { file: "lockup-stacked-white.svg", name: "Stacked lockup, Off-white", background: "forest" },
   { file: "lockup-on-gradient.svg", name: "Lockup on gradient", background: "light" },
-  { file: "wordmark-light.svg", name: "Wordmark, light", background: "dark" },
-  { file: "wordmark-dark.svg", name: "Wordmark, dark", background: "light" },
+  { file: "wordmark-light.svg", name: "Wordmark, Off-white", background: "dark" },
+  { file: "wordmark-dark.svg", name: "Wordmark, Ink", background: "light" },
   { file: "mark-on-gradient.svg", name: "Mark on gradient", background: "light" },
-  { file: "lockup-white.svg", name: "Lockup, white", background: "forest" },
-  { file: "lockup-black.svg", name: "Lockup, black", background: "light" },
-  { file: "lockup-stacked-white.svg", name: "Stacked lockup, white", background: "forest" },
-  { file: "lockup-stacked-black.svg", name: "Stacked lockup, black", background: "light" },
-  { file: "mark-white.svg", name: "Mark, white", background: "forest" },
-  { file: "mark-black.svg", name: "Mark, black", background: "light" },
+  { file: "lockup-black.svg", name: "Lockup, Ink", background: "light" },
+  { file: "lockup-stacked-black.svg", name: "Stacked lockup, Ink", background: "light" },
+  { file: "mark-white.svg", name: "Mark, Off-white", background: "forest" },
+  { file: "mark-black.svg", name: "Mark, Ink", background: "light" },
 ];
 
 export const LOGO_WIDTHS = [512, 1024, 2048] as const;
@@ -54,7 +52,7 @@ const lines = ([first, second]: readonly [string, string]): Line[] => [
   [first, false],
   [second, true],
 ];
-/** The apysyk.com home hero; its two short lines also serve tall formats, where the width sets the size. */
+/** The website's home hero; its two short lines also serve tall formats, where the width sets the size. */
 const HEAD2 = lines(HEADLINES[0]);
 /** The other approved lines, spread over the families so the kit shows the range: cards, Instagram, the photo covers. */
 const HEAD_CARDS = lines(HEADLINES[1]);
@@ -68,9 +66,9 @@ const logo = (file: LogoFile, h: number): Item => ({ kind: "logo", file, h: roun
 /** The box a lockup needs at height h: the logo item rounds its height, so the width follows the rounded one. */
 const lockupWidth = (h: number): number => Math.ceil(round(h) * LOCKUP_ASPECT);
 const gap = (h: number): Item => ({ kind: "gap", h: round(h) });
-const pill = (h: number): Item => ({ kind: "pill", text: "apysyk.com", h: round(h) });
+const pill = (h: number): Item => ({ kind: "pill", text: WEBSITE, h: round(h) });
 const label = (text: string, size: number): Item => ({ kind: "label", text, size: round(size) });
-/** The product name above a headline, in sentence case like the apysyk.com hero. */
+/** The product name above a headline, in sentence case like the website's hero. */
 const eyebrow = (size: number): Item => ({ kind: "eyebrow", text: "Risksquad", size: round(size) });
 
 /** The lockup for a surface, in a box of exactly its size. */
@@ -147,7 +145,7 @@ function pageCard(pageLabel: string, lines: Line[], max: number): Doc {
       {
         box: box(66, 120, w * 0.54, h - 190),
         valign: "center",
-        items: [{ kind: "eyebrow", text: pageLabel, size: 20, green: true }, gap(22), headline(lines, max)],
+        items: [{ kind: "eyebrow", text: pageLabel, size: 20, accent: true }, gap(22), headline(lines, max)],
       },
       markAt("aurora", at.x, at.y, h * 0.5),
     ],
@@ -160,7 +158,7 @@ function social(): RenderedAsset[] {
     group: "banners",
     category: "social",
     name,
-    slug: `apysyk-${slug}-${w}x${h}`,
+    slug: `risksquad-${slug}-${w}x${h}`,
     width: w,
     height: h,
     format: "png",
@@ -208,7 +206,7 @@ function social(): RenderedAsset[] {
     );
   };
 
-  /** Instagram: the gradient itself, white copy, the mark in white as the hero. */
+  /** Instagram: the gradient itself, Off-white copy, the mark in Off-white as the hero. */
   const square = (w: number, h: number): Doc => {
     const pad = w * 0.078;
     const lh = w * 0.046;
@@ -241,7 +239,7 @@ function social(): RenderedAsset[] {
           valign: "end",
           items: [eyebrow(w * 0.028), gap(w * 0.03), headline(HEAD_SOCIAL, w * 0.12)],
         },
-        { box: box(w * 0.6, h - pad - lh, w * 0.4 - pad, lh), align: "end", valign: "center", items: [label("apysyk.com", w * 0.022)] },
+        { box: box(w * 0.6, h - pad - lh, w * 0.4 - pad, lh), align: "end", valign: "center", items: [label(WEBSITE, w * 0.022)] },
       ],
       { ...at, r: w * 0.55 },
     );
@@ -256,7 +254,7 @@ function social(): RenderedAsset[] {
       {
         box: box(150 * s, 20 * s, 420 * s, 110 * s),
         valign: "center",
-        items: [logo("wordmark-dark.svg", 18 * s), gap(12 * s), headline(HEAD2, 24 * s), gap(10 * s), label("apysyk.com", 11 * s)],
+        items: [logo("wordmark-dark.svg", 18 * s), gap(12 * s), headline(HEAD2, 24 * s), gap(10 * s), label(WEBSITE, 11 * s)],
       },
     ]);
   };
@@ -283,13 +281,13 @@ function social(): RenderedAsset[] {
   ];
 }
 
-/** Display ads: all on the gradient, white copy, the mark in white beside the message. */
+/** Display ads: all on the gradient, Off-white copy, the mark in Off-white beside the message. */
 function display(): RenderedAsset[] {
   const make = (name: string, w: number, h: number, doc: Doc): RenderedAsset => ({
     group: "banners",
     category: "display",
     name,
-    slug: `apysyk-ad-${w}x${h}`,
+    slug: `risksquad-ad-${w}x${h}`,
     width: w,
     height: h,
     format: "png",
@@ -345,7 +343,7 @@ function display(): RenderedAsset[] {
         [
           lockupAt("gradient", 16, 18, 16),
           { box: box(16, 70, w - 32, 240), valign: "center", items: [eyebrow(13), gap(10), headline(HEAD2, 40)] },
-          { box: box(16, h * 0.56, w - 32, 24), items: [label("apysyk.com", 12)] },
+          { box: box(16, h * 0.56, w - 32, 24), items: [label(WEBSITE, 12)] },
           markAt("gradient", at.x, at.y, w * 0.5),
         ],
         { ...at, r: w * 1.2 },
@@ -370,7 +368,7 @@ function display(): RenderedAsset[] {
       return scene(w, h, "gradient", [
         { box: box(10, 0, 28, h), valign: "center", items: [logo("mark-white.svg", 26)] },
         { box: box(46, 4, 118, h - 8), valign: "center", items: [headline(HEAD2, 20)] },
-        { box: box(174, 0, 136, h), align: "end", valign: "center", items: [label("apysyk.com", 11)] },
+        { box: box(174, 0, 136, h), align: "end", valign: "center", items: [label(WEBSITE, 11)] },
       ]);
     }
     return scene(w, h, "gradient", [
@@ -461,7 +459,7 @@ function wallpaper(category: "desktop" | "phone" | "tablet" | "video", surface: 
     category,
     variant: surface,
     name: `${label}, ${surface}`,
-    slug: `apysyk-${category === "video" ? "video-call" : "wallpaper"}-${surface}-${w}x${h}`,
+    slug: `risksquad-${category === "video" ? "video-call" : "wallpaper"}-${surface}-${w}x${h}`,
     width: w,
     height: h,
     format: "jpg",
@@ -480,7 +478,7 @@ function wallpapers(): RenderedAsset[] {
   return out;
 }
 
-/** The apysyk.com share images: each page's label and hero. */
+/** The website's share images: each page's label and hero. */
 function imagery(): RenderedAsset[] {
   const cards: { slug: string; name: string; doc: Doc }[] = [
     { slug: "home", name: "Home", doc: pageCard("Risksquad", HEAD2, 150) },
@@ -513,7 +511,7 @@ function imagery(): RenderedAsset[] {
     group: "banners",
     category: "imagery",
     name: `Cover card: ${name}`,
-    slug: `apysyk-cover-${slug}-1200x630`,
+    slug: `risksquad-cover-${slug}-1200x630`,
     width: 1200,
     height: 630,
     format: "jpg",
@@ -522,20 +520,25 @@ function imagery(): RenderedAsset[] {
 }
 
 function avatars(): RenderedAsset[] {
-  return (["white", "forest"] as const).map((bg) => ({
+  // The slugs keep their published file names; the light one is now Off-white.
+  const variants = [
+    { slug: "white", name: "Off-white", background: COLORS.offWhite, mark: "mark.svg" },
+    { slug: "forest", name: "Forest", background: COLORS.forest, mark: "mark-white.svg" },
+  ] as const;
+  return variants.map(({ slug, name, background, mark }) => ({
     group: "logos",
     category: "avatars",
-    name: `Avatar on ${bg}`,
-    slug: `apysyk-avatar-${bg}-1024`,
+    name: `Avatar on ${name}`,
+    slug: `risksquad-avatar-${slug}-1024`,
     width: 1024,
     height: 1024,
     format: "png",
     doc: {
       width: 1024,
       height: 1024,
-      background: COLORS[bg],
+      background,
       // 56% of the side keeps the mark inside a circular crop with room around it.
-      stacks: [{ box: box(0, 0, 1024, 1024), align: "center", valign: "center", items: [logo("mark.svg", 1024 * 0.56)] }],
+      stacks: [{ box: box(0, 0, 1024, 1024), align: "center", valign: "center", items: [logo(mark, 1024 * 0.56)] }],
     },
   }));
 }
@@ -544,7 +547,7 @@ export function renderedAssets(): RenderedAsset[] {
   return [...avatars(), ...social(), ...display(), ...imagery(), ...wallpapers()];
 }
 
-/** The page's own share image, drawn like the apysyk.com cover cards with the page's hero. */
+/** The page's own share image, drawn like the website's cover cards with the page's hero. */
 export function ogImage(): Doc {
   return pageCard(
     "Risksquad media kit",
@@ -556,13 +559,13 @@ export function ogImage(): Doc {
   );
 }
 
-/** A logo file alone on a transparent or solid square, for favicons. */
-export function icon(size: number, background: string, scale: number): Doc {
+/** A mark file alone on a transparent or solid square, for favicons and home-screen icons. */
+export function icon(size: number, background: string, file: LogoFile, scale: number): Doc {
   return {
     width: size,
     height: size,
     background,
-    stacks: [{ box: box(0, 0, size, size), align: "center", valign: "center", items: [logo("mark.svg", size * scale)] }],
+    stacks: [{ box: box(0, 0, size, size), align: "center", valign: "center", items: [logo(file, size * scale)] }],
   };
 }
 

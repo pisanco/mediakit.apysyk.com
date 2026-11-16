@@ -2,7 +2,7 @@
 // size on it is the real file's. Static HTML: no inline scripts or styles
 // (the CSP forbids them); the copy buttons use app.js.
 
-import { COLORS, CONTACT, COPY, FOOTER, LONG_BOILERPLATE, PALETTE, SITE_URL, hexToRgb } from "./brand.ts";
+import { COLORS, COPY, FOOTER, LONG_BOILERPLATE, PALETTE, SITE_URL, WEBSITE, WEBSITE_URL, hexToRgb } from "./brand.ts";
 import { LOGO_FILES } from "./catalog.ts";
 import { FONTS, fontByFamily, type BrandFont } from "./fonts.ts";
 import { LOADING_VERSIONS } from "./loading.ts";
@@ -27,7 +27,6 @@ const SECTIONS = [
   ["wallpapers", "Wallpapers"],
   ["downloads", "Downloads"],
   ["generator", "Generator"],
-  ["contact", "Contact"],
 ] as const;
 
 const dims = (f: ManifestFile) => `${f.width} × ${f.height}`;
@@ -71,16 +70,16 @@ export function renderPage(manifest: Manifest, shareVersion: string): string {
   };
   const where = (pred: (f: ManifestFile) => boolean) => files.filter(pred);
   const zip = (slug: string) => byPath(`downloads/${slug}.zip`);
-  const everything = zip("apysyk-media-kit");
+  const everything = zip("risksquad-media-kit");
   const kitFiles = files.filter((f) => ["logos", "loading", "banners", "wallpapers"].includes(f.group));
   const count = (pred: (f: ManifestFile) => boolean) => kitFiles.filter(pred).length;
-  const mark = byPath("files/logos/svg/apysyk-mark-black.svg");
-  const markDark = byPath("files/logos/svg/apysyk-mark-white.svg");
-  const markPng = where((f) => /^files\/logos\/png\/apysyk-mark-black-\d+\.png$/.test(f.path))[0];
+  const mark = byPath("files/logos/svg/risksquad-mark-black.svg");
+  const markDark = byPath("files/logos/svg/risksquad-mark-white.svg");
+  const markPng = where((f) => /^files\/logos\/png\/risksquad-mark-black-\d+\.png$/.test(f.path))[0];
   // Primary signatures match the site and product: black on light, white on dark.
-  const lockup = byPath("files/logos/svg/apysyk-lockup-black.svg");
-  const lockupDark = byPath("files/logos/svg/apysyk-lockup-white.svg");
-  const lockupPng = where((f) => f.path.startsWith("files/logos/png/apysyk-lockup-black-"))[0];
+  const lockup = byPath("files/logos/svg/risksquad-lockup-black.svg");
+  const lockupDark = byPath("files/logos/svg/risksquad-lockup-white.svg");
+  const lockupPng = where((f) => f.path.startsWith("files/logos/png/risksquad-lockup-black-"))[0];
   const lockupHeight = (width: number) => Math.round((width * lockupPng.height!) / lockupPng.width!);
   const referenceLockup = byPath("files/logos/png/risksquad-lockup-reference.png");
 
@@ -106,17 +105,16 @@ ${sectionHead("about", "About Risksquad", "Approved descriptions. Quote them as 
     <dl>
       <div><dt>Brand</dt><dd>Risksquad</dd></div>
       <div><dt>Category</dt><dd>${COPY.category}</dd></div>
-      <div><dt>Website</dt><dd><a href="https://apysyk.com/">apysyk.com</a></dd></div>
-      <div><dt>Contact</dt><dd><a href="mailto:${CONTACT}">${CONTACT}</a></dd></div>
+      <div><dt>Website</dt><dd><a href="${WEBSITE_URL}">${WEBSITE}</a></dd></div>
     </dl>
   </aside>
 </div>
 </section>`;
 
   // ---------- Logo ----------
-  // Each preview sits on the background the file is drawn for: light on Paper, dark and one-color white on Forest.
+  // Each preview sits on the background the file is drawn for: light on Off-white, the Off-white files on Forest.
   const logoCards = LOGO_FILES.map(({ file, name, background }) => {
-    const base = `apysyk-${file.replace(/\.svg$/, "")}`;
+    const base = `risksquad-${file.replace(/\.svg$/, "")}`;
     const svg = byPath(`files/logos/svg/${base}.svg`);
     const pngs = where((f) => f.category === "png" && new RegExp(`^files/logos/png/${base}-\\d+\\.png$`).test(f.path));
     const ref = pngs[0];
@@ -150,11 +148,11 @@ ${sectionHead("about", "About Risksquad", "Approved descriptions. Quote them as 
   const n = (v: number) => Math.round(v * 100) / 100;
   const clearSpace = `<svg class="clearspace__svg" viewBox="${n(-x)} ${n(-x)} ${n(lw + 2 * x)} ${n(lh + 2 * x)}" role="img" aria-labelledby="clearspace-title">
   <title id="clearspace-title">Clear space: the side of the mark's window on every side of the lockup</title>
-  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="${COLORS.green}" fill-opacity="0.08"/>
-  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="none" stroke="${COLORS.green}" stroke-width="${n(x * 0.04)}" stroke-dasharray="${n(x * 0.17)} ${n(x * 0.13)}"/>
-  <rect x="0" y="0" width="${lw}" height="${lh}" fill="${COLORS.white}"/>
+  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="${COLORS.forest}" fill-opacity="0.08"/>
+  <rect x="${n(-x)}" y="${n(-x)}" width="${n(lw + 2 * x)}" height="${n(lh + 2 * x)}" fill="none" stroke="${COLORS.forest}" stroke-width="${n(x * 0.04)}" stroke-dasharray="${n(x * 0.17)} ${n(x * 0.13)}"/>
+  <rect x="0" y="0" width="${lw}" height="${lh}" fill="${COLORS.offWhite}"/>
   <image href="${lockup.path}" x="0" y="0" width="${lw}" height="${lh}"/>
-  <g fill="${COLORS.green2}" font-family="JetBrains Mono, monospace" font-size="${n(x * 0.57)}" text-anchor="middle">
+  <g fill="${COLORS.forest}" font-family="JetBrains Mono, monospace" font-size="${n(x * 0.57)}" text-anchor="middle">
     <text x="${n(-x / 2)}" y="${n(lh / 2 + x * 0.2)}">x</text><text x="${n(lw + x / 2)}" y="${n(lh / 2 + x * 0.2)}">x</text>
     <text x="${n(lw / 2)}" y="${n(-x / 2 + x * 0.2)}">x</text><text x="${n(lw / 2)}" y="${n(lh + x / 2 + x * 0.2)}">x</text>
   </g>
@@ -172,7 +170,7 @@ ${sectionHead("about", "About Risksquad", "Approved descriptions. Quote them as 
     )
     .join("");
   const logo = `<section class="section" id="logo" aria-labelledby="logo-title">
-${sectionHead("logo", "Logo", "Use the black signature on light surfaces and the white signature on dark surfaces. The symbol and Space Grotesk Medium wordmark are optically aligned on the capital letters; the q descender stays intact. Color, stacked and standalone variants are also available. Use the files as supplied; never retype or distort the name.")}
+${sectionHead("logo", "Logo", "Use the Ink signature on light surfaces and the Off-white signature on dark surfaces; the color lockup pairs the Forest mark with the Ink name. The symbol and Space Grotesk Medium wordmark are optically aligned on the capital letters; the q descender stays intact. Stacked and standalone variants are also available. Use the files as supplied; never retype or distort the name.")}
 <div class="grid grid--logos">${logoCards}${referenceCard}</div>
 <h3 class="subhead">Avatars</h3>
 <div class="grid grid--avatars">${avatars}</div>
@@ -197,25 +195,25 @@ ${sectionHead("logo", "Logo", "Use the black signature on light surfaces and the
 
   // ---------- Loading ----------
   // The animations play in the previews: an <img> runs an SVG's own animation, with no script on the page.
-  // Show the primary black/white pair; the original color variant remains downloadable.
+  // Show the Ink and Off-white pair; the Forest variant remains downloadable.
   const loadingCards = LOADING_VERSIONS.map((v) => {
     const light = byPath(`files/loading/${v.slug}.svg`);
     const dark = byPath(`files/loading/${v.slug}-dark.svg`);
     const black = byPath(`files/loading/${v.slug}-black.svg`);
     return `<article class="card loading-card">
   <div class="loading-card__previews">
-    <div class="preview preview--light preview--loading"><img src="${black.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in black, for light surfaces`)}" loading="lazy" decoding="async"></div>
-    <div class="preview preview--forest preview--loading"><img src="${dark.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in white, for dark surfaces`)}" loading="lazy" decoding="async"></div>
+    <div class="preview preview--light preview--loading"><img src="${black.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in Ink, for light surfaces`)}" loading="lazy" decoding="async"></div>
+    <div class="preview preview--forest preview--loading"><img src="${dark.path}" width="96" height="96" alt="${esc(`${v.name}: the mark animated in Off-white, for dark surfaces`)}" loading="lazy" decoding="async"></div>
   </div>
   <div class="loading-card__body">
     <h3 class="card__title">${esc(v.name)}</h3>
     <p class="body">${esc(v.description)}</p>
-    <div class="dl-row">${download(black, "SVG, black", `${v.name}, black`)}${download(dark, "SVG, white", `${v.name}, white`)}${download(light, "SVG, color", `${v.name}, color gradient`)}</div>
+    <div class="dl-row">${download(black, "SVG, Ink", `${v.name}, Ink`)}${download(dark, "SVG, Off-white", `${v.name}, Off-white`)}${download(light, "SVG, Forest", `${v.name}, Forest`)}</div>
   </div>
 </article>`;
   }).join("\n");
   const loading = `<section class="section" id="loading" aria-labelledby="loading-title">
-${sectionHead("loading", "Loading", "Seven animations, each in black, white and the original color gradient. Use black on light surfaces and white on dark ones. Every file is a self-contained SVG with no script: it works inline, in an image tag and as a background. Show the still mark instead when someone prefers reduced motion.")}
+${sectionHead("loading", "Loading", "Seven animations, each in Ink, Off-white and Forest. Use Ink or Forest on light surfaces and Off-white on dark ones. Every file is a self-contained SVG with no script: it works inline, in an image tag and as a background. Show the still mark instead when someone prefers reduced motion.")}
 <div class="grid grid--loading">${loadingCards}</div>
 </section>`;
 
@@ -236,7 +234,7 @@ ${sectionHead("loading", "Loading", "Seven animations, each in black, white and 
 </article>`;
   }).join("\n");
   const color = `<section class="section" id="color" aria-labelledby="color-title">
-${sectionHead("color", "Color", "Light first: Paper and White surfaces, Ink for text, green for emphasis and one deep Forest band. Copy the values exactly.")}
+${sectionHead("color", "Color", "Three colors and nothing else: Off-white surfaces, Ink for text and Forest for the mark, emphasis and deep surfaces. Copy the values exactly.")}
 <div class="grid grid--swatches">${swatches}</div>
 </section>`;
 
@@ -268,7 +266,7 @@ ${sectionHead("typography", "Typography", "Three open-source families from Flori
   </article>
   <article class="card specimen specimen--mono">
     <div class="specimen__meta"><h3 class="card__title">JetBrains Mono</h3><p class="size">${axesLabel(jet, "Technical values")}</p></div>
-    <p class="specimen__sample specimen__sample--mono">${COLORS.green} · 1500 × 500 px</p>
+    <p class="specimen__sample specimen__sample--mono">${COLORS.forest} · 1500 × 500 px</p>
     <p class="body">Technical values only: color codes, sizes and file sizes.</p>
     <p class="specimen__links">${sourceLink(jet)} · <a href="${licenseLink(jet)}">License</a></p>
   </article>
@@ -286,7 +284,7 @@ ${sectionHead("typography", "Typography", "Three open-source families from Flori
     <ul class="family-card__downloads">${choices.map(([f, label]) => `<li>${download(f, label, `${title}, ${label}, ${dims(f)} px`, "dl family-card__download", `${dims(f)} · ${f.format.toUpperCase()}`)}</li>`).join("")}</ul>
   </div>
 </article>`;
-  const socialFile = (slug: string) => byPath(`files/banners/social/apysyk-${slug}.png`);
+  const socialFile = (slug: string) => byPath(`files/banners/social/risksquad-${slug}.png`);
   const socialFamilies = (["aurora", "bridge"] as const).map((surface) => {
     const suffix = surface === "bridge" ? "-bridge" : "";
     const name = surface === "bridge" ? "Bridge" : "Aurora";
@@ -319,11 +317,11 @@ ${sectionHead("banners", "Banners", "Each composition appears once. Pick your ne
 <h3 class="subhead">Social</h3>
 <div class="grid grid--families">${socialFamilies.join("\n")}${shareFamilies.join("\n")}${instagram}</div>
 <h3 class="subhead">Display ads</h3>
-${familyCard("Display ads", "The gradient campaign, from mobile banners to billboards. Nine standard sizes.", byPath("files/banners/display/apysyk-ad-970x250.png"), ads.map((f) => [f, f.name]), true)}
+${familyCard("Display ads", "The gradient campaign, from mobile banners to billboards. Nine standard sizes.", byPath("files/banners/display/risksquad-ad-970x250.png"), ads.map((f) => [f, f.name]), true)}
 <h3 class="subhead">Email signature</h3>
-${familyCard("Email signature", "The same signature at standard and double resolution.", byPath("files/banners/email/apysyk-email-signature-1200x300.png"), email.map((f) => [f, f.width === 600 ? "Standard · 1×" : "Retina · 2×"]), true)}
+${familyCard("Email signature", "The same signature at standard and double resolution.", byPath("files/banners/email/risksquad-email-signature-1200x300.png"), email.map((f) => [f, f.width === 600 ? "Standard · 1×" : "Retina · 2×"]), true)}
 <h3 class="subhead">Cover cards</h3>
-${familyCard("Website covers", "Approved page-specific messages for Home, Platform and Solutions.", byPath("files/banners/imagery/apysyk-cover-home-1200x630.jpg"), covers.map((f) => [f, f.name.replace("Cover card: ", "")]), true)}
+${familyCard("Website covers", "Approved page-specific messages for Home, Platform and Solutions.", byPath("files/banners/imagery/risksquad-cover-home-1200x630.jpg"), covers.map((f) => [f, f.name.replace("Cover card: ", "")]), true)}
 </section>`;
 
   // ---------- Wallpapers ----------
@@ -348,7 +346,7 @@ ${familyCard("Website covers", "Approved page-specific messages for Home, Platfo
 </div>`;
   };
   const wallpapers = `<section class="section" id="wallpapers" aria-labelledby="wallpapers-title">
-${sectionHead("wallpapers", "Wallpapers", "The stacked lockup in a soft glow, on five surfaces of the brand: Paper, Forest, the gradient, and two drawn in light on Forest, Aurora and Prism.")}
+${sectionHead("wallpapers", "Wallpapers", "The stacked lockup in a soft glow, on five surfaces of the brand: Off-white, Forest, the gradient, and two drawn in Off-white on Forest, Aurora and Prism.")}
 ${wallGroup("desktop", "Desktop", "Common laptop and monitor resolutions, up to 5K and ultrawide.")}
 ${wallGroup("phone", "Phone", "The top stays clear for the clock, the bottom for the dock.")}
 ${wallGroup("tablet", "Tablet", "Portrait, for tablets such as the 10.9 and 12.9 inch iPad.")}
@@ -357,18 +355,18 @@ ${wallGroup("video", "Video calls", "The center stays calm where you sit; the lo
 
   // ---------- Downloads ----------
   const zipBlurb: Record<string, string> = {
-    "apysyk-media-kit": "Every file on this page.",
-    "apysyk-logos": "SVG sources, PNGs at 512, 1024 and 2048 px, and avatars.",
-    "apysyk-banners": "Social, display ads, email signature and cover cards.",
-    "apysyk-wallpapers": "Desktop, phone, tablet and video calls: light, forest, gradient, aurora, prism, lattice, lighthouse and bridge.",
-    "apysyk-loading": "Seven animations in black, white and the original color gradient, as self-contained SVG.",
+    "risksquad-media-kit": "Every file on this page.",
+    "risksquad-logos": "SVG sources, PNGs at 512, 1024 and 2048 px, and avatars.",
+    "risksquad-banners": "Social, display ads, email signature and cover cards.",
+    "risksquad-wallpapers": "Desktop, phone, tablet and video calls: off-white, forest, gradient, aurora, prism, lattice, lighthouse and bridge.",
+    "risksquad-loading": "Seven animations in Ink, Off-white and Forest, as self-contained SVG.",
   };
   const downloads = `<section class="section" id="downloads" aria-labelledby="downloads-title">
 ${sectionHead("downloads", "Downloads", "Everything in one archive, or one archive per group.")}
 <ul class="zips">${where((f) => f.group === "downloads")
     .map((f) => {
       const slug = f.path.slice(f.path.lastIndexOf("/") + 1, -4);
-      const main = slug === "apysyk-media-kit";
+      const main = slug === "risksquad-media-kit";
       return `<li class="card zip${main ? " zip--main" : ""}">
   <div class="zip__text"><h3 class="card__title">${esc(f.name)}</h3><p class="body">${zipBlurb[slug]} <span class="size">${f.contents!.length} files</span></p></div>
   ${download(f, `${slug}.zip`, f.name, main ? "button" : "button button--ghost")}
@@ -396,15 +394,6 @@ ${sectionHead("generator", "Generator", "Pick a format and generate a banner or 
 </div>
 </section>`;
 
-  // ---------- Contact ----------
-  // The page's one deep band: Forest, with Lime for the accent.
-  const contact = `<section class="section section--contact" id="contact" aria-labelledby="contact-title">
-  <div class="band">
-    <p class="kicker">Contact</p>
-    <h2 class="headline" id="contact-title">Press and partnerships: <a href="mailto:${CONTACT}">${CONTACT}</a></h2>
-  </div>
-</section>`;
-
   const nav = SECTIONS.map(([id, label]) => `<li><a href="#${id}">${label}</a></li>`).join("");
   const everythingLabel = `(.zip, ${formatBytes(everything.bytes)})`;
 
@@ -418,7 +407,7 @@ ${sectionHead("generator", "Generator", "Pick a format and generate a banner or 
 <title>Media kit · Risksquad</title>
 <meta name="description" content="${esc(DESCRIPTION)}">
 <link rel="canonical" href="${SITE_URL}">
-<meta name="theme-color" content="${COLORS.paper}">
+<meta name="theme-color" content="${COLORS.offWhite}">
 <meta name="color-scheme" content="light dark">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Risksquad">
@@ -478,15 +467,14 @@ ${banners}
 ${wallpapers}
 ${downloads}
 ${generator}
-${contact}
 </div>
 </main>
 <footer class="site-footer">
   <div class="shell site-footer__inner">
     <p>${FOOTER}</p>
     <ul class="site-footer__links">
-      <li><a href="https://apysyk.com/">apysyk.com</a></li>
-      <li><a href="https://apysyk.com/privacy/">Privacy</a></li>
+      <li><a href="${WEBSITE_URL}">${WEBSITE}</a></li>
+      <li><a href="${new URL("privacy/", WEBSITE_URL)}">Privacy</a></li>
       <li>Font licenses: ${FONTS.map((f) => `<a href="${licenseLink(f)}">${esc(f.family)}</a>`).join(", ")}</li>
     </ul>
   </div>

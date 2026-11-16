@@ -3,11 +3,12 @@
 // whole, never cropped, never touching an edge; the layouts in catalog.ts
 // place it.
 //
-// Paper, Forest and the brand gradient are flat. Aurora, Prism and Lattice
-// are vector artwork and filters, sharp at any output size. The photographic
-// surfaces share a green duotone; their CC0 sources live in brand/photos/.
+// Off-white, Forest and the Ink-to-Forest gradient are flat. Aurora, Prism and
+// Lattice are vector artwork and filters in Off-white and Ink on Forest, sharp
+// at any output size. The photographic surfaces share one tritone in the three
+// brand colors; their CC0 sources live in brand/photos/.
 
-import { COLORS, SURFACE_GRADIENT } from "./brand.ts";
+import { COLORS, SURFACE_GRADIENT, hexToRgb } from "./brand.ts";
 import type { LogoFile } from "./template.ts";
 
 export type Surface = "light" | "forest" | "gradient" | "aurora" | "prism" | "lattice" | "lighthouse" | "bridge" | "mountains" | "woods" | "highway" | "glass" | "dunes" | "shore";
@@ -20,13 +21,17 @@ export interface SceneSpec {
   glow?: { x: number; y: number; r: number };
 }
 
-const DARK = { glow: [COLORS.green, 0.35] as [string, number], lockup: "lockup-white.svg" as LogoFile, stacked: "lockup-stacked-on-dark.svg" as LogoFile, mark: "mark.svg" as LogoFile };
-const PHOTO = { field: COLORS.forest, ...DARK, glow: [COLORS.green, 0.2] as [string, number] };
+/** A soft glow under the logo: its color and its opacity at the centre. */
+type Glow = [color: string, opacity: number];
 
-const SURFACES: Record<Surface, { field: string; glow: [color: string, opacity: number]; lockup: LogoFile; stacked: LogoFile; mark: LogoFile }> = {
-  light: { field: COLORS.paper, glow: [COLORS.white, 1], lockup: "lockup-on-light.svg", stacked: "lockup-stacked-on-light.svg", mark: "mark.svg" },
-  forest: { field: COLORS.forest, glow: [COLORS.green, 0.5], lockup: "lockup-white.svg", stacked: "lockup-stacked-on-dark.svg", mark: "mark.svg" },
-  gradient: { field: COLORS.green, glow: [COLORS.white, 0.16], lockup: "lockup-white.svg", stacked: "lockup-stacked-white.svg", mark: "mark-white.svg" },
+const DARK = { glow: [COLORS.offWhite, 0.08] as Glow, lockup: "lockup-white.svg" as LogoFile, stacked: "lockup-stacked-white.svg" as LogoFile, mark: "mark-white.svg" as LogoFile };
+const PHOTO = { field: COLORS.forest, ...DARK, glow: [COLORS.offWhite, 0.06] as Glow };
+
+const SURFACES: Record<Surface, { field: string; glow: Glow | null; lockup: LogoFile; stacked: LogoFile; mark: LogoFile }> = {
+  // Off-white is already the lightest color: nothing to lift under the logo.
+  light: { field: COLORS.offWhite, glow: null, lockup: "lockup-on-light.svg", stacked: "lockup-stacked-on-light.svg", mark: "mark.svg" },
+  forest: { field: COLORS.forest, ...DARK },
+  gradient: { field: COLORS.ink, ...DARK, glow: [COLORS.offWhite, 0.1] },
   aurora: { field: COLORS.forest, ...DARK },
   prism: { field: COLORS.forest, ...DARK },
   lattice: { field: COLORS.forest, ...DARK },
@@ -41,7 +46,7 @@ const SURFACES: Record<Surface, { field: string; glow: [color: string, opacity: 
 };
 
 /**
- * The photographs: real pictures, CC0 (brand/photos/SOURCES.txt), rendered in a green duotone. `anchor`
+ * The photographs: real pictures, CC0 (brand/photos/SOURCES.txt), rendered in the brand tritone. `anchor`
  * says which side to keep when a frame's shape crops the picture, so the subject stays in portrait crops.
  * The lighthouse and the bridge also come as wallpapers and covers; the rest are the generator's.
  */
@@ -75,10 +80,10 @@ const r2 = (n: number) => Math.round(n * 100) / 100;
 type Spot = [x: number, y: number];
 
 /**
- * Aurora: ribbons of light along the frame's diagonal, from the lower left
- * to the upper right, bent by low-frequency noise and softened by a blur.
- * Landscape frames keep the left half calm; portrait frames keep the middle
- * calm.
+ * Aurora: ribbons of Off-white light and Ink shade along the frame's diagonal,
+ * from the lower left to the upper right, bent by low-frequency noise and
+ * softened by a blur. Landscape frames keep the left half calm; portrait
+ * frames keep the middle calm.
  */
 function aurora(w: number, h: number): { defs: string[]; body: string[] } {
   const portrait = h > w;
@@ -87,22 +92,22 @@ function aurora(w: number, h: number): { defs: string[]; body: string[] } {
   const angle = -(Math.atan2(h, w) * 180) / Math.PI;
   const ribbons: { at: Spot; length: number; thickness: number; color: string; opacity: number }[] = portrait
     ? [
-        { at: [0.62, 0.18], length: 0.6, thickness: 0.3, color: COLORS.lime, opacity: 0.5 },
-        { at: [0.3, 0.3], length: 0.7, thickness: 0.42, color: COLORS.mark, opacity: 0.45 },
-        { at: [0.55, 0.82], length: 0.65, thickness: 0.5, color: COLORS.green, opacity: 0.8 },
-        { at: [0.75, 0.9], length: 0.5, thickness: 0.22, color: COLORS.lime, opacity: 0.35 },
-        { at: [0.1, 0.65], length: 0.5, thickness: 0.3, color: COLORS.green, opacity: 0.5 },
+        { at: [0.62, 0.18], length: 0.6, thickness: 0.3, color: COLORS.offWhite, opacity: 0.22 },
+        { at: [0.3, 0.3], length: 0.7, thickness: 0.42, color: COLORS.ink, opacity: 0.6 },
+        { at: [0.55, 0.82], length: 0.65, thickness: 0.5, color: COLORS.ink, opacity: 0.7 },
+        { at: [0.75, 0.9], length: 0.5, thickness: 0.22, color: COLORS.offWhite, opacity: 0.16 },
+        { at: [0.1, 0.65], length: 0.5, thickness: 0.3, color: COLORS.offWhite, opacity: 0.1 },
       ]
     : [
-        { at: [0.7, 0.36], length: 0.6, thickness: 0.3, color: COLORS.lime, opacity: 0.5 },
-        { at: [0.8, 0.2], length: 0.7, thickness: 0.42, color: COLORS.mark, opacity: 0.45 },
-        { at: [0.62, 0.7], length: 0.65, thickness: 0.5, color: COLORS.green, opacity: 0.8 },
-        { at: [0.92, 0.82], length: 0.5, thickness: 0.22, color: COLORS.lime, opacity: 0.35 },
-        { at: [0.3, 0.95], length: 0.5, thickness: 0.3, color: COLORS.green, opacity: 0.5 },
+        { at: [0.7, 0.36], length: 0.6, thickness: 0.3, color: COLORS.offWhite, opacity: 0.22 },
+        { at: [0.8, 0.2], length: 0.7, thickness: 0.42, color: COLORS.ink, opacity: 0.6 },
+        { at: [0.62, 0.7], length: 0.65, thickness: 0.5, color: COLORS.ink, opacity: 0.7 },
+        { at: [0.92, 0.82], length: 0.5, thickness: 0.22, color: COLORS.offWhite, opacity: 0.16 },
+        { at: [0.3, 0.95], length: 0.5, thickness: 0.3, color: COLORS.offWhite, opacity: 0.1 },
       ];
   const soft = (name: string, color: string) =>
     `<radialGradient id="soft-${name}"><stop offset="0" stop-color="${color}" stop-opacity="1"/><stop offset="0.55" stop-color="${color}" stop-opacity="0.45"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`;
-  const names: Record<string, string> = { [COLORS.lime]: "lime", [COLORS.mark]: "mark", [COLORS.green]: "green" };
+  const names: Record<string, string> = { [COLORS.offWhite]: "light", [COLORS.ink]: "shade" };
   const shapes = ribbons
     .map(({ at, length, thickness, color, opacity }) => {
       const [cx, cy] = [at[0] * w, at[1] * h];
@@ -111,16 +116,15 @@ function aurora(w: number, h: number): { defs: string[]; body: string[] } {
     .join("");
   return {
     defs: [
-      soft("lime", COLORS.lime),
-      soft("mark", COLORS.mark),
-      soft("green", COLORS.green),
+      soft("light", COLORS.offWhite),
+      soft("shade", COLORS.ink),
       `<filter id="aurora" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">` +
         `<feTurbulence type="fractalNoise" baseFrequency="${(1.6 / w).toFixed(6)} ${(1.6 / h).toFixed(6)}" numOctaves="2" seed="7" result="noise"/>` +
         `<feDisplacementMap in="SourceGraphic" in2="noise" scale="${r2(short * 0.12)}" xChannelSelector="R" yChannelSelector="G"/>` +
         `<feGaussianBlur stdDeviation="${r2(short * 0.03)}"/>` +
         "</filter>",
       `<radialGradient id="vignette" gradientUnits="userSpaceOnUse" cx="${r2(w / 2)}" cy="${r2(h / 2)}" r="${r2(diagonal * 0.6)}">` +
-        `<stop offset="0.45" stop-color="${COLORS.forest}" stop-opacity="0"/><stop offset="1" stop-color="#0a2219" stop-opacity="0.5"/>` +
+        `<stop offset="0.45" stop-color="${COLORS.forest}" stop-opacity="0"/><stop offset="1" stop-color="${COLORS.ink}" stop-opacity="0.5"/>` +
         "</radialGradient>",
     ],
     body: [`<g filter="url(#aurora)">${shapes}</g>`, `<rect width="${w}" height="${h}" fill="url(#vignette)"/>`],
@@ -128,7 +132,7 @@ function aurora(w: number, h: number): { defs: string[]; body: string[] } {
 }
 
 /**
- * Prism: chamfered bars of frosted glass at 45 degrees, lit along one edge,
+ * Prism: chamfered bars of frosted Off-white glass at 45 degrees, lit along one edge,
  * the far ones softened. Landscape frames gather them at the right; portrait
  * frames at the top and the bottom.
  */
@@ -156,16 +160,16 @@ function prism(w: number, h: number): { defs: string[]; body: string[] } {
       const [cx, cy] = [at[0] * w, at[1] * h];
       const [hw, hh] = [(length * diagonal) / 2, (thickness * short) / 2];
       const bar = `<rect x="${r2(cx - hw)}" y="${r2(cy - hh)}" width="${r2(hw * 2)}" height="${r2(hh * 2)}" fill="url(#glass)" opacity="${opacity}"/>`;
-      const edge = `<rect x="${r2(cx - hw)}" y="${r2(cy - hh)}" width="${r2(hw * 2)}" height="${r2(Math.max(2, short * 0.003))}" fill="${COLORS.lime}" opacity="${far ? 0.25 : 0.55}"/>`;
+      const edge = `<rect x="${r2(cx - hw)}" y="${r2(cy - hh)}" width="${r2(hw * 2)}" height="${r2(Math.max(2, short * 0.003))}" fill="${COLORS.offWhite}" opacity="${far ? 0.2 : 0.45}"/>`;
       return `<g transform="rotate(-45 ${r2(cx)} ${r2(cy)})"${far ? ' filter="url(#far)"' : ""}>${bar}${edge}</g>`;
     })
     .join("");
   return {
     defs: [
-      `<linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${COLORS.white}" stop-opacity="0.1"/><stop offset="0.5" stop-color="${COLORS.white}" stop-opacity="1"/><stop offset="1" stop-color="${COLORS.lime}" stop-opacity="0.2"/></linearGradient>`,
+      `<linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${COLORS.offWhite}" stop-opacity="0.1"/><stop offset="0.5" stop-color="${COLORS.offWhite}" stop-opacity="1"/><stop offset="1" stop-color="${COLORS.offWhite}" stop-opacity="0.2"/></linearGradient>`,
       `<filter id="far" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="${r2(short * 0.012)}"/></filter>`,
       `<radialGradient id="vignette" gradientUnits="userSpaceOnUse" cx="${r2(w / 2)}" cy="${r2(h / 2)}" r="${r2(diagonal * 0.6)}">` +
-        `<stop offset="0.45" stop-color="${COLORS.forest}" stop-opacity="0"/><stop offset="1" stop-color="#0a2219" stop-opacity="0.6"/>` +
+        `<stop offset="0.45" stop-color="${COLORS.forest}" stop-opacity="0"/><stop offset="1" stop-color="${COLORS.ink}" stop-opacity="0.6"/>` +
         "</radialGradient>",
     ],
     body: [shapes, `<rect width="${w}" height="${h}" fill="url(#vignette)"/>`],
@@ -183,38 +187,42 @@ function lattice(w: number, h: number): { defs: string[]; body: string[] } {
   return {
     defs: [
       `<pattern id="lattice" width="${cell}" height="${cell}" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">` +
-        `<path d="M0 0H${cell}M0 0V${cell}" stroke="${COLORS.lime}" stroke-width="${stroke}" fill="none"/>` +
+        `<path d="M0 0H${cell}M0 0V${cell}" stroke="${COLORS.offWhite}" stroke-width="${stroke}" fill="none"/>` +
         "</pattern>",
       `<radialGradient id="fade" gradientUnits="userSpaceOnUse" cx="${r2(w / 2)}" cy="${r2(h / 2)}" r="${r2(Math.hypot(w, h) * 0.5)}">` +
         `<stop offset="0" stop-color="${COLORS.forest}" stop-opacity="1"/><stop offset="0.35" stop-color="${COLORS.forest}" stop-opacity="0.85"/><stop offset="1" stop-color="${COLORS.forest}" stop-opacity="0"/>` +
         "</radialGradient>",
     ],
-    body: [`<rect width="${w}" height="${h}" fill="url(#lattice)" opacity="0.22"/>`, `<rect width="${w}" height="${h}" fill="url(#fade)"/>`],
+    body: [`<rect width="${w}" height="${h}" fill="url(#lattice)" opacity="0.14"/>`, `<rect width="${w}" height="${h}" fill="url(#fade)"/>`],
   };
 }
 
 /**
- * A photograph in duotone: luminance mapped from deep Forest through Action Green to a muted bright
- * green, so every picture shares the brand's light and white copy stays readable on it.
+ * The tritone of every photograph, by luminance: Ink shadows, Forest midtones and highlights 40% of the
+ * way from Forest to Off-white, so Off-white copy stays readable even on the brightest part.
  */
+const TRITONE = [hexToRgb(COLORS.ink), hexToRgb(COLORS.forest), hexToRgb(COLORS.forest).map((v, i) => v + (hexToRgb(COLORS.offWhite)[i] - v) * 0.4)];
+const tritoneTable = (channel: number) => TRITONE.map((rgb) => (rgb[channel] / 255).toFixed(3)).join(" ");
+
+/** A photograph in the brand tritone, darkened at the edges. */
 function photo(w: number, h: number, surface: Surface, href: (file: string) => string): { defs: string[]; body: string[] } {
   const { file, anchor } = PHOTOS[surface]!;
   return {
     defs: [
-      `<filter id="duotone" color-interpolation-filters="sRGB">` +
+      `<filter id="tritone" color-interpolation-filters="sRGB">` +
         `<feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0"/>` +
         `<feComponentTransfer>` +
-        `<feFuncR type="table" tableValues="0.03 0.12 0.27"/>` +
-        `<feFuncG type="table" tableValues="0.1 0.4 0.6"/>` +
-        `<feFuncB type="table" tableValues="0.07 0.22 0.28"/>` +
+        `<feFuncR type="table" tableValues="${tritoneTable(0)}"/>` +
+        `<feFuncG type="table" tableValues="${tritoneTable(1)}"/>` +
+        `<feFuncB type="table" tableValues="${tritoneTable(2)}"/>` +
         "</feComponentTransfer>" +
         "</filter>",
       `<radialGradient id="vignette" gradientUnits="userSpaceOnUse" cx="${r2(w / 2)}" cy="${r2(h / 2)}" r="${r2(Math.hypot(w, h) * 0.6)}">` +
-        `<stop offset="0.5" stop-color="${COLORS.forest}" stop-opacity="0"/><stop offset="1" stop-color="#0a2219" stop-opacity="0.55"/>` +
+        `<stop offset="0.5" stop-color="${COLORS.forest}" stop-opacity="0"/><stop offset="1" stop-color="${COLORS.ink}" stop-opacity="0.55"/>` +
         "</radialGradient>",
     ],
     body: [
-      `<image href="${href(file)}" width="${w}" height="${h}" preserveAspectRatio="${anchor} slice" filter="url(#duotone)"/>`,
+      `<image href="${href(file)}" width="${w}" height="${h}" preserveAspectRatio="${anchor} slice" filter="url(#tritone)"/>`,
       `<rect width="${w}" height="${h}" fill="url(#vignette)"/>`,
     ],
   };
@@ -250,10 +258,11 @@ export function buildScene(spec: SceneSpec, photoHref: (file: string) => string 
     body.push(...art.body);
   }
 
-  if (glow) {
+  if (glow && tone.glow) {
+    const [color, opacity] = tone.glow;
     defs.push(
       `<radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="${r2(glow.x)}" cy="${r2(glow.y)}" r="${r2(glow.r)}">` +
-        `<stop offset="0" stop-color="${tone.glow[0]}" stop-opacity="${tone.glow[1]}"/><stop offset="1" stop-color="${tone.glow[0]}" stop-opacity="0"/>` +
+        `<stop offset="0" stop-color="${color}" stop-opacity="${opacity}"/><stop offset="1" stop-color="${color}" stop-opacity="0"/>` +
         "</radialGradient>",
     );
     body.push(`<rect width="${w}" height="${h}" fill="url(#glow)"/>`);

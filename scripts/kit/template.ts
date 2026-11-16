@@ -2,7 +2,7 @@
 // described as boxes in output pixels; the browser then fits each headline to
 // its box and the renderer refuses any text that overflows or is too small.
 
-import { COLORS } from "./brand.ts";
+import { COLORS, DIM, alpha } from "./brand.ts";
 import { fontFaces } from "./fonts.ts";
 import { buildScene, type SceneSpec, type Surface } from "./scene.ts";
 
@@ -13,12 +13,10 @@ export type LogoFile =
   | "mark-on-gradient.svg"
   | "wordmark-light.svg"
   | "wordmark-dark.svg"
-  | "lockup-on-dark.svg"
   | "lockup-on-light.svg"
   | "lockup-white.svg"
   | "lockup-black.svg"
   | "lockup-on-gradient.svg"
-  | "lockup-stacked-on-dark.svg"
   | "lockup-stacked-on-light.svg"
   | "lockup-stacked-white.svg"
   | "lockup-stacked-black.svg";
@@ -32,16 +30,16 @@ export interface Box {
 
 type Align = "start" | "center" | "end";
 
-/** One line of a headline; `green` paints it in the variant's accent: Text Green on light, Lime on Forest. */
-export type Line = [text: string, green: boolean];
+/** One line of a headline; `accent` paints it in the variant's accent: Forest on light, Off-white on dark. */
+export type Line = [text: string, accent: boolean];
 
 export type Item =
   /** A logo at height h; w pins the width too, so a rounded export size never overflows. */
   | { kind: "logo"; file: LogoFile; h: number; w?: number }
   /** `leading` overrides the line height, for lines whose descenders meet the next line's ascenders. */
   | { kind: "headline"; lines: Line[]; max: number; min?: number; leading?: number }
-  /** A short label above a headline; `green` paints it in the accent, as the site does for page labels. */
-  | { kind: "eyebrow"; text: string; size: number; green?: boolean }
+  /** A short label above a headline; `accent` paints it in the accent, as the site does for page labels. */
+  | { kind: "eyebrow"; text: string; size: number; accent?: boolean }
   | { kind: "label"; text: string; size: number }
   | { kind: "pill"; text: string; h: number }
   | { kind: "gap"; h: number };
@@ -68,7 +66,7 @@ export interface Doc {
 
 const FONTS = fontFaces("/fonts/");
 
-// Mona Sans 600, like the apysyk.com headings. The upstream release served here
+// Mona Sans 600, like the website's headings. The upstream release served here
 // is spaced about 0.03em tighter than the site's file (measured in Chromium at
 // 100 px), so the site's -0.058em display tracking reads as -0.025em here and
 // its -0.02em labels as 0. The headline tracking also eases at small sizes
@@ -85,18 +83,15 @@ img { display: block; }
 .headline { padding-bottom: 0.1em; }
 .headline span { display: block; width: max-content; }
 .stack--center .headline span { margin-inline: auto; }
-.headline .g { color: ${COLORS.green2}; }
+.headline .g { color: ${COLORS.forest}; }
 .eyebrow { font-family: "Mona Sans"; font-weight: 600; line-height: 1.2; color: ${COLORS.ink}; white-space: nowrap; }
-.eyebrow.g { font-weight: 500; color: ${COLORS.green2}; }
-.label { font-family: "Mona Sans"; font-weight: 500; line-height: 1.2; color: ${COLORS.inkDim}; white-space: nowrap; }
-.pill { display: inline-flex; align-items: center; border-radius: 999px; background: ${COLORS.green}; color: ${COLORS.white}; font-family: "Mona Sans"; font-weight: 600; white-space: nowrap; }
-.forest .headline, .forest .eyebrow, .gradient .headline, .gradient .eyebrow { color: ${COLORS.white}; }
-.forest .headline .g, .forest .eyebrow.g { color: ${COLORS.lime}; }
-.gradient .headline .g { color: ${COLORS.white}; }
-.gradient .eyebrow.g { color: rgba(255, 255, 255, 0.82); }
-.forest .label, .gradient .label { color: rgba(255, 255, 255, 0.72); }
-.forest .pill { background: ${COLORS.lime}; color: ${COLORS.forest}; }
-.gradient .pill { background: ${COLORS.white}; color: ${COLORS.forest}; }`;
+.eyebrow.g { font-weight: 500; color: ${COLORS.forest}; }
+.label { font-family: "Mona Sans"; font-weight: 500; line-height: 1.2; color: ${DIM.onLight}; white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; border-radius: 999px; background: ${COLORS.forest}; color: ${COLORS.offWhite}; font-family: "Mona Sans"; font-weight: 600; white-space: nowrap; }
+.forest .headline, .forest .eyebrow, .gradient .headline, .gradient .eyebrow, .forest .headline .g, .gradient .headline .g { color: ${COLORS.offWhite}; }
+.forest .eyebrow.g, .gradient .eyebrow.g { color: ${alpha(COLORS.offWhite, 0.82)}; }
+.forest .label, .gradient .label { color: ${DIM.onDark}; }
+.forest .pill, .gradient .pill { background: ${COLORS.offWhite}; color: ${COLORS.forest}; }`;
 
 const JUSTIFY: Record<Align, string> = { start: "flex-start", center: "center", end: "flex-end" };
 
@@ -110,7 +105,7 @@ function itemHtml(item: Item): string {
       return `<div class="headline" data-text data-fit data-max="${item.max}" data-min="${item.min ?? 11}"${leading}>${lines}</div>`;
     }
     case "eyebrow":
-      return `<div class="eyebrow${item.green ? " g" : ""}" data-text style="font-size:${item.size}px">${item.text}</div>`;
+      return `<div class="eyebrow${item.accent ? " g" : ""}" data-text style="font-size:${item.size}px">${item.text}</div>`;
     case "label":
       return `<div class="label" data-text style="font-size:${item.size}px">${item.text}</div>`;
     case "pill":
@@ -133,7 +128,7 @@ export function documentFor(doc: Doc): Prepared {
       return `<div class="stack${s.align === "center" ? " stack--center" : ""}" style="${style}">${s.items.map(itemHtml).join("")}</div>`;
     })
     .join("");
-  // The ink follows the surface: Paper's on light, white and Lime on every dark one, white alone on the gradient.
+  // The ink follows the surface: Ink and Forest on light, Off-white on every dark one and on the gradient.
   const ink = doc.tone === "gradient" ? "gradient" : doc.tone === "light" || !doc.tone ? "light" : "forest";
   const html = `<!doctype html><html><head><meta charset="utf-8"><style>${FONTS}${CSS}
 html, body { width: ${doc.width}px; height: ${doc.height}px; background: ${doc.background}; }</style></head><body class="${ink}">

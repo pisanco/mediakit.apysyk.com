@@ -1,58 +1,47 @@
-// Brand facts shared by the asset templates and the page. The values come from
-// the apysyk.com design tokens (proteus-landing src/styles/tokens.css), the
-// mark's geometry (scripts/logo/mark.ts) and the approved copy; keep them in one
-// place so a banner and the page can never disagree.
+// Brand facts shared by the asset templates, the generator and the page: the
+// palette, the mark's geometry (scripts/logo/mark.ts) and the approved copy.
+// Keep them in one place so a banner and the page can never disagree.
 
-import { MARK_COLOR } from "../logo/mark.ts";
+export const SITE_URL = "https://mediakit.risksquad.io/";
+/** The public website: its address for links, and its host as printed on the page and the artwork. */
+export const WEBSITE_URL = "https://risksquad.io/";
+export const WEBSITE = new URL(WEBSITE_URL).host;
+export const FOOTER = "© 2026 Risksquad. All rights reserved.";
 
-export const SITE_URL = "https://mediakit.apysyk.com/";
-export const CONTACT = "sales@apysyk.com";
-export const FOOTER = "© 2026 Apysyk. All rights reserved.";
-
-/** Light first, like apysyk.com: paper and white surfaces, ink text, green for emphasis, one deep forest band. */
+/**
+ * The whole palette: three colors and nothing else. Off-white surfaces, Ink for text and lines, Forest for
+ * the mark, emphasis and every deep surface. Lines, dim text and glows are these colors at lower opacity.
+ */
 export const COLORS = {
-  paper: "#f6f8f4",
-  white: "#ffffff",
-  ink: "#0d1a12",
-  ink2: "#3b463f",
-  inkDim: "#68746c",
-  green: "#28743e",
-  green2: "#22653a",
-  greenStrong: "#174a2a",
-  greenTint: "#eaf3e3",
   forest: "#123c2b",
-  lime: "#a4e35a",
-  mark: MARK_COLOR,
+  offWhite: "#eae6da",
+  ink: "#0d1a12",
 } as const;
 
-/**
- * The mark's gradient, bottom-left to top-right: Action Green through Apysyk
- * Green to Lime. The one-colour marks stay flat.
- */
-export const MARK_GRADIENT = [COLORS.green, COLORS.mark, COLORS.lime] as const;
+/** A palette color at an opacity, as CSS. */
+export function alpha(hex: string, opacity: number): string {
+  return `rgba(${hexToRgb(hex).join(", ")}, ${opacity})`;
+}
+
+/** Secondary copy: Ink on Off-white (6.4:1) and Off-white on Forest (5.9:1). */
+export const DIM = { onLight: alpha(COLORS.ink, 0.72), onDark: alpha(COLORS.offWhite, 0.72) } as const;
 
 /**
- * The gradient of a surface that carries white copy or a white logo: Forest
- * through Action Green to Apysyk Green, the same direction, one step darker
- * than the mark's so white stays readable at its bright end.
+ * The gradient surface, bottom-left to top-right: Ink to Forest. Off-white copy and logos read on all of
+ * it, 9.9:1 or more.
  */
-export const SURFACE_GRADIENT = [COLORS.forest, COLORS.green, COLORS.mark] as const;
+export const SURFACE_GRADIENT = [COLORS.ink, COLORS.forest] as const;
 
-/** The swatches the page documents, in display order. Contrast figures are the site's own. */
+/** The swatches the page documents, in display order, with their measured contrast. */
 export const PALETTE: { name: string; hex: string; role: string }[] = [
-  { name: "Apysyk Green", hex: COLORS.mark, role: "The middle of the mark's gradient, which runs from Action Green to Lime. For logos and the brand symbol, not for text." },
-  { name: "Action Green", hex: COLORS.green, role: "Buttons, links and emphasis on light surfaces; white text on it reads 5.7:1." },
-  { name: "Text Green", hex: COLORS.green2, role: "The green words of two-tone headlines and green text on light surfaces (7:1)." },
-  { name: "Forest", hex: COLORS.forest, role: "The one deep surface; white text on it reads 12:1." },
-  { name: "Lime", hex: COLORS.lime, role: "The accent on Forest only (8:1)." },
-  { name: "Paper", hex: COLORS.paper, role: "The page and the background of every brand surface." },
-  { name: "White", hex: COLORS.white, role: "Cards and reading surfaces on Paper." },
-  { name: "Ink", hex: COLORS.ink, role: "Text and lines on light surfaces." },
+  { name: "Forest", hex: COLORS.forest, role: "The brand color: the mark, emphasis on Off-white and every deep surface. Forest and Off-white read 9.9:1 on each other." },
+  { name: "Off-white", hex: COLORS.offWhite, role: "The page and every light surface, and the copy and logo on Forest and Ink." },
+  { name: "Ink", hex: COLORS.ink, role: "Text and lines on Off-white (14.3:1), and the darkest surface." },
 ];
 
 /**
- * The approved sentences, each one published verbatim on apysyk.com (the home page and its
- * description, the Solutions page). Nothing else may describe Apysyk.
+ * The approved sentences, each one published verbatim on the website (the home page and its
+ * description, the Solutions page). Nothing else may describe Risksquad.
  */
 export const COPY = {
   oneLiner: "Risksquad brings security findings, applications and owners into one workflow.",

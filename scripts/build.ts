@@ -15,6 +15,8 @@ import { Renderer } from "./kit/render.ts";
 import { makeZip } from "./kit/zip.ts";
 import { COLORS, SITE_URL } from "./kit/brand.ts";
 import { PHOTO_FILES } from "./kit/scene.ts";
+import { MARK_SIZE, markPath } from "./logo/mark.ts";
+import { svgDocument } from "./logo/svg.ts";
 
 const ROOT = resolve(import.meta.dir, "..");
 const DIST = join(ROOT, "dist");
@@ -67,7 +69,7 @@ try {
   const logos = await Promise.all(
     LOGO_FILES.map(async ({ file, name }) => {
       const out: ManifestFile[] = [];
-      const base = `apysyk-${file.replace(/\.svg$/, "")}`;
+      const base = `risksquad-${file.replace(/\.svg$/, "")}`;
       const svg = await read(`brand/logo/${file}`);
       const path = `files/logos/svg/${base}.svg`;
       const viewBox = new TextDecoder().decode(svg).match(/viewBox="([\d.\s-]+)"/);
@@ -101,12 +103,12 @@ try {
     path: referencePath,
   });
 
-  // Every motion is available in its original gradient, white and native black.
+  // Every motion is available in Forest, Off-white (-dark) and Ink (-black).
   for (const v of LOADING_VERSIONS) {
     for (const [suffix, label, svg] of [
-      ["", "", v.light],
-      ["-dark", ", dark", v.dark],
-      ["-black", ", black", v.black],
+      ["", ", Forest", v.light],
+      ["-dark", ", Off-white", v.dark],
+      ["-black", ", Ink", v.black],
     ] as const) {
       const path = `files/loading/${v.slug}${suffix}.svg`;
       files.push({ group: "loading", category: "svg", name: `${v.name}${label}`, width: null, height: null, format: "svg", bytes: await write(path, svg), path });
@@ -147,9 +149,16 @@ try {
   const og = checked("og.png", await renderer.render("og", ogImage(), { format: "png" }), 1200, 630);
   shareVersion = createHash("sha256").update(og).digest("hex").slice(0, 10);
   files.push({ group: "site", category: "share", name: "Media kit share image", width: 1200, height: 630, format: "png", bytes: await write("og.png", og), path: "og.png" });
-  await write("favicon.svg", await read("brand/logo/mark.svg"));
-  await write("favicon-32.png", checked("favicon", await renderer.render("favicon", icon(32, "transparent", 0.94), { format: "png" }), 32, 32));
-  await write("apple-touch-icon.png", checked("touch", await renderer.render("touch", icon(180, COLORS.white, 0.6), { format: "png" }), 180, 180));
+  // The tab icon: the Off-white mark at 90/96 on a Forest tile, like risksquad.io's, so it reads on light and dark tab strips.
+  const tileInset = 3;
+  const tileScale = (MARK_SIZE - 2 * tileInset) / MARK_SIZE;
+  const tile = [
+    `<rect width="${MARK_SIZE}" height="${MARK_SIZE}" fill="${COLORS.forest}"/>`,
+    `<g transform="translate(${tileInset} ${tileInset}) scale(${tileScale})"><path fill="${COLORS.offWhite}" d="${markPath()}"/></g>`,
+  ];
+  await write("favicon.svg", svgDocument({ title: "Risksquad favicon", width: MARK_SIZE, height: MARK_SIZE, body: tile }));
+  await write("favicon-32.png", checked("favicon", await renderer.render("favicon", icon(32, COLORS.forest, "mark-white.svg", tileScale), { format: "png" }), 32, 32));
+  await write("apple-touch-icon.png", checked("touch", await renderer.render("touch", icon(180, COLORS.offWhite, "mark.svg", 0.6), { format: "png" }), 180, 180));
 
   // Previews: real renders downscaled in the browser.
   await Promise.all(
@@ -170,11 +179,11 @@ try {
 
 // Archives: one per group and one with everything.
 const ZIPS: { slug: string; name: string; groups: ManifestGroup[] }[] = [
-  { slug: "apysyk-media-kit", name: "Everything", groups: ["logos", "loading", "banners", "wallpapers"] },
-  { slug: "apysyk-logos", name: "Logos", groups: ["logos"] },
-  { slug: "apysyk-loading", name: "Loading", groups: ["loading"] },
-  { slug: "apysyk-banners", name: "Banners", groups: ["banners"] },
-  { slug: "apysyk-wallpapers", name: "Wallpapers", groups: ["wallpapers"] },
+  { slug: "risksquad-media-kit", name: "Everything", groups: ["logos", "loading", "banners", "wallpapers"] },
+  { slug: "risksquad-logos", name: "Logos", groups: ["logos"] },
+  { slug: "risksquad-loading", name: "Loading", groups: ["loading"] },
+  { slug: "risksquad-banners", name: "Banners", groups: ["banners"] },
+  { slug: "risksquad-wallpapers", name: "Wallpapers", groups: ["wallpapers"] },
 ];
 const zips: ManifestFile[] = [];
 for (const z of ZIPS) {
