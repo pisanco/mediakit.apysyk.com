@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
-import { COPY, LONG_BOILERPLATE } from "../../scripts/kit/brand.ts";
+import { COPY, LONG_BOILERPLATE, WEBSITE_URL } from "../../scripts/kit/brand.ts";
 import { imageSize } from "../../scripts/kit/image-size.ts";
 import { formatBytes, type Manifest } from "../../scripts/kit/manifest.ts";
 
@@ -108,7 +108,7 @@ test("root canonical and share metadata identify the published kit and cache its
   await open(page);
   const tag = page.locator('meta[property="og:image"]');
   const canonical = (await page.locator('link[rel="canonical"]').getAttribute("href"))!;
-  expect(canonical).toBe("https://mediakit.apysyk.com/");
+  expect(canonical).toBe("https://mediakit.risksquad.io/");
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", canonical);
   const url = new URL((await tag.getAttribute("content"))!);
   expect(`${url.origin}${url.pathname}`).toBe(new URL("og.png", canonical).href);
@@ -120,6 +120,25 @@ test("root canonical and share metadata identify the published kit and cache its
   const real = imageSize(new Uint8Array(body));
   await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute("content", String(real.width));
   await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute("content", String(real.height));
+});
+
+test("links lead to the Risksquad website and the page publishes no email address", async ({ page, request }, info) => {
+  test.skip(info.project.name !== "chromium-desktop", "the markup is the same for every browser: checked once");
+  await open(page);
+  await expect(page.locator(".facts").getByRole("link", { name: "risksquad.io" })).toHaveAttribute("href", WEBSITE_URL);
+  const footer = page.getByRole("contentinfo");
+  await expect(footer.getByRole("link", { name: "risksquad.io" })).toHaveAttribute("href", WEBSITE_URL);
+  await expect(footer.getByRole("link", { name: "Privacy" })).toHaveAttribute("href", `${WEBSITE_URL}privacy/`);
+  const hrefs = await page.locator("a[href]").evaluateAll((els) => els.map((a) => a.getAttribute("href")!));
+  // Font sources and licenses stay external; no link leads to the former website.
+  const legacy = hrefs.filter((href) => /^https?:/.test(href) && /(^|\.)apysyk\.com$/.test(new URL(href).host));
+  expect(legacy).toEqual([]);
+  expect(hrefs.filter((href) => href.startsWith("mailto:"))).toEqual([]);
+  await expect(page.locator("#contact")).toHaveCount(0);
+  // Neither the page, its script nor the manifest carries an address someone could write to.
+  for (const path of ["/", "/app.js", "/assets.json"]) {
+    expect(await (await request.get(path)).text(), path).not.toMatch(/[\w.+-]+@[\w-]+\.[\w.]+/);
+  }
 });
 
 test("axe finds no serious or critical accessibility violations", async ({ page }) => {
@@ -219,18 +238,17 @@ test("copy buttons put the right text on the clipboard", async ({ page, context,
   // The page scrolls smoothly; under load a click could land while Playwright's scroll-into-view is still moving.
   await page.emulateMedia({ reducedMotion: "reduce" });
   await open(page);
-  const cases: [selector: string, text: string, announced: string][] = [
-    ["#about .copy-card:nth-of-type(1) .copy", COPY.oneLiner, "One-liner copied"],
-    ["#about .copy-card:nth-of-type(2) .copy", COPY.short, "Short boilerplate copied"],
-    ["#about .copy-card:nth-of-type(3) .copy", LONG_BOILERPLATE, "Long boilerplate copied"],
-    ['.copy[data-copy-value="#4da61d"]', "#4da61d", "Apysyk Green HEX copied"],
-    ['.copy[data-copy-value="rgb(77, 166, 29)"]', "rgb(77, 166, 29)", "Apysyk Green RGB copied"],
+  const cases: [selector: string, text: string][] = [
+    ["#about .copy-card:nth-of-type(1) .copy", COPY.oneLiner],
+    ["#about .copy-card:nth-of-type(2) .copy", COPY.short],
+    ["#about .copy-card:nth-of-type(3) .copy", LONG_BOILERPLATE],
+    ['.copy[data-copy-value="#4da61d"]', "#4da61d"],
+    ['.copy[data-copy-value="rgb(77, 166, 29)"]', "rgb(77, 166, 29)"],
   ];
-  for (const [selector, expected, announced] of cases) {
+  for (const [selector, expected] of cases) {
     const button = page.locator(selector);
     await button.click();
     await expect(button).toContainText("Copied");
-    await expect(page.locator("#copy-status")).toHaveText(announced);
     const copied = readable
       ? await page.evaluate(() => navigator.clipboard.readText())
       : await page.evaluate(() => (window as unknown as { __copied?: string }).__copied);

@@ -68,7 +68,7 @@ export interface Doc {
 
 const FONTS = fontFaces("/fonts/");
 
-// Mona Sans 600, like the apysyk.com headings. The upstream release served here
+// Mona Sans 600, like the website's headings. The upstream release served here
 // is spaced about 0.03em tighter than the site's file (measured in Chromium at
 // 100 px), so the site's -0.058em display tracking reads as -0.025em here and
 // its -0.02em labels as 0. The headline tracking also eases at small sizes

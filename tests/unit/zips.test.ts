@@ -11,11 +11,11 @@ if (!(await manifestFile.exists())) throw new Error("dist/assets.json is missing
 const manifest: Manifest = await manifestFile.json();
 
 const EXPECTED: Record<string, string[]> = {
-  "apysyk-media-kit": ["logos", "loading", "banners", "wallpapers"],
-  "apysyk-logos": ["logos"],
-  "apysyk-loading": ["loading"],
-  "apysyk-banners": ["banners"],
-  "apysyk-wallpapers": ["wallpapers"],
+  "risksquad-media-kit": ["logos", "loading", "banners", "wallpapers"],
+  "risksquad-logos": ["logos"],
+  "risksquad-loading": ["loading"],
+  "risksquad-banners": ["banners"],
+  "risksquad-wallpapers": ["wallpapers"],
 };
 
 const zips = manifest.files.filter((f) => f.format === "zip");

@@ -1,14 +1,30 @@
-# mediakit.apysyk.com
+# mediakit.risksquad.io
 
 The public Risksquad media kit: logos, loading animations, colors, typography,
-banners, wallpapers and approved descriptions, published at https://mediakit.apysyk.com/.
+banners, wallpapers and approved descriptions, published at https://mediakit.risksquad.io/.
+The page, banners and generator link to and print the website as https://risksquad.io/
+(`WEBSITE_URL` and `WEBSITE` in `scripts/kit/brand.ts`). The kit publishes no email
+address or contact section.
 
 Only sources live here. Every image, thumbnail, archive and the page itself is
-rendered by `bun run build` into `dist/` (ignored by git). `bun run deploy`
-publishes that tested build at the domain root on the existing `gh-pages` branch,
-which GitHub Pages serves. The legacy Apysyk kit is archived at `/old/`, including
-its resources and downloads. The former `/new/` deployment is removed, not kept
-as a duplicate or alias.
+rendered by `bun run build` into `dist/` (ignored by git). The new
+`mediakit.risksquad.io` host reuses the existing institutional AWS CloudFront/S3
+hosting under the `/mediakit` storage prefix. Its publication is managed separately
+from this repository's legacy publisher.
+`bun run deploy` targets the existing `gh-pages` branch and GitHub Pages host,
+not the new AWS host. Its existing domain, archives and consumers are preserved.
+The legacy publication procedure below documents that publisher only.
+
+For the AWS host, publish the checked `dist/` contents under `s3://apysyk.com/mediakit/`, assets before HTML, without a bucket-root delete. The institutional CloudFront viewer-request function must run on both its default and explicit `/index.html` behaviors and prefix every media-host path, including files with extensions. Its response headers policy permits data images for the generator while keeping scripts/styles/fonts same-origin and forms disabled. Copy the landing's standalone `404.html`, `error.css`, `assets/risksquad-lockup-black.svg` and `assets/risksquad-favicon.svg` into this prefix too; the shared custom-error response relies on those files. The landing workflow preserves the prefix and refreshes these common error assets. This topology creates no new hosting stack and does not repoint the existing GitHub Pages hostname.
+
+The current kit uses `risksquad-*` for every public asset filename, preview,
+download archive and archive member. The page, manifest and browser generator
+consume those paths together. Copyright and the documented green swatch use
+Risksquad too; the approved artwork, geometry, dimensions and color values stay
+unchanged. The AWS publication retires only superseded generated `apysyk-*`
+objects under `mediakit/`, after backing them up and validating the replacement.
+It preserves the shared error assets and does not change the legacy GitHub Pages
+host or its historical archive.
 
 The first promotion requires `bun run deploy --promote-legacy-root`: it archives
 the published legacy root once before installing the Risksquad kit at `/`.
@@ -47,5 +63,3 @@ bun run deploy       # later checked, committed releases; preserves /old/
 
 The Banners section shows each composition once, edge to edge without a white mat,
 with direct download buttons for every network or size. All 31 files remain available individually and in the banner archive.
-
-Questions: sales@apysyk.com.

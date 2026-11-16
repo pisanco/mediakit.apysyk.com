@@ -67,7 +67,7 @@ try {
   const logos = await Promise.all(
     LOGO_FILES.map(async ({ file, name }) => {
       const out: ManifestFile[] = [];
-      const base = `apysyk-${file.replace(/\.svg$/, "")}`;
+      const base = `risksquad-${file.replace(/\.svg$/, "")}`;
       const svg = await read(`brand/logo/${file}`);
       const path = `files/logos/svg/${base}.svg`;
       const viewBox = new TextDecoder().decode(svg).match(/viewBox="([\d.\s-]+)"/);
@@ -170,11 +170,11 @@ try {
 
 // Archives: one per group and one with everything.
 const ZIPS: { slug: string; name: string; groups: ManifestGroup[] }[] = [
-  { slug: "apysyk-media-kit", name: "Everything", groups: ["logos", "loading", "banners", "wallpapers"] },
-  { slug: "apysyk-logos", name: "Logos", groups: ["logos"] },
-  { slug: "apysyk-loading", name: "Loading", groups: ["loading"] },
-  { slug: "apysyk-banners", name: "Banners", groups: ["banners"] },
-  { slug: "apysyk-wallpapers", name: "Wallpapers", groups: ["wallpapers"] },
+  { slug: "risksquad-media-kit", name: "Everything", groups: ["logos", "loading", "banners", "wallpapers"] },
+  { slug: "risksquad-logos", name: "Logos", groups: ["logos"] },
+  { slug: "risksquad-loading", name: "Loading", groups: ["loading"] },
+  { slug: "risksquad-banners", name: "Banners", groups: ["banners"] },
+  { slug: "risksquad-wallpapers", name: "Wallpapers", groups: ["wallpapers"] },
 ];
 const zips: ManifestFile[] = [];
 for (const z of ZIPS) {

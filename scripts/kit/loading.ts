@@ -190,5 +190,5 @@ export const LOADING_VERSIONS: LoadingVersion[] = VERSIONS.map(({ key, name, des
   const id = `loading-${key}`;
   // Pulse uses a separate radial glow: recolor its stops without touching opacity.
   const black = inSolid(light, id, BLACK).replaceAll(`stop-color="${COLORS.mark}"`, `stop-color="${BLACK}"`);
-  return { slug: `apysyk-loading-${key}`, name, description, light, dark: inSolid(light, id, COLORS.white), black };
+  return { slug: `risksquad-loading-${key}`, name, description, light, dark: inSolid(light, id, COLORS.white), black };
 });

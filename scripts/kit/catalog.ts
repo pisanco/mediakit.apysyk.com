@@ -6,7 +6,7 @@
 // logo is always drawn whole from its own files, sitting in a glow with clear
 // space around it; the copy keeps to the side it leaves free.
 
-import { COLORS, HEADLINES } from "./brand.ts";
+import { COLORS, HEADLINES, WEBSITE } from "./brand.ts";
 import { LOCKUP_ASPECT, STACKED_ASPECT } from "./logo-geometry.ts";
 import { fieldOf, logosOn, type Surface } from "./scene.ts";
 import type { Box, Doc, Item, Line, LogoFile, Stack } from "./template.ts";
@@ -54,7 +54,7 @@ const lines = ([first, second]: readonly [string, string]): Line[] => [
   [first, false],
   [second, true],
 ];
-/** The apysyk.com home hero; its two short lines also serve tall formats, where the width sets the size. */
+/** The website's home hero; its two short lines also serve tall formats, where the width sets the size. */
 const HEAD2 = lines(HEADLINES[0]);
 /** The other approved lines, spread over the families so the kit shows the range: cards, Instagram, the photo covers. */
 const HEAD_CARDS = lines(HEADLINES[1]);
@@ -68,9 +68,9 @@ const logo = (file: LogoFile, h: number): Item => ({ kind: "logo", file, h: roun
 /** The box a lockup needs at height h: the logo item rounds its height, so the width follows the rounded one. */
 const lockupWidth = (h: number): number => Math.ceil(round(h) * LOCKUP_ASPECT);
 const gap = (h: number): Item => ({ kind: "gap", h: round(h) });
-const pill = (h: number): Item => ({ kind: "pill", text: "apysyk.com", h: round(h) });
+const pill = (h: number): Item => ({ kind: "pill", text: WEBSITE, h: round(h) });
 const label = (text: string, size: number): Item => ({ kind: "label", text, size: round(size) });
-/** The product name above a headline, in sentence case like the apysyk.com hero. */
+/** The product name above a headline, in sentence case like the website's hero. */
 const eyebrow = (size: number): Item => ({ kind: "eyebrow", text: "Risksquad", size: round(size) });
 
 /** The lockup for a surface, in a box of exactly its size. */
@@ -160,7 +160,7 @@ function social(): RenderedAsset[] {
     group: "banners",
     category: "social",
     name,
-    slug: `apysyk-${slug}-${w}x${h}`,
+    slug: `risksquad-${slug}-${w}x${h}`,
     width: w,
     height: h,
     format: "png",
@@ -241,7 +241,7 @@ function social(): RenderedAsset[] {
           valign: "end",
           items: [eyebrow(w * 0.028), gap(w * 0.03), headline(HEAD_SOCIAL, w * 0.12)],
         },
-        { box: box(w * 0.6, h - pad - lh, w * 0.4 - pad, lh), align: "end", valign: "center", items: [label("apysyk.com", w * 0.022)] },
+        { box: box(w * 0.6, h - pad - lh, w * 0.4 - pad, lh), align: "end", valign: "center", items: [label(WEBSITE, w * 0.022)] },
       ],
       { ...at, r: w * 0.55 },
     );
@@ -256,7 +256,7 @@ function social(): RenderedAsset[] {
       {
         box: box(150 * s, 20 * s, 420 * s, 110 * s),
         valign: "center",
-        items: [logo("wordmark-dark.svg", 18 * s), gap(12 * s), headline(HEAD2, 24 * s), gap(10 * s), label("apysyk.com", 11 * s)],
+        items: [logo("wordmark-dark.svg", 18 * s), gap(12 * s), headline(HEAD2, 24 * s), gap(10 * s), label(WEBSITE, 11 * s)],
       },
     ]);
   };
@@ -289,7 +289,7 @@ function display(): RenderedAsset[] {
     group: "banners",
     category: "display",
     name,
-    slug: `apysyk-ad-${w}x${h}`,
+    slug: `risksquad-ad-${w}x${h}`,
     width: w,
     height: h,
     format: "png",
@@ -345,7 +345,7 @@ function display(): RenderedAsset[] {
         [
           lockupAt("gradient", 16, 18, 16),
           { box: box(16, 70, w - 32, 240), valign: "center", items: [eyebrow(13), gap(10), headline(HEAD2, 40)] },
-          { box: box(16, h * 0.56, w - 32, 24), items: [label("apysyk.com", 12)] },
+          { box: box(16, h * 0.56, w - 32, 24), items: [label(WEBSITE, 12)] },
           markAt("gradient", at.x, at.y, w * 0.5),
         ],
         { ...at, r: w * 1.2 },
@@ -370,7 +370,7 @@ function display(): RenderedAsset[] {
       return scene(w, h, "gradient", [
         { box: box(10, 0, 28, h), valign: "center", items: [logo("mark-white.svg", 26)] },
         { box: box(46, 4, 118, h - 8), valign: "center", items: [headline(HEAD2, 20)] },
-        { box: box(174, 0, 136, h), align: "end", valign: "center", items: [label("apysyk.com", 11)] },
+        { box: box(174, 0, 136, h), align: "end", valign: "center", items: [label(WEBSITE, 11)] },
       ]);
     }
     return scene(w, h, "gradient", [
@@ -461,7 +461,7 @@ function wallpaper(category: "desktop" | "phone" | "tablet" | "video", surface: 
     category,
     variant: surface,
     name: `${label}, ${surface}`,
-    slug: `apysyk-${category === "video" ? "video-call" : "wallpaper"}-${surface}-${w}x${h}`,
+    slug: `risksquad-${category === "video" ? "video-call" : "wallpaper"}-${surface}-${w}x${h}`,
     width: w,
     height: h,
     format: "jpg",
@@ -480,7 +480,7 @@ function wallpapers(): RenderedAsset[] {
   return out;
 }
 
-/** The apysyk.com share images: each page's label and hero. */
+/** The website's share images: each page's label and hero. */
 function imagery(): RenderedAsset[] {
   const cards: { slug: string; name: string; doc: Doc }[] = [
     { slug: "home", name: "Home", doc: pageCard("Risksquad", HEAD2, 150) },
@@ -513,7 +513,7 @@ function imagery(): RenderedAsset[] {
     group: "banners",
     category: "imagery",
     name: `Cover card: ${name}`,
-    slug: `apysyk-cover-${slug}-1200x630`,
+    slug: `risksquad-cover-${slug}-1200x630`,
     width: 1200,
     height: 630,
     format: "jpg",
@@ -526,7 +526,7 @@ function avatars(): RenderedAsset[] {
     group: "logos",
     category: "avatars",
     name: `Avatar on ${bg}`,
-    slug: `apysyk-avatar-${bg}-1024`,
+    slug: `risksquad-avatar-${bg}-1024`,
     width: 1024,
     height: 1024,
     format: "png",
@@ -544,7 +544,7 @@ export function renderedAssets(): RenderedAsset[] {
   return [...avatars(), ...social(), ...display(), ...imagery(), ...wallpapers()];
 }
 
-/** The page's own share image, drawn like the apysyk.com cover cards with the page's hero. */
+/** The page's own share image, drawn like the website's cover cards with the page's hero. */
 export function ogImage(): Doc {
   return pageCard(
     "Risksquad media kit",

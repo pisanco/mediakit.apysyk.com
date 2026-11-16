@@ -1,9 +1,9 @@
-/* mediakit.apysyk.com. Light first, like apysyk.com: tokens, type and controls follow the site's design
+/* mediakit.risksquad.io. Light first, like risksquad.io: tokens, type and controls follow the site's design
    tokens (proteus-landing src/styles/tokens.css). The build prepends the @font-face rules, with weight and
    width ranges read from the font files.
 
    Tracking: the kit serves the upstream Mona Sans release, which sets about 0.03em per glyph tighter than
-   the build apysyk.com serves (measured in Chromium at weights 400-600). Every Mona Sans letter-spacing
+   the build risksquad.io serves (measured in Chromium at weights 400-600). Every Mona Sans letter-spacing
    here is the site's value plus 0.03em, so the two pages read the same. */
 
 :root {
@@ -24,9 +24,8 @@
   --apy-2: #22653a;
   --apy-strong: #174a2a;
   --apy-tint: #eaf3e3;
-  /* The one deep band: white reads 12:1 on it, the lime accent 8:1. */
+  /* The deep surface behind previews drawn for dark backgrounds: white reads 12:1 on it. */
   --forest: #123c2b;
-  --lime: #a4e35a;
   /* Paper and White as fixed values: the previews of files drawn for light backgrounds keep them in dark mode. */
   --paper: #f6f8f4;
   --paper-surface: #ffffff;
@@ -1131,7 +1130,7 @@ a:not(.button, .dl, .brand, .skip-link):hover {
   box-shadow: inset 0 0 0 1px var(--line-2);
 }
 
-.swatch__chip--apysyk-green {
+.swatch__chip--risksquad-green {
   background: #4da61d;
 }
 
@@ -1657,42 +1656,6 @@ a:not(.button, .dl, .brand, .skip-link):hover {
 
 .generator__caption {
   min-height: 1.2em;
-}
-
-/* ---------- Contact: the page's one deep band ---------- */
-
-.band {
-  display: grid;
-  gap: 20px;
-  padding: clamp(40px, 7vw, 112px) clamp(24px, 6vw, 96px);
-  border-radius: var(--radius-card);
-  background: var(--forest);
-  color: #fff;
-}
-
-.band .kicker {
-  color: var(--lime);
-}
-
-.band .headline {
-  max-width: 15em;
-  overflow-wrap: anywhere;
-}
-
-/* The address sits inside the heading: an underline, not only the color, marks it as a link. */
-.band a {
-  color: var(--lime);
-  text-decoration: underline;
-  text-decoration-thickness: 0.05em;
-  text-underline-offset: 0.12em;
-}
-
-.band a:hover {
-  color: #fff;
-}
-
-.band :focus-visible {
-  outline-color: var(--lime);
 }
 
 /* ---------- Footer ---------- */

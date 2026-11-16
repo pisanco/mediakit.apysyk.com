@@ -4,7 +4,7 @@
 // The SVG embeds everything it needs as data URLs, because an SVG drawn as an
 // image may load nothing external and the canvas must stay untainted.
 
-import { COLORS, HEADLINES } from "../scripts/kit/brand.ts";
+import { COLORS, HEADLINES, WEBSITE } from "../scripts/kit/brand.ts";
 import { buildScene, logosOn, photoOf, type Surface } from "../scripts/kit/scene.ts";
 
 type Family = "cover" | "card" | "square" | "story" | "wallpaper";
@@ -121,7 +121,7 @@ interface Logo {
 
 /** A logo file's drawing and viewBox, for nesting as an inner <svg>. */
 async function logo(file: string): Promise<Logo> {
-  const svg = await fetchText(`files/logos/svg/apysyk-${file}`);
+  const svg = await fetchText(`files/logos/svg/risksquad-${file}`);
   const viewBox = /viewBox="([^"]+)"/.exec(svg)?.[1];
   const inner = svg.replace(/^[^]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "").replace(/<title>[^<]*<\/title>/, "");
   if (!viewBox) throw new Error(`${file}: no viewBox`);
@@ -214,7 +214,7 @@ async function compose({ format, surface, headline }: Choice): Promise<string> {
       glow = { ...at, r: w * 0.55 };
       parts.push(lockupAt(pad, pad, w * 0.046), markAt(at.x, at.y, w * 0.38));
       if (headline) parts.push(message(headline, pad, w * 0.6, w * 0.12, w * 0.028, "bottom", h * 0.92, ink));
-      parts.push(text("apysyk.com", w - pad, h - pad, w * 0.022, 500, ink.dim, "end"));
+      parts.push(text(WEBSITE, w - pad, h - pad, w * 0.022, 500, ink.dim, "end"));
       break;
     }
     case "story": {

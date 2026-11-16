@@ -1,4 +1,4 @@
-// The Apysyk mark, drawn from its proportions: four bands bridge the sides of
+// The Risksquad mark, drawn from its proportions: four bands bridge the sides of
 // a square window, each one running along a side and climbing at 45 degrees
 // to the two nearest corners, with the square's diagonals left open. Every
 // file in brand/logo/ and every layout that draws the mark reads this one
